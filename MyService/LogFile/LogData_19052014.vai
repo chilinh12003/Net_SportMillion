@@ -1,0 +1,3 @@
+﻿19/05/2014 - 11:46:39 || D:\Projects\SportMillion\Source\MyVOVTraffic\Gateway\sms_receive_queue.cs || Insert || 52 || 9 || Access denied for user 'root'@'localhost' (using password: YES) ||  || 
+19/05/2014 - 11:46:39 || D:\Projects\SportMillion\Source\MyService\SportMillion.asmx.cs || Reg || 116 || 17 || Access denied for user 'root'@'localhost' (using password: YES) ||  || 
+-----------------------------------------------------------

@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7BF19464-2672-4B32-90CD-F54FDD867CEF}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MyWeb</RootNamespace>
+    <AssemblyName>MyWeb</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AntiXSSLibrary">
+      <HintPath>..\..\..\DLL\AntiXSS Library v4.2\NET35\AntiXSSLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="MyBase">
+      <HintPath>..\..\..\DLL Libraries\Source\MyBase\bin\Debug\MyBase.dll</HintPath>
+    </Reference>
+    <Reference Include="MyUtility">
+      <HintPath>..\..\..\DLL Libraries\Source\MyUtility\bin\Debug\MyUtility.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="UrlRewritingNet.UrlRewriter">
+      <HintPath>..\..\..\DLL\UrlRewritingNet.UrlRewriter.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="images\banner-bg.png" />
+    <Content Include="images\bottom-logo.png" />
+    <Content Include="images\footer-bg.png" />
+    <Content Include="images\icon-home.png" />
+    <Content Include="images\intro-none.png" />
+    <Content Include="images\intro.png" />
+    <Content Include="images\menu-bg.png" />
+    <Content Include="images\menu-sub-left.png" />
+    <Content Include="images\menu-sub-repeat.png" />
+    <Content Include="images\menu-sub-right.png" />
+    <Content Include="images\top-logo.png" />
+    <Content Include="Page\Admin_Paging.ascx" />
+    <Content Include="Page\Contact.htm" />
+    <Content Include="Page\FAQ.htm" />
+    <Content Include="Page\Guide.htm" />
+    <Content Include="Page\Home.htm" />
+    <Content Include="Page\ListCode.aspx" />
+    <Content Include="Page\Login.aspx" />
+    <Content Include="Page\Result.htm" />
+    <Content Include="Page\Rule.htm" />
+    <Content Include="Page\temp.htm" />
+    <Content Include="Templates\FAQ.htm" />
+    <Content Include="Templates\Result.htm" />
+    <Content Include="Templates\Rule.htm" />
+    <Content Include="Templates\Guide.htm" />
+    <Content Include="Templates\Home.htm" />
+    <Content Include="Templates\News\NewsDetail.htm" />
+    <Content Include="Templates\News\NewsSlide_Repeat.htm" />
+    <Content Include="Templates\News\OtherNews.htm" />
+    <Content Include="Templates\News\OtherNews_Repeat.htm" />
+    <Content Include="Templates\News\Promotion.htm" />
+    <Content Include="Templates\News\Promotion_Repeat.htm" />
+    <Content Include="Templates\Service\HomeService_Repeat.htm" />
+    <Content Include="Templates\Service\ListGroup.htm" />
+    <Content Include="Templates\Service\ListGroup_Repeat.htm" />
+    <Content Include="Templates\Service\ListService.htm" />
+    <Content Include="Templates\Service\ListService_Repeat.htm" />
+    <Content Include="Templates\Service\OtherService.htm" />
+    <Content Include="Templates\Service\OtherService_Repeat.htm" />
+    <Content Include="Templates\Service\ServiceDetail.htm" />
+    <Content Include="Scripts\Forall.js" />
+    <Content Include="Style\style.css" />
+    <Content Include="Templates\News\NewsSlide.htm" />
+    <Content Include="Templates\Service\HomeService.htm" />
+    <Content Include="Templates\Static\Banner.htm" />
+    <Content Include="Templates\Static\Contact.htm" />
+    <Content Include="Templates\Static\Footer.htm" />
+    <Content Include="Templates\Static\Header.htm" />
+    <Content Include="Templates\Static\Content.htm" />
+    <Content Include="Templates\Static\Paging.htm" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Admin_Paging.ascx.cs">
+      <DependentUpon>Admin_Paging.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\Admin_Paging.ascx.designer.cs">
+      <DependentUpon>Admin_Paging.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\ListCode.aspx.cs">
+      <DependentUpon>ListCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\ListCode.aspx.designer.cs">
+      <DependentUpon>ListCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyLoad\MyLoad.csproj">
+      <Project>{A6257E96-F7CC-44A9-99A7-88493CC5C86D}</Project>
+      <Name>MyLoad</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MySetting\MySetting.csproj">
+      <Project>{806C8AE7-4E83-4BFB-A76B-A77EB11EB262}</Project>
+      <Name>MySetting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyVOVTraffic\MySportMillion.csproj">
+      <Project>{066E3A46-9FA2-4234-A9B4-34D767E650EA}</Project>
+      <Name>MySportMillion</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3011</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:8082/SportMillion</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
