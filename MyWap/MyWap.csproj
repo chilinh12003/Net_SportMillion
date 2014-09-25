@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8054BDC4-5FC6-4E8B-ACDB-ED5BB931FFB5}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MyWap</RootNamespace>
+    <AssemblyName>MyWap</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DotNetCasClient">
+      <HintPath>..\..\..\DLL\SSO_Vinaphone\DotNetCasClient.dll</HintPath>
+    </Reference>
+    <Reference Include="FiftyOne.Foundation">
+      <HintPath>..\..\..\DLL\FiftyOne.Foundation.dll</HintPath>
+    </Reference>
+    <Reference Include="MyBase, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Projects\DLL Libraries\Source\MyBase\bin\Debug\MyBase.dll</HintPath>
+    </Reference>
+    <Reference Include="MyUtility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Projects\DLL Libraries\Source\MyUtility\bin\Debug\MyUtility.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="UrlRewritingNet.UrlRewriter">
+      <HintPath>..\..\..\DLL\UrlRewritingNet.UrlRewriter.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CookiesRequired.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="img\adv.png" />
+    <Content Include="img\bg_btn.png" />
+    <Content Include="img\fp_bg.jpg" />
+    <Content Include="img\icon.png" />
+    <Content Include="img\logo_1.png" />
+    <Content Include="img\logo_vina.png" />
+    <Content Include="img\main_img_4.jpg" />
+    <Content Include="img\vinaphone.png" />
+    <Content Include="NotAuthorized.aspx" />
+    <Content Include="Page\home.ashx" />
+    <Content Include="Page\guide.ashx" />
+    <Content Include="Page\winner.ashx" />
+    <Content Include="Page\rule.ashx" />
+    <Content Include="Page\faq.ashx" />
+    <Content Include="Page\checkcode.ashx" />
+    <Content Include="Page\GetMSISDN.ashx" />
+    <Content Include="Login.ashx" />
+    <Content Include="Logout.ashx" />
+    <None Include="Service References\WS_SportMillion\SportMillion.disco" />
+    <None Include="Service References\WS_SportMillion\configuration91.svcinfo" />
+    <None Include="Service References\WS_SportMillion\configuration.svcinfo" />
+    <None Include="Service References\WS_SportMillion\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Scripts\home.js" />
+    <Content Include="Scripts\jquery-2.1.1.min.js" />
+    <Content Include="Style\style.css" />
+    <Content Include="Style\Style_1.css" />
+    <Content Include="Style\Style_2.css" />
+    <Content Include="Templates\LandingPage_2\Confirm_Free.htm" />
+    <Content Include="Templates\LandingPage_2\Confirm_Money.htm" />
+    <Content Include="Templates\LandingPage_2\Note.htm" />
+    <Content Include="Templates\LandingPage_2\registered.htm" />
+    <Content Include="Templates\LandingPage_2\Success.htm" />
+    <Content Include="Templates\LandingPage_2.htm" />
+    <Content Include="Templates\LandingPage\Confirm_Money.htm" />
+    <Content Include="Templates\LandingPage\Confirm_Free.htm" />
+    <Content Include="Templates\LandingPage\Note.htm" />
+    <Content Include="Templates\LandingPage\registered.htm" />
+    <Content Include="Templates\LandingPage\Success.htm" />
+    <Content Include="Templates\LandingPage_1.htm" />
+    <Content Include="Templates\ListCode.htm" />
+    <Content Include="Templates\Service\ListCode_Repeat.htm" />
+    <Content Include="Templates\Service\ListCode.htm" />
+    <Content Include="Templates\Static\faq.htm" />
+    <Content Include="Templates\Static\Footer.htm" />
+    <Content Include="Templates\Static\Header.htm" />
+    <Content Include="Templates\Static\Guide.htm" />
+    <Content Include="Templates\Static\home.htm" />
+    <Content Include="Templates\Static\Note.htm" />
+    <Content Include="Templates\Static\Paging.htm" />
+    <Content Include="Templates\Static\rule.htm" />
+    <Content Include="Templates\Static\Confirm.htm" />
+    <Content Include="Templates\Static\Notice_SportMillion.htm" />
+    <Content Include="Templates\Service\winner.htm" />
+    <Content Include="Test.aspx" />
+    <Content Include="VNPLogin.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="vnp\lp.ashx" />
+    <Content Include="vnp\Success.ashx" />
+    <Content Include="vnp\confirm_free.ashx" />
+    <Content Include="vnp\confirm_money.ashx" />
+    <Content Include="vnp\accept.ashx" />
+    <Content Include="test\wh.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CookiesRequired.aspx.cs">
+      <DependentUpon>CookiesRequired.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CookiesRequired.aspx.designer.cs">
+      <DependentUpon>CookiesRequired.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Login.ashx.cs">
+      <DependentUpon>Login.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.ashx.cs">
+      <DependentUpon>Logout.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="NotAuthorized.aspx.cs">
+      <DependentUpon>NotAuthorized.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NotAuthorized.aspx.designer.cs">
+      <DependentUpon>NotAuthorized.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\checkcode.ashx.cs">
+      <DependentUpon>checkcode.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\faq.ashx.cs">
+      <DependentUpon>faq.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\GetMSISDN.ashx.cs">
+      <DependentUpon>GetMSISDN.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\guide.ashx.cs">
+      <DependentUpon>guide.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\home.ashx.cs">
+      <DependentUpon>home.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\rule.ashx.cs">
+      <DependentUpon>rule.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\winner.ashx.cs">
+      <DependentUpon>winner.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reg\Accept.ashx.cs">
+      <DependentUpon>Accept.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Reg\Deny.ashx.cs">
+      <DependentUpon>Deny.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Reg\Register.ashx.cs">
+      <DependentUpon>Register.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Reg\SportMillion.ashx.cs">
+      <DependentUpon>SportMillion.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WS_SportMillion\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Test.aspx.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test.aspx.designer.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\wh.ashx.cs">
+      <DependentUpon>wh.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="VNPLogin.aspx.cs">
+      <DependentUpon>VNPLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VNPLogin.aspx.designer.cs">
+      <DependentUpon>VNPLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vnp\accept.ashx.cs">
+      <DependentUpon>accept.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="vnp\confirm_free.ashx.cs">
+      <DependentUpon>confirm_free.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="vnp\confirm_money.ashx.cs">
+      <DependentUpon>confirm_money.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="vnp\GetMSISDN.cs" />
+    <Compile Include="vnp\lp.ashx.cs">
+      <DependentUpon>lp.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="vnp\Success.ashx.cs">
+      <DependentUpon>Success.ashx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reg\Accept.ashx" />
+    <Content Include="Reg\Deny.ashx" />
+    <Content Include="Reg\Register.ashx" />
+    <Content Include="Reg\SportMillion.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WS_SportMillion\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WS_SportMillion\SportMillion.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyLoad_Wap\MyLoad_Wap.csproj">
+      <Project>{6c47ab9c-0af5-4737-acc0-fffa64768987}</Project>
+      <Name>MyLoad_Wap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyVOVTraffic\MySportMillion.csproj">
+      <Project>{066e3a46-9fa2-4234-a9b4-34d767e650ea}</Project>
+      <Name>MySportMillion</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51779</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:8082/WapSport</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:8082/WapSport</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

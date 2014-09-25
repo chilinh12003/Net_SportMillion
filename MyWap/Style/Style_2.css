@@ -1,0 +1,94 @@
+﻿body
+{
+    font-size: 12px;
+    font-family: Verdana,Tahoma;
+    margin: 0px;
+    padding: 0px;
+    color: #ffffff;    
+    line-height:16px;
+}
+a
+{
+    text-decoration:none;
+    color:#000000;
+}
+.main
+{
+    max-width:640px;
+    display:block;
+}
+.top
+{
+    background-color: #ffffff;
+    padding: 5px 0 5px 5px;
+    text-align:left;
+}
+.msisdn
+{
+    padding: 5px 0px 5px 0;
+    text-align:right;
+    width:90%;
+    display:block;
+}
+.logo
+{
+    background: url("../img/logo_vina.png") no-repeat left top;
+    width: 179px;
+    height: 42px;
+    display: inline-block;
+    
+}
+.content
+{
+    background: url('../img/main_img_4.jpg') no-repeat scroll center 0px / 100% auto #00A1E3;
+    width:100%;
+}
+
+.note
+{
+    display: block;
+    width: 88%;
+    background-color: #D4EFFA;
+    text-align: center;
+    color: #333333;
+    margin: 20px 0 20px 0;
+    padding: 10px 1% 10px 1%;
+    
+    line-height:17px;
+    font-size:13px;
+}
+
+.note a
+{
+    color:#3B63D6;
+    text-decoration:underline;
+}
+.button-ok
+{
+    background:url("../img/bg_btn.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+    text-align: center;
+    padding: 15px 25px 15px 25px;
+    display: inline-block;
+    width:30%;
+    font-weight: bold;
+    color: #ffffff;
+}
+.button-cancel
+{
+    background-color: #CFCFCF;
+    text-align: center;
+    padding: 14px 25px 14px 25px;
+    display: inline-block;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 10px;
+    margin-left:10px;
+    width:10%;
+}
+.footer
+{
+    background-color:#4BC7FD;
+    margin-top:90px;
+    text-align:center;
+    padding:5px 0 5px 0;
+}

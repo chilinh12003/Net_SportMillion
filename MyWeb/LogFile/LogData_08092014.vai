@@ -1,0 +1,4 @@
+﻿08/09/2014 - 15:36:07 || dnahvu45einp2u55stkpyli2 || d:\Projects\SportMillion\Source\MyWeb\Page\ListCode.aspx || __DataBind__control5 || 59 || 13 || DataBinding: 'System.Data.DataRowView' does not contain a property with the name 'TotalMark'. || Có lỗi xảy ra trong quá trình phân trang! || Chilinh
+08/09/2014 - 15:36:07 || dnahvu45einp2u55stkpyli2 || D:\Projects\SportMillion\Source\MyWeb\Page\Admin_Paging.ascx.cs || BindDa || 164 || 13 || DataBinding: 'System.Data.DataRowView' does not contain a property with the name 'TotalMark'. || Có lỗi xảy ra trong quá trình phân trang! || Chilinh
+08/09/2014 - 15:36:07 || dnahvu45einp2u55stkpyli2 || D:\Projects\SportMillion\Source\MyWeb\Page\Admin_Paging.ascx.cs || lbtn_First_Click || 174 || 17 || DataBinding: 'System.Data.DataRowView' does not contain a property with the name 'TotalMark'. || Có lỗi xảy ra trong quá trình phân trang! || Chilinh
+-----------------------------------------------------------

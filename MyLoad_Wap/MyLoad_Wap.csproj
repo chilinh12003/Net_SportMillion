@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6C47AB9C-0AF5-4737-ACC0-FFFA64768987}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MyLoad_Wap</RootNamespace>
+    <AssemblyName>MyLoad_Wap</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MyBase">
+      <HintPath>..\..\..\DLL Libraries\Source\MyBase\bin\Debug\MyBase.dll</HintPath>
+    </Reference>
+    <Reference Include="MyUtility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Projects\DLL Libraries\Source\MyUtility\bin\Debug\MyUtility.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="LoadService\MyLoadConfirm.cs" />
+    <Compile Include="LoadService\MyLoadListCode.cs" />
+    <Compile Include="LoadService\MyLoadNotice_SportMillion.cs" />
+    <Compile Include="LoadService\MyLoadPaging.cs" />
+    <Compile Include="LoadService\MyLoadWinner.cs" />
+    <Compile Include="LoadStatic\MyLoadFAQ.cs" />
+    <Compile Include="LoadStatic\MyLoadHome.cs" />
+    <Compile Include="LoadStatic\MyLoadNote.cs" />
+    <Compile Include="LoadStatic\MyLoadRule.cs" />
+    <Compile Include="LoadStatic\MyLoadFooter.cs" />
+    <Compile Include="LoadStatic\MyLoadGuide.cs" />
+    <Compile Include="LoadStatic\MyLoadHeader.cs" />
+    <Compile Include="LoadVNP\MyLoadRegistered.cs" />
+    <Compile Include="LoadVNP\MyLoadConfirm_Money.cs" />
+    <Compile Include="LoadVNP\MyLoadSuccess.cs" />
+    <Compile Include="LoadVNP\MyLoadNote.cs" />
+    <Compile Include="LoadVNP\MyLoadConfirm_Free.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\MySetting\MySetting.csproj">
+      <Project>{806c8ae7-4e83-4bfb-a76b-a77eb11eb262}</Project>
+      <Name>MySetting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyVOVTraffic\MySportMillion.csproj">
+      <Project>{066E3A46-9FA2-4234-A9B4-34D767E650EA}</Project>
+      <Name>MySportMillion</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

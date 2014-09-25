@@ -1,0 +1,92 @@
+﻿body
+{
+    font-size: 12px;
+    font-family: Arial,Times New Roman,Verdana,Tahoma;
+    margin: 0px;
+    padding: 0px;
+    color: #ffffff;    
+}
+a
+{
+    text-decoration:none;
+    color:#000000;
+}
+.main
+{
+    max-width:350px;
+    display:block;
+}
+.top
+{
+    background-color: #ffffff;
+    padding: 5px 0 5px 5px;
+    text-align:left;
+}
+.msisdn
+{
+    background-color: #01A0E2;
+    padding: 5px 0px 5px 0;
+    text-align:right;
+    width:90%;
+    display:block;
+}
+.logo
+{
+    background: url("../img/logo_1.png") no-repeat left top;
+    width: 68px;
+    height: 16px;
+    display: inline-block;
+    
+}
+.content
+{
+    background: url('../img/fp_bg.jpg') no-repeat scroll center 0px / 100% auto #00A1E3;
+    width:100%;
+}
+
+.note
+{
+    display: block;
+    width: 88%;
+    background-color: #ffffff;
+    text-align: center;
+    color: #333333;
+    margin: 20px 0 20px 0;
+    padding: 10px 1% 10px 1%;
+    
+    line-height:17px;
+}
+
+.note a
+{
+    color:#3B63D6;
+    text-decoration:underline;
+}
+.button-ok
+{
+    background-color:#0078A8;
+    text-align:center;
+    padding: 8px 0 8px 0;
+    display: block;
+    width: 90%;
+    font-weight:bold;   
+    color:#ffffff;
+}
+.button-cancel
+{
+    background-color: #CFCFCF;
+    text-align: center;
+    padding: 8px 0 8px 0;
+    display: block;
+    width: 90%;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 10px;
+}
+.footer
+{
+    background-color:#4BC7FD;
+    margin-top:20px;
+    text-align:center;
+    padding:5px 0 5px 0;
+}
