@@ -48,7 +48,7 @@
                          <div class="DangKy_Title">
                             Nhập mã xác thực:</div>
                         <div class="DangKy_Control">
-                            <input type="text" runat="server" id="tbx_Captcha" />
+                            <input type="text" runat="server" id="tbx_Captcha" autocomplete="off"  />
                             
                             
                         </div>

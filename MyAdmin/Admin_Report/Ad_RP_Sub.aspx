@@ -13,11 +13,11 @@
     <label>
         Từ ngày:</label>
     <input type="text" runat="server" id="tbx_FromDate" style="width: 70px;" />
-    <input type="button" value="..." onclick="displayCalendar(document.getElementById('<%=tbx_FromDate.ClientID %>    '),'dd/mm/yyyy',this)" />
+    <input type="button" value="..." onclick="displayCalendar(document.getElementById('<%=tbx_FromDate.ClientID %>'),'dd/mm/yyyy',this)" />
     <label>
         Đến ngày:</label>
     <input type="text" runat="server" id="tbx_ToDate" style="width: 70px;" />
-    <input type="button" value="..." onclick="displayCalendar(document.getElementById('<%=tbx_ToDate.ClientID %>    '),'dd/mm/yyyy',this)" />
+    <input type="button" value="..." onclick="displayCalendar(document.getElementById('<%=tbx_ToDate.ClientID %>'),'dd/mm/yyyy',this)" />
     <asp:Button runat="server" ID="btn_Search" Text="Tìm kiếm" OnClick="btn_Search_Click" />
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="cph_Content" runat="server">
@@ -28,17 +28,16 @@
                 <th class="last " rowspan="2">STT</th>
                 <th class="last" rowspan="2">Ngày</th>
                 <th class="last" rowspan="2">Đối tác</th>
-                <th colspan="5">Đăng ký</th>
+                <th colspan="6">Đăng ký</th>
                 <th colspan="5">Hủy</th>
                 <th colspan="4">Gia hạn</th>
                 <th colspan="4">Doanh thu</th>
                 <th class="Table_TR border-none"></th>
             </tr>
             <tr class="Table_Header">
-
                 <th class="Table_TL_Repeat last border-none"></th>
-
                 <th class="last">Tổng</th>
+                <th class="last">Kích hoạt</th>
                 <th class="last">Mới</th>
                 <th class="last">SMS</th>
                 <th class="last">WAP</th>
@@ -66,6 +65,7 @@
                         <%#this.GetReport_HTML((DateTime)Eval("ReportDay"))%>
                         <td><%# Eval("PartnerName").ToString()%></td>
                         <td><%#((double)Eval("SubTotal")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#((double)Eval("SubActive")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("SubNew")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("SubSMS")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("SubWAP")).ToString(MyUtility.MyConfig.IntFormat)%></td>
@@ -93,6 +93,7 @@
                         <%#this.GetReport_HTML((DateTime)Eval("ReportDay"))%>
                         <td><%# Eval("PartnerName").ToString()%></td>
                         <td><%#((double)Eval("SubTotal")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#((double)Eval("SubActive")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("SubNew")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("SubSMS")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("SubWAP")).ToString(MyUtility.MyConfig.IntFormat)%></td>
