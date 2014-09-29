@@ -15,10 +15,14 @@
     <AssemblyName>MyWap</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -141,6 +145,7 @@
     <Content Include="Templates\Static\Notice_SportMillion.htm" />
     <Content Include="Templates\Service\winner.htm" />
     <Content Include="Test.aspx" />
+    <Content Include="test\WebForm1.aspx" />
     <Content Include="VNPLogin.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -235,6 +240,13 @@
     <Compile Include="Test.aspx.designer.cs">
       <DependentUpon>Test.aspx</DependentUpon>
     </Compile>
+    <Compile Include="test\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="test\wh.ashx.cs">
       <DependentUpon>wh.ashx</DependentUpon>
     </Compile>
@@ -285,7 +297,7 @@
       <Project>{6c47ab9c-0af5-4737-acc0-fffa64768987}</Project>
       <Name>MyLoad_Wap</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MyVOVTraffic\MySportMillion.csproj">
+    <ProjectReference Include="..\MySportMillion\MySportMillion.csproj">
       <Project>{066e3a46-9fa2-4234-a9b4-34d767e650ea}</Project>
       <Name>MySportMillion</Name>
     </ProjectReference>

@@ -80,7 +80,7 @@
       <Project>{806c8ae7-4e83-4bfb-a76b-a77eb11eb262}</Project>
       <Name>MySetting</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MyVOVTraffic\MySportMillion.csproj">
+    <ProjectReference Include="..\MySportMillion\MySportMillion.csproj">
       <Project>{066E3A46-9FA2-4234-A9B4-34D767E650EA}</Project>
       <Name>MySportMillion</Name>
     </ProjectReference>

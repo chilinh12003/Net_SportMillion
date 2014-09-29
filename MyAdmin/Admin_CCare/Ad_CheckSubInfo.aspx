@@ -157,15 +157,15 @@
                             </div>
                             <div>
                                 <div class="title">
-                                    Điểm trong ngày:</div>
+                                    Điểm charge gần nhất:</div>
                                 <div class="value">
-                                    <%= mSubInfo.MarkByDay %></div>
+                                    <%= mSubInfo.ChargeMark %></div>
                             </div>
                             <div>
                                 <div class="title">
-                                    Mã dự thưởng trong ngày:</div>
+                                    Điểm tuần gần nhất:</div>
                                 <div class="value">
-                                    <%= mSubInfo.CodeByDay %></div>
+                                    <%= mSubInfo.WeekMark %></div>
                             </div>
                             <div>
                                 <div class="title">

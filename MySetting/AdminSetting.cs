@@ -47,8 +47,7 @@ namespace MySetting
 
             [DescriptionAttribute("Số lượng thuê bao đăng ký dịch vụ")]
             ReportCountSub,
-
-
+            
             [DescriptionAttribute("Số lượng thuê bao hủy dịch vụ")]
             ReportCountUnSub,
 
@@ -57,7 +56,8 @@ namespace MySetting
 
             [DescriptionAttribute("Lịch sử trả MT")]
             ReportMTHisTory,
-
+            [DescriptionAttribute("Thống kê Sub")]
+            RP_Sub,
 
             [DescriptionAttribute("Lịch sử trừ tiền")]
             ChargeLog,
@@ -112,6 +112,7 @@ namespace MySetting
             /// Lưu trữ thông tin Serivice vào session
             /// </summary>
             public static string Service = "Service";
+            public static string Partner = "Partner";
 
         }
 

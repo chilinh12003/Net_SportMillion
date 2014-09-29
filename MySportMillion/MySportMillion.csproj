@@ -90,6 +90,8 @@
     <Compile Include="Partner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report\RPChargeByDay.cs" />
+    <Compile Include="Report\RP_Sub.cs" />
+    <Compile Include="Report\RP_Sub_Object.cs" />
     <Compile Include="Service\ChargeLog.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="Service\AnswerLog.cs" />

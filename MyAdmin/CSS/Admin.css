@@ -131,6 +131,7 @@ select, input, label
 	position: absolute;
 	display: none;	
 	background-color: #CCCCCC;
+	z-index:99;
 }
 .SubMenu_Item a
 {
@@ -152,6 +153,7 @@ select, input, label
 {
 	float:left;
 	padding-left:3px;
+	
 }
 .SubMenu_Item a span.Image
 {
@@ -449,11 +451,13 @@ select, input, label
 {
 	width:100%;
 	margin:5px auto;
+	position:relative;
+	overflow:auto;
 }
 .NoiDung table.Data
 {
 	float:left;
-	width:100%;
+	min-width:100%;
 	border:0;
 }
 .NoiDung table.Data tr
@@ -462,15 +466,35 @@ select, input, label
 }
 .NoiDung table.Data tr th
 {
-	text-align:left;
+    border-style: none solid solid none;
+    border-width: 1px;
+    border-color: #FFFFFF;
+    padding-left: 3px;
+    text-align:center;
+}
+.NoiDung table.Data tr th.last
+{
+    border-style: none solid none none;
+    border-width: 1px;
+    border-color: #FFFFFF;
+    padding-left: 3px;
+    text-align: center;
 }
 .NoiDung table.Data tr td
 {
-	text-align:left;
+    text-align:center;
 }
 .NoiDung table.Data tr td a:hover
 {
     text-decoration:underline;
+}
+.NoiDung table.Data tr td.border-none
+{
+    border-style: none;
+}
+.NoiDung table.Data tr th.border-none
+{
+    border-style: none;
 }
 .NoiDung table.Data tr td img
 {
@@ -496,6 +520,7 @@ select, input, label
 {
 	color: #00CC00;
 }
+
 .Table_Row_1 td, .Table_Row_2 td
 {
 	border-right-style: solid;
@@ -524,6 +549,19 @@ select, input, label
 	width:10px;
 	font-size:0;
 	background:url("../Images/Images/Table_TR.png") no-repeat top left;
+}
+.Table_TL_Repeat
+{
+	width:10px;
+	font-size:0;
+	background:url("../Images/Images/Table_TL_Repeat.png") repeat-y top right;
+	 
+}
+.Table_TR_Repeat
+{
+	width:10px;
+	font-size:0;
+	background:url("../Images/Images/Table_TR_Repeat.png") repeat-y top left;
 }
 .Table_TR_Flag
 {

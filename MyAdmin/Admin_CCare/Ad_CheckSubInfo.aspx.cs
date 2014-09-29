@@ -26,8 +26,8 @@ namespace MyAdmin.Admin_CCare
         public string StatusName = "NULL";
         public string PID = "NULL";
         public string MOByDay = "NULL";
-        public string MarkByDay = "NULL";
-        public string TotalMark = "NULL";
+        public string ChargeMark = "NULL";
+        public string WeekMark = "NULL";
         public string CodeByDay = "NULL";
         public string TotalCode = "NULL";
         public string MatchID = "NULL";
@@ -70,8 +70,8 @@ namespace MyAdmin.Admin_CCare
             StatusName = mRow["StatusID"] != DBNull.Value ?MyEnum.StringValueOf((Subscriber.Status)(int)mRow["StatusID"]) : "NULL";
 
             MOByDay = mRow["MOByDay"] != DBNull.Value ?((int)mRow["MOByDay"]).ToString(MyConfig.IntFormat) : "NULL";
-            MarkByDay = mRow["MarkByDay"] != DBNull.Value ?((int)mRow["MarkByDay"]).ToString(MyConfig.IntFormat) : "NULL";
-            TotalMark = mRow["TotalMark"] != DBNull.Value ?((int)mRow["TotalMark"]).ToString(MyConfig.IntFormat) : "NULL";
+            ChargeMark = mRow["ChargeMark"] != DBNull.Value ? ((int)mRow["ChargeMark"]).ToString(MyConfig.IntFormat) : "NULL";
+            WeekMark = mRow["WeekMark"] != DBNull.Value ? ((int)mRow["WeekMark"]).ToString(MyConfig.IntFormat) : "NULL";
             CodeByDay = mRow["CodeByDay"] != DBNull.Value ?((int)mRow["CodeByDay"]).ToString(MyConfig.IntFormat) : "NULL";
             TotalCode = mRow["TotalCode"] != DBNull.Value ?((int)mRow["TotalCode"]).ToString(MyConfig.IntFormat) : "NULL";
            

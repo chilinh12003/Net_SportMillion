@@ -51,6 +51,26 @@ namespace MySportMillion.Sub
         /// 
         /// </summary>
         /// <param name="Type">Cách thức lấy
+        /// <para>Type = 7: Lấy tổng thuê bao nhóm theo Partner</para></param>
+        /// <returns></returns>
+        public DataTable Select(int Type)
+        {
+            try
+            {
+                string[] mPara = { "Type" };
+                string[] mValue = { Type.ToString() };
+                return mGet.GetDataTable("Sp_UnSubscriber_Select", mPara, mValue);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Type">Cách thức lấy
         /// <para>Type = 1: Lấy chi tiết 1 Record (Para_1 = MSISDN)</para>
         /// <para>Type = 6: Lấy tổng thuê bao theo partner (Para_1 = PartnerID)</para>
         /// </param>

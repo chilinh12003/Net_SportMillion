@@ -13,10 +13,14 @@
     <RootNamespace>MyAdmin</RootNamespace>
     <AssemblyName>MyAdmin</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -102,7 +106,6 @@
     <Content Include="Admin\Ad_Partner_Edit.aspx" />
     <Content Include="Admin\Ad_Permission.aspx" />
     <Content Include="Admin\Ad_Permission_Edit.aspx" />
-    <Content Include="Admin_CCare\Ad_CheckInfo.aspx" />
     <Content Include="Admin_CCare\Ad_History_Interaction.aspx" />
     <Content Include="Admin_CCare\Ad_History_MO_MT.aspx" />
     <Content Include="Admin_CCare\Ad_History_Reg_Dereg.aspx" />
@@ -123,6 +126,7 @@
     <Content Include="Admin_Report\Ad_Partner_Charge.aspx" />
     <Content Include="Admin_Report\Ad_Partner_Charge_ByPrice.aspx" />
     <Content Include="Admin_Report\Ad_Partner_Reg.aspx" />
+    <Content Include="Admin_Report\Ad_RP_Sub.aspx" />
     <Content Include="Admin_Service\Ad_Match.aspx" />
     <Content Include="Admin_Service\Ad_Match_Edit.aspx" />
     <Content Include="App_Data\AllowIP.xml" />
@@ -134,6 +138,7 @@
     <Content Include="CSS\SubInfo.css" />
     <Content Include="Captcha.ashx" />
     <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
+    <None Include="Properties\PublishProfiles\Profile1.pubxml" />
     <None Include="Service References\WS_SportMillion\SportMillion.disco" />
     <None Include="Service References\WS_SportMillion\configuration91.svcinfo" />
     <None Include="Service References\WS_SportMillion\configuration.svcinfo" />
@@ -143,6 +148,8 @@
     </None>
     <Content Include="Error.aspx" />
     <Content Include="Images\Buttons\images.jpg" />
+    <Content Include="Images\Images\Table_TL_Repeat.png" />
+    <Content Include="Images\Images\Table_TR_Repeat.png" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -272,13 +279,6 @@
     </Compile>
     <Compile Include="Admin\Ad_Permission_Edit.aspx.designer.cs">
       <DependentUpon>Ad_Permission_Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin_CCare\Ad_CheckInfo.aspx.cs">
-      <DependentUpon>Ad_CheckInfo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin_CCare\Ad_CheckInfo.aspx.designer.cs">
-      <DependentUpon>Ad_CheckInfo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin_CCare\Ad_History_Interaction.aspx.cs">
       <DependentUpon>Ad_History_Interaction.aspx</DependentUpon>
@@ -440,6 +440,13 @@
     </Compile>
     <Compile Include="Admin_Report\Ad_Partner_Reg.aspx.designer.cs">
       <DependentUpon>Ad_Partner_Reg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Report\Ad_RP_Sub.aspx.cs">
+      <DependentUpon>Ad_RP_Sub.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_Report\Ad_RP_Sub.aspx.designer.cs">
+      <DependentUpon>Ad_RP_Sub.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin_Service\Ad_Match.aspx.cs">
       <DependentUpon>Ad_Match.aspx</DependentUpon>
@@ -755,7 +762,7 @@
       <Project>{806c8ae7-4e83-4bfb-a76b-a77eb11eb262}</Project>
       <Name>MySetting</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MyVOVTraffic\MySportMillion.csproj">
+    <ProjectReference Include="..\MySportMillion\MySportMillion.csproj">
       <Project>{066e3a46-9fa2-4234-a9b4-34d767e650ea}</Project>
       <Name>MySportMillion</Name>
     </ProjectReference>

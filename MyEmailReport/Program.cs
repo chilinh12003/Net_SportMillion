@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using MyEmailReport.Report;
 using MyUtility;
-using MyTool.ReportSync;
-namespace MyTool
+namespace MyEmailReport
 {
     class Program
     {
@@ -11,12 +12,11 @@ namespace MyTool
         {
             try
             {
-                //ChargeSync mChargeSync = new ChargeSync();
-                //mChargeSync.Run();
+                //ThreadDataSync mDataSync = new ThreadDataSync();
+                //mDataSync.Run();
 
-                SyncSub mSyncSub = new SyncSub();
-                mSyncSub.Run();
-
+                EmailReport mReport = new EmailReport();
+                mReport.Run();
             }
             catch (Exception ex)
             {
