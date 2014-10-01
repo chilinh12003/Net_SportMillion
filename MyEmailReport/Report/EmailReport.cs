@@ -25,6 +25,11 @@ namespace MyEmailReport.Report
         public string Format = string.Empty;
         public string Format_TR_Repeat = string.Empty;
         public string Format_TR_Repeat_2 = string.Empty;
+
+        /// <summary>
+        /// Ngày cần chạy report.
+        /// </summary>
+        public DateTime ReportDate = DateTime.Now;
         public void Init()
         {
             try
@@ -36,6 +41,12 @@ namespace MyEmailReport.Report
 
                 Format = MyFile.ReadFile(MyFile.GetFullPathFile("\\Templates\\ReportByDay.htm"));
                 Format_TR_Repeat = MyFile.ReadFile(MyFile.GetFullPathFile("\\Templates\\ReportByDay_TR_Repeat.htm"));
+
+                string Temp = MyConfig.GetKeyInConfigFile("ReportDate");
+                if (!string.IsNullOrEmpty(Temp))
+                {
+                    ReportDate = DateTime.ParseExact(Temp, "dd-MM-yyyy", null);
+                }
             }
             catch (Exception ex)
             {
@@ -47,9 +58,11 @@ namespace MyEmailReport.Report
         {
             try
             {
-                DateTime BeginDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-                DateTime EndDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
-                EndDate = EndDate.AddDays(1);
+                DateTime BeginDate = new DateTime(ReportDate.Year, ReportDate.Month, 1);
+                DateTime EndDate = new DateTime(ReportDate.Year, ReportDate.Month, ReportDate.Day);
+
+                if ((DateTime.Now - ReportDate).TotalDays == 0)
+                    EndDate = EndDate.AddDays(1);
 
                 RP_Sub mRP_Sub = new RP_Sub(ConnectionKey);
 
@@ -70,6 +83,7 @@ namespace MyEmailReport.Report
                 {
                     string ReportDay = ((DateTime)mRow["ReportDay"]).ToString(MyConfig.ShortDateFormat);
                     string SubTotal = ((double)mRow["SubTotal"]).ToString(MyConfig.IntFormat);
+                    string SubActive = ((double)mRow["SubActive"]).ToString(MyConfig.IntFormat);
                     string SubNew = ((double)mRow["SubNew"]).ToString(MyConfig.IntFormat);
                     string SubSMS = ((double)mRow["SubSMS"]).ToString(MyConfig.IntFormat);
                     string SubWAP = ((double)mRow["SubWAP"]).ToString(MyConfig.IntFormat);
@@ -97,15 +111,14 @@ namespace MyEmailReport.Report
                     TotalSale_Month += (double)mRow["SaleReg"] + (double)mRow["SaleRenew"];
 
                     mBuild_TR.Append(string.Format(Format_TR_Repeat,
-                                                new string[] { ReportDay, SubTotal, SubNew, SubSMS,SubWAP,SubOther,
+                                                new string[] { ReportDay, SubTotal,SubActive, SubNew, SubSMS,SubWAP,SubOther,
                                                     UnsubTotal,UnsubNew,UnsubSelf,UnsubExtend,UnsubOther,
                                                     RenewTotal,RenewSuccess,RenewFail,RateRenew,
                                                     SaleReg,SaleRenew,SaleTotal
                                                     }));
 
                 }
-                //string Time = ReportDay.ToString(MyConfig.ShortDateFormat) + " LÚC " + DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString();
-                string Time = DateTime.Now.ToString("MM/yyyy");
+                string Time = ReportDate.ToString("MM/yyyy");
                 return string.Format(Format, Time, mBuild_TR.ToString(), TotalSub_Month.ToString(MyConfig.IntFormat),
                                                                             TotalUnSub_Month.ToString(MyConfig.IntFormat),
                                                                             TotalRenewSuccess_Month.ToString(MyConfig.IntFormat),
