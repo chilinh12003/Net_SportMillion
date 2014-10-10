@@ -96,8 +96,9 @@ namespace MyAdmin.Admin_Report
                 double TotalMoney = 0;
                 double TotalMoney_Reg = (double)mTable.Compute("SUM(SaleReg)", "ReportDay = #" + ReportDay.ToString("MM/dd/yyyy") + "#");
                 double TotalMoney_Renew = (double)mTable.Compute("SUM(SaleRenew)", "ReportDay = #" + ReportDay.ToString("MM/dd/yyyy") + "#");
+                double TotalMoney_Content = (double)mTable.Compute("SUM(SaleBuyContent)", "ReportDay = #" + ReportDay.ToString("MM/dd/yyyy") + "#");
 
-                TotalMoney = TotalMoney_Reg + TotalMoney_Renew;
+                TotalMoney = TotalMoney_Reg + TotalMoney_Renew + TotalMoney_Content;
                 if (ReportDate_Save_Total == DateTime.MinValue || ReportDate_Save_Total != ReportDay)
                 {
                     ReportDate_Save_Total = ReportDay;

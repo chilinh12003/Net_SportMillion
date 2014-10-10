@@ -147,7 +147,6 @@
                                             HUY
                                         </td>
                                         <td>
-                                        
                                             <asp:Button runat="server" ID="tbx_Reg" Text="Đăng ký" OnClick="tbx_Reg_Click" OnClientClick='<%# "return ConfirmReg(\""+Eval("MSISDN")+"\",\"Triệu phú thể thao\");"%>'/>
                                         </td>
                                         <td class="Table_MR_1">

@@ -45,7 +45,7 @@ namespace MySportMillion.Service
                     {
                         return "Đăng ký từ wapsite";
                     }
-                    else if( 
+                    else if (
                         mMTType == DefineMT.MTType.DeregSuccess ||
                         mMTType == DefineMT.MTType.DeregNotRegister ||
                         mMTType == DefineMT.MTType.DeregConfirm ||
@@ -85,6 +85,33 @@ namespace MySportMillion.Service
                     {
                         return "Gửi MO HUY dịch vụ";
                     }
+                    else if
+                        (
+                    mMTType == DefineMT.MTType.AnswerBT ||
+                    mMTType == DefineMT.MTType.AnswerExpire ||
+                    mMTType == DefineMT.MTType.AnswerFail ||
+                    mMTType == DefineMT.MTType.AnswerFinal ||
+                    mMTType == DefineMT.MTType.AnswerGB1 ||
+                    mMTType == DefineMT.MTType.AnswerGB2 ||
+                    mMTType == DefineMT.MTType.AnswerGB3 ||
+                    mMTType == DefineMT.MTType.AnswerKQ1 ||
+                    mMTType == DefineMT.MTType.AnswerKQ2 ||
+                    mMTType == DefineMT.MTType.AnswerKQ3 ||
+                    mMTType == DefineMT.MTType.AnswerTS ||
+                    mMTType == DefineMT.MTType.AnswerTV ||
+                    mMTType == DefineMT.MTType.AnswerSystemError ||
+                    mMTType == DefineMT.MTType.AnswerOver ||
+                    mMTType == DefineMT.MTType.AnswerNotReg ||
+                    mMTType == DefineMT.MTType.AnswerNotExtend ||
+                    mMTType == DefineMT.MTType.AnswerInvalid ||
+                    mMTType == DefineMT.MTType.AnswerGuideTV ||
+                    mMTType == DefineMT.MTType.AnswerGuideTS ||
+                    mMTType == DefineMT.MTType.AnswerGuideKQ ||
+                    mMTType == DefineMT.MTType.AnswerGuideGB ||
+                    mMTType == DefineMT.MTType.AnswerGuideBT)
+                    {
+                        return "Gửi MO dự đoán";
+                    }
                     else
                         return "Gửi MO";
                 }
@@ -102,12 +129,14 @@ namespace MySportMillion.Service
             {
                 if (mChannelType == MyConfig.ChannelType.WAP)
                 {
-                    return "Truy cập WAP";
-                }
-                else
-                {
-                    if (mMTType == DefineMT.MTType.Invalid)
-                        return "Gửi MO";
+                    if (mMTType == DefineMT.MTType.PushMT)
+                    {
+                        return "Hệ thống gửi tin tức";
+                    }
+                    else if (mMTType == DefineMT.MTType.PushMTReminder)
+                    {
+                        return "Hệ thống gửi bản tin nhắc nhở";
+                    }
                     else if (
                         mMTType == DefineMT.MTType.RegNewSuccess ||
                         mMTType == DefineMT.MTType.RegAgainSuccessFree ||
@@ -116,9 +145,11 @@ namespace MySportMillion.Service
                         mMTType == DefineMT.MTType.RegRepeatNotFree ||
                         mMTType == DefineMT.MTType.RegNotEnoughMoney ||
                         mMTType == DefineMT.MTType.RegFail ||
-                        mMTType == DefineMT.MTType.RegSystemError )
+                        mMTType == DefineMT.MTType.RegSystemError ||
+                        mMTType == DefineMT.MTType.RegCCOSSuccessFree ||
+                        mMTType == DefineMT.MTType.RegCCOSSuccessNotFree)
                     {
-                        return "Gửi MO";
+                        return "Đăng ký từ WAP";
                     }
                     else if (
                         mMTType == DefineMT.MTType.DeregSuccess ||
@@ -129,7 +160,141 @@ namespace MySportMillion.Service
                         mMTType == DefineMT.MTType.DeregNotSendConfirm ||
                         mMTType == DefineMT.MTType.ExtendDereg)
                     {
-                        return "Gửi MO";
+                        return "Hủy từ WAP";
+                    }
+                    else if (
+                        mMTType == DefineMT.MTType.AnswerBT ||
+                        mMTType == DefineMT.MTType.AnswerExpire ||
+                        mMTType == DefineMT.MTType.AnswerFail ||
+                        mMTType == DefineMT.MTType.AnswerFinal ||
+                        mMTType == DefineMT.MTType.AnswerGB1 ||
+                        mMTType == DefineMT.MTType.AnswerGB2 ||
+                        mMTType == DefineMT.MTType.AnswerGB3 ||
+                        mMTType == DefineMT.MTType.AnswerKQ1 ||
+                        mMTType == DefineMT.MTType.AnswerKQ2 ||
+                        mMTType == DefineMT.MTType.AnswerKQ3 ||
+                        mMTType == DefineMT.MTType.AnswerTS ||
+                        mMTType == DefineMT.MTType.AnswerTV ||
+                        mMTType == DefineMT.MTType.AnswerSystemError ||
+                        mMTType == DefineMT.MTType.AnswerOver ||
+                        mMTType == DefineMT.MTType.AnswerNotReg ||
+                        mMTType == DefineMT.MTType.AnswerNotExtend ||
+                        mMTType == DefineMT.MTType.AnswerInvalid)
+                    {
+                        return "Gửi MO dự đoán";
+                    }
+                    else if (
+                        mMTType == DefineMT.MTType.AnswerGuideTV ||
+                        mMTType == DefineMT.MTType.AnswerGuideTS ||
+                        mMTType == DefineMT.MTType.AnswerGuideKQ ||
+                        mMTType == DefineMT.MTType.AnswerGuideGB ||
+                        mMTType == DefineMT.MTType.AnswerGuideBT)
+                    {
+                        return "Hệ thống gửi MT hướng dẫn";
+                    }
+                    else if (
+                        mMTType == DefineMT.MTType.ConsultMatch ||
+                        mMTType == DefineMT.MTType.ConsultCodeNotReg ||
+                        mMTType == DefineMT.MTType.ConsultCodeNotExtend ||
+                        mMTType == DefineMT.MTType.ConsultCode)
+                    {
+                        return "Gửi MO Tra cứu điểm";
+                    }
+                    else if (
+                        mMTType == DefineMT.MTType.GetOTPSuccess)
+                    {
+                        return "Gửi MO Lấy mật khẩu OTP";
+                    }
+                    else if (
+                        mMTType == DefineMT.MTType.NotifyResult)
+                    {
+                        return "Hệ thống thông báo điểm dự đoán";
+                    }
+                    else
+                        return  "Truy cập WAP";
+                }
+                else
+                {
+                   if (mMTType == DefineMT.MTType.PushMT)
+                    {
+                        return "Hệ thống gửi tin tức";
+                    }
+                    else if (mMTType == DefineMT.MTType.PushMTReminder)
+                    {
+                        return "Hệ thống gửi bản tin nhắc nhở";
+                    }
+                    else if (
+                        mMTType == DefineMT.MTType.RegNewSuccess ||
+                        mMTType == DefineMT.MTType.RegAgainSuccessFree ||
+                        mMTType == DefineMT.MTType.RegAgainSuccessNotFree ||
+                        mMTType == DefineMT.MTType.RegRepeatFree ||
+                        mMTType == DefineMT.MTType.RegRepeatNotFree ||
+                        mMTType == DefineMT.MTType.RegNotEnoughMoney ||
+                        mMTType == DefineMT.MTType.RegFail ||
+                        mMTType == DefineMT.MTType.RegSystemError||
+                        mMTType == DefineMT.MTType.RegCCOSSuccessFree||
+                        mMTType == DefineMT.MTType.RegCCOSSuccessNotFree)
+                    {
+                        return "Gửi MO Đăng ký";
+                    }
+                    else if (
+                        mMTType == DefineMT.MTType.DeregSuccess ||
+                        mMTType == DefineMT.MTType.DeregNotRegister ||
+                        mMTType == DefineMT.MTType.DeregConfirm ||
+                        mMTType == DefineMT.MTType.DeregFail ||
+                        mMTType == DefineMT.MTType.DeregSystemError ||
+                        mMTType == DefineMT.MTType.DeregNotSendConfirm ||
+                        mMTType == DefineMT.MTType.ExtendDereg)
+                    {
+                        return "Gửi MO Hủy";
+                    }
+                    else if (
+                        mMTType == DefineMT.MTType.AnswerBT ||
+                        mMTType == DefineMT.MTType.AnswerExpire ||
+                        mMTType == DefineMT.MTType.AnswerFail ||
+                        mMTType == DefineMT.MTType.AnswerFinal ||
+                        mMTType == DefineMT.MTType.AnswerGB1 ||
+                        mMTType == DefineMT.MTType.AnswerGB2 ||
+                        mMTType == DefineMT.MTType.AnswerGB3 ||
+                        mMTType == DefineMT.MTType.AnswerKQ1 ||
+                        mMTType == DefineMT.MTType.AnswerKQ2 ||
+                        mMTType == DefineMT.MTType.AnswerKQ3 ||
+                        mMTType == DefineMT.MTType.AnswerTS ||
+                        mMTType == DefineMT.MTType.AnswerTV ||
+                        mMTType == DefineMT.MTType.AnswerSystemError ||
+                        mMTType == DefineMT.MTType.AnswerOver ||
+                        mMTType == DefineMT.MTType.AnswerNotReg ||
+                        mMTType == DefineMT.MTType.AnswerNotExtend ||
+                        mMTType == DefineMT.MTType.AnswerInvalid)
+                    {
+                        return "Gửi MO dự đoán";
+                    }
+                    else if (
+                        mMTType == DefineMT.MTType.AnswerGuideTV ||
+                        mMTType == DefineMT.MTType.AnswerGuideTS ||
+                        mMTType == DefineMT.MTType.AnswerGuideKQ ||
+                        mMTType == DefineMT.MTType.AnswerGuideGB ||
+                        mMTType == DefineMT.MTType.AnswerGuideBT)
+                    {
+                        return "Hệ thống gửi MT hướng dẫn";
+                    }
+                    else if (
+                        mMTType == DefineMT.MTType.ConsultMatch ||
+                        mMTType == DefineMT.MTType.ConsultCodeNotReg ||
+                        mMTType == DefineMT.MTType.ConsultCodeNotExtend ||
+                        mMTType == DefineMT.MTType.ConsultCode)
+                    {
+                        return "Gửi MO Tra cứu điểm";
+                    }
+                    else if (
+                        mMTType == DefineMT.MTType.GetOTPSuccess)
+                    {
+                        return "Gửi MO Lấy mật khẩu OTP";
+                    }
+                    else if (
+                        mMTType == DefineMT.MTType.NotifyResult)
+                    {
+                        return "Hệ thống thông báo điểm dự đoán";
                     }
                     else
                         return "Gửi MO";
@@ -185,7 +350,7 @@ namespace MySportMillion.Service
         }
 
 
-        public int TotalRow(int? Type, string SearchContent, int PID,  int MTTypeID, int ChannelTypeID, DateTime BeginDate, DateTime EndDate)
+        public int TotalRow(int? Type, string SearchContent, int PID, int MTTypeID, int ChannelTypeID, DateTime BeginDate, DateTime EndDate)
         {
             try
             {
@@ -200,7 +365,7 @@ namespace MySportMillion.Service
                     str_EndDate = EndDate.ToString(MyConfig.DateFormat_InsertToDB);
                 }
                 string[] mPara = { "Type", "SearchContent", "PID", "MTTypeID", "ChannelTypeID", "BeginDate", "EndDate", "IsTotalRow" };
-                string[] mValue = { Type.ToString(), SearchContent, PID.ToString(),  MTTypeID.ToString(),  ChannelTypeID.ToString(), str_BeginDate, str_EndDate, true.ToString() };
+                string[] mValue = { Type.ToString(), SearchContent, PID.ToString(), MTTypeID.ToString(), ChannelTypeID.ToString(), str_BeginDate, str_EndDate, true.ToString() };
 
                 return (int)mGet.GetExecuteScalar("Sp_MOLog_Search", mPara, mValue);
             }
@@ -210,7 +375,7 @@ namespace MySportMillion.Service
             }
         }
 
-        public DataTable Search(int? Type, int BeginRow, int EndRow, string SearchContent, int PID, int MTTypeID,  int ChannelTypeID, DateTime BeginDate, DateTime EndDate, string OrderBy)
+        public DataTable Search(int? Type, int BeginRow, int EndRow, string SearchContent, int PID, int MTTypeID, int ChannelTypeID, DateTime BeginDate, DateTime EndDate, string OrderBy)
         {
             try
             {
@@ -224,10 +389,10 @@ namespace MySportMillion.Service
                     str_EndDate = EndDate.ToString(MyConfig.DateFormat_InsertToDB);
                 }
 
-                string[] mpara = { "Type", "BeginRow", "EndRow", "SearchContent", "PID", "MTTypeID",  "ChannelTypeID", "BeginDate", "EndDate", "OrderBy", "IsTotalRow" };
-                string[] mValue = { Type.ToString(), BeginRow.ToString(), EndRow.ToString(), SearchContent, PID.ToString(), MTTypeID.ToString(),  ChannelTypeID.ToString(), str_BeginDate, str_EndDate, OrderBy, false.ToString() };
-                DataTable mTable = mGet.GetDataTable("Sp_MOLog_Search", mpara, mValue);              
-              
+                string[] mpara = { "Type", "BeginRow", "EndRow", "SearchContent", "PID", "MTTypeID", "ChannelTypeID", "BeginDate", "EndDate", "OrderBy", "IsTotalRow" };
+                string[] mValue = { Type.ToString(), BeginRow.ToString(), EndRow.ToString(), SearchContent, PID.ToString(), MTTypeID.ToString(), ChannelTypeID.ToString(), str_BeginDate, str_EndDate, OrderBy, false.ToString() };
+                DataTable mTable = mGet.GetDataTable("Sp_MOLog_Search", mpara, mValue);
+
 
                 return mTable;
             }
@@ -280,7 +445,7 @@ namespace MySportMillion.Service
                 string[] mpara = { "Type", "BeginRow", "EndRow", "SearchContent", "PID", "ServiceID", "BeginDate", "EndDate", "OrderBy", "IsTotalRow" };
                 string[] mValue = { Type.ToString(), BeginRow.ToString(), EndRow.ToString(), SearchContent, PID.ToString(), ServiceID.ToString(), str_BeginDate, str_EndDate, OrderBy, false.ToString() };
                 DataTable mTable = mGet.GetDataTable("Sp_MOLog_Search_Action", mpara, mValue);
-              
+
 
                 DataColumn mCol_2 = new DataColumn("ActionName", typeof(string));
                 mTable.Columns.Add(mCol_2);
@@ -288,12 +453,12 @@ namespace MySportMillion.Service
                 DataColumn mCol_3 = new DataColumn("Description", typeof(string));
                 mTable.Columns.Add(mCol_3);
 
-               
+
                 foreach (DataRow mRow in mTable.Rows)
                 {
                     mRow["ActionName"] = ConvertMTTypeIDToActionName((DefineMT.MTType)int.Parse(mRow["MTTypeID"].ToString()), (MyConfig.ChannelType)int.Parse(mRow["ChannelTypeID"].ToString()));
                     mRow["Description"] = ConvertMTTypeIDToDescription((DefineMT.MTType)int.Parse(mRow["MTTypeID"].ToString()), (MyConfig.ChannelType)int.Parse(mRow["ChannelTypeID"].ToString()));
-                  
+
                 }
 
                 return mTable;

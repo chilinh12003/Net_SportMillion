@@ -56,7 +56,18 @@ namespace MySportMillion.Service
             /// <summary>
             /// DK nhưng hệ thống bị lỗi
             /// </summary>
-            RegSystemError = 221, 
+            RegSystemError = 221,
+
+
+            /// <summary>
+            /// Đăng ký từ CCOS của vinaphone và được miễn phí chu kỳ cước đầu
+            /// </summary>
+            RegCCOSSuccessFree = 222,
+
+            /// <summary>
+            /// Đăng ký từ CCOS của vinaphone và không được miễn phí 
+            /// </summary>
+            RegCCOSSuccessNotFree = 223,
             #endregion
 
             // -----HỦY DỊCH VỤ
@@ -91,7 +102,7 @@ namespace MySportMillion.Service
             /// <summary>
             /// Hủy khi gia hạn không thành công
             /// </summary>
-            ExtendDereg = 400, 
+            ExtendDereg = 400,
             #endregion
 
             // -----CAC TIN NHẮN VỀ THÔNG BÁO----------------
@@ -110,7 +121,7 @@ namespace MySportMillion.Service
             /// <summary>
             /// Thông báo hướng dẫn sử dụng dịch vụ
             /// </summary>
-            NotifyGuide = 502, 
+            NotifyGuide = 502,
             #endregion
 
             // -----HƯỚNG DẪN SỬ DỤNG DV
@@ -170,7 +181,7 @@ namespace MySportMillion.Service
 
             AnswerGuideTV = 719,
 
-            AnswerFail = 720, AnswerSystemError = 721, 
+            AnswerFail = 720, AnswerSystemError = 721,
             #endregion
 
             // -----CÁC TRƯỜNG HỢP KHÁC
@@ -215,11 +226,13 @@ namespace MySportMillion.Service
 
             PushMT = 808,
 
-            GetOTPSuccess = 809, 
+            GetOTPSuccess = 809,
+
+            PushMTReminder = 810,
             #endregion
 
         }
-     MyExecuteData mExec;
+        MyExecuteData mExec;
         MyGetData mGet;
 
         public DefineMT()
@@ -233,7 +246,7 @@ namespace MySportMillion.Service
             mExec = new MyExecuteData(KeyConnect_InConfig);
             mGet = new MyGetData(KeyConnect_InConfig);
         }
-      
+
         public DataSet CreateDataSet()
         {
             try
@@ -275,7 +288,7 @@ namespace MySportMillion.Service
                 throw ex;
             }
         }
-        
+
 
         public bool Insert(int? Type, string XMLContent)
         {
@@ -339,7 +352,7 @@ namespace MySportMillion.Service
                 throw ex;
             }
         }
-    
+
         public bool Active(int Type, bool IsActive, string XMLContent)
         {
             try
@@ -361,12 +374,12 @@ namespace MySportMillion.Service
             }
         }
 
-        public int TotalRow(int? Type, string SearchContent,int MTTypeID, bool? IsActive)
+        public int TotalRow(int? Type, string SearchContent, int MTTypeID, bool? IsActive)
         {
             try
             {
                 string[] mPara = { "Type", "SearchContent", "MTTypeID", "IsActive", "IsTotalRow" };
-                string[] mValue = { Type.ToString(), SearchContent, MTTypeID.ToString(),(IsActive == null ? null : IsActive.ToString()), true.ToString() };
+                string[] mValue = { Type.ToString(), SearchContent, MTTypeID.ToString(), (IsActive == null ? null : IsActive.ToString()), true.ToString() };
 
                 return (int)mGet.GetExecuteScalar("Sp_DefineMT_Search", mPara, mValue);
             }
@@ -377,11 +390,11 @@ namespace MySportMillion.Service
         }
 
 
-        public DataTable Search(int? Type, int BeginRow, int EndRow, string SearchContent,int MTTypeID, bool? IsActive, string OrderBy)
+        public DataTable Search(int? Type, int BeginRow, int EndRow, string SearchContent, int MTTypeID, bool? IsActive, string OrderBy)
         {
             try
             {
-                string[] mpara = { "Type", "BeginRow", "EndRow", "SearchContent","MTTypeID", "IsActive",  "OrderBy","IsTotalRow" };
+                string[] mpara = { "Type", "BeginRow", "EndRow", "SearchContent", "MTTypeID", "IsActive", "OrderBy", "IsTotalRow" };
                 string[] mValue = { Type.ToString(), BeginRow.ToString(), EndRow.ToString(), SearchContent, MTTypeID.ToString(), (IsActive == null ? null : IsActive.ToString()), OrderBy, false.ToString() };
                 return mGet.GetDataTable("Sp_DefineMT_Search", mpara, mValue);
             }

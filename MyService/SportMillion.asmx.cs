@@ -237,6 +237,7 @@ namespace MyService
                 }
 
                 RequestID = MySecurity.CreateCode(9);
+
                 if (mQuere.Insert(mSig.MSISDN, MySetting.AdminSetting.ShoreCode, CommandCode, CommandCode, RequestID, (MyConfig.ChannelType)ChannelType))
                 {
                     mResult = REGResult.Success;

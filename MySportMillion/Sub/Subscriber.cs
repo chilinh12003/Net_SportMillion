@@ -151,7 +151,6 @@ namespace MySportMillion.Sub
         /// <param name="Type">Cách thức lấy
         /// <para>Type = 1: Lấy chi tiết 1 Record (Para_1 = MSISDN)</para>
         /// <para>Type = 6: Lấy tổng thuê bao theo partner (Para_1 = PartnerID)</para>
-        
         /// </param>
         /// <param name="Para_1"></param>
         /// <returns></returns>

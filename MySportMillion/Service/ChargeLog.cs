@@ -611,7 +611,11 @@ namespace MySportMillion.Service
         /// <param name="ChannelTypeID"></param>
         /// <param name="BeginDate"></param>
         /// <param name="EndDate"></param>
-        /// <param name="SelectType">= 1: Lấy lịch sử đăng ký, hủy</param>
+        /// <param name="SelectType">
+        /// <para>SelectType= 1: Lấy lịch sử đăng ký, hủy</para>
+        /// <para>SelectType= 2: Lấy lịch sử gia hạn</para>
+        /// <para>SelectType= 3: Lấy lịch sử trử tiền</para>
+        /// </param>
         /// <returns></returns>
         public int TotalRow_SelectType(int? Type, string SearchContent, int PID, int ChargeTypeID, int ChargeStatusID, int ChannelTypeID, DateTime BeginDate, DateTime EndDate, int SelectType)
         {

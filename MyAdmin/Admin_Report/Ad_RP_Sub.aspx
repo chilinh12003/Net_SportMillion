@@ -36,7 +36,7 @@
             </tr>
             <tr class="Table_Header">
                 <th class="Table_TL_Repeat last border-none"></th>
-                <th class="last">Tổng</th>
+                <th class="last">Từng ĐK</th>
                 <th class="last">Kích hoạt</th>
                 <th class="last">Mới</th>
                 <th class="last">SMS</th>
