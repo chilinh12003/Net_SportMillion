@@ -47,27 +47,27 @@
                 <th>Gói cước</th>
                 <th colspan='2'>Thao tác</th>
             </tr>
-            <asp:Repeater runat="server" ID="rpt_Data_Sub">
+            <asp:Repeater runat="server" ID="rpt_Data_Sub" OnItemDataBound="rpt_Data_Sub_ItemDataBound">
                 <ItemTemplate>
                      <tr>
                         <td>Triệu phú thể thao</td>
                         <td></td>
                         <td width='100px'>
-                            <asp:LinkButton runat="server" CssClass="btnintbl" CommandArgument='<%#Eval("MSISDN") %>' ID="lbtn_Dereg" Text="Hủy" OnClick="tbx_Dereg_Click" OnClientClick='<%# "return ConfirmDereg(\""+Eval("MSISDN")+"\",\"Triệu phú thể thao\");"%>'><span class='iconhuy'>Hủy</span></asp:LinkButton>
+                            <asp:LinkButton runat="server" CssClass="btnintbl"  ID="lbtn_Dereg"  Text="Hủy" OnClick="tbx_Dereg_Click" OnClientClick='<%# "return ConfirmDereg(\""+Eval("MSISDN")+"\",\"Triệu phú thể thao\");"%>'><span class='iconhuy'>Hủy</span></asp:LinkButton>
                         </td>
                         <td width='100px'>
-                            <asp:LinkButton runat="server" CssClass="btnintbl" CommandArgument='<%#Eval("MSISDN") %>' ID="lbtn_Reset" Text="Reset"><span class='iconreset'>Reset</span></asp:LinkButton>
+                            <asp:LinkButton runat="server" CssClass="btnintbl"  ID="lbtn_Reset" Text="Reset"><span class='iconreset'>Reset</span></asp:LinkButton>
                         </td>
                     </tr>
                 </ItemTemplate>
             </asp:Repeater>
-            <asp:Repeater runat="server" ID="rpt_Data_UnSub">
+            <asp:Repeater runat="server" ID="rpt_Data_UnSub" OnItemDataBound="rpt_Data_UnSub_ItemDataBound">
                 <ItemTemplate>
                     <tr>
                         <td>Triệu phú thể thao</td>
                         <td></td>
                         <td colspan='2'>
-                            <asp:LinkButton runat="server" CssClass="btnintbl" CommandArgument='<%#Eval("MSISDN") %>' ID="lbtn_Reg" Text="Đăng ký" OnClick="tbx_Reg_Click" OnClientClick='<%# "return ConfirmReg(\""+Eval("MSISDN")+"\",\"Triệu phú thể thao\");"%>'><span class='icondk'>Đăng ký</span></asp:LinkButton>
+                            <asp:LinkButton runat="server"  CssClass="btnintbl" CommandArgument='<%#Eval("MSISDN") %>' ID="lbtn_Reg" Text="Đăng ký" OnClick="tbx_Reg_Click" OnClientClick='<%# "return ConfirmReg(\""+Eval("MSISDN")+"\",\"Triệu phú thể thao\");"%>'><span class='icondk'>Đăng ký</span></asp:LinkButton>
 
                         </td>
                     </tr>

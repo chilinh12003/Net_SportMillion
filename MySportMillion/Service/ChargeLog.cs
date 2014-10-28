@@ -598,8 +598,6 @@ namespace MySportMillion.Service
             }
         }
 
-
-
         /// <summary>
         /// 
         /// </summary>

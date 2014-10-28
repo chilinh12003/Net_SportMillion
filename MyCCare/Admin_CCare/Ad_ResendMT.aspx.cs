@@ -190,7 +190,7 @@ namespace MyCCare.Admin_CCare
 
                 DataTable mTable = mSub.Select(2, PID.ToString(), MSISDN);
 
-                if (mTelco == null || mTable.Rows.Count < 1)
+                if (mTable.Rows.Count < 1)
                 {
                     MyMessage.ShowError("Số điện thoại chưa đăng ký dịch vụ này, nên không thể gửi tin nhắn.");
                     return;
@@ -199,11 +199,11 @@ namespace MyCCare.Admin_CCare
                 if (SendMT(RegKeyword, MSISDN, MTContent))
                 {
                     UpdateMOLog(MSISDN, DefineMT.MTType.Default, string.Empty, MTContent);
-                    MyMessage.ShowMessage("Gửi MT thành công.");
+                    MyMessage.ShowError("Gửi MT thành công.");
                 }
                 else
                 {
-                    MyMessage.ShowMessage("Gửi MT KHÔNG thành công.");
+                    MyMessage.ShowError("Gửi MT KHÔNG thành công.");
                 }
             }
             catch (Exception ex)

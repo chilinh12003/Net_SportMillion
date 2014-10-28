@@ -143,21 +143,39 @@ namespace MyTool.ReportSync
 
                 foreach (RP_Sub_Object mObj_Current in mList_Current)
                 {
+                    //Có trường hợp đối tác hôm nay có, nhưng hôm qua không có --> SubTotal sẽ không được cập nhật.
+                    bool IsExist_PrevPartner = false;
                     foreach (RP_Sub_Object mObj_Previous in mList_Previous)
                     {
                         if (mObj_Current.PartnerID == mObj_Previous.PartnerID)
                         {
+                            IsExist_PrevPartner = true;
                             //Tính tổng đăng ký
-                            if(mProType == RP_Sub_Object.PropertyType.SubTotal)
+                            if (mProType == RP_Sub_Object.PropertyType.SubTotal)
                             {
                                 double SubTotal = mObj_Previous.SubTotal + mObj_Current.SubNew;
                                 mFieldInfo.SetValue(mObj_Current, SubTotal);
                             }
-                            else  if(mProType == RP_Sub_Object.PropertyType.UnsubTotal)
+                            else if (mProType == RP_Sub_Object.PropertyType.UnsubTotal)
                             {
                                 double UnsubTotal = mObj_Previous.UnsubTotal + mObj_Current.UnsubNew;
                                 mFieldInfo.SetValue(mObj_Current, UnsubTotal);
                             }
+                        }
+                    }
+
+                    if (!IsExist_PrevPartner)
+                    {
+                        //Tính tổng đăng ký
+                        if (mProType == RP_Sub_Object.PropertyType.SubTotal)
+                        {
+                            double SubTotal = mObj_Current.SubNew;
+                            mFieldInfo.SetValue(mObj_Current, SubTotal);
+                        }
+                        else if (mProType == RP_Sub_Object.PropertyType.UnsubTotal)
+                        {
+                            double UnsubTotal = mObj_Current.UnsubNew;
+                            mFieldInfo.SetValue(mObj_Current, UnsubTotal);
                         }
                     }
                 }

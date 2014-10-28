@@ -5,13 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SSO
+namespace MyCCare
 {
-    public partial class SSOFinish : System.Web.UI.Page
+    public partial class LogOut : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Login1.Logout();
         }
     }
 }

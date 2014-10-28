@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="SSO.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="MyCCare.Login" %>
 
 <!DOCTYPE html>
 
@@ -15,8 +15,8 @@
                     $.get('http://10.211.0.250:8080/SSO/SSOService.svc/user/RequestToken?callback=?', {},
                     function (ssodata) {
                         // get url to logon page in case this operation fails
-                        var logonPage = 'http://10.211.0.250:8080/SSO/Login.aspx?keyid=10020&URL=http://10.10.0.90:8088/login.aspx';
-                        var IndexCP = 'http://10.10.0.90:8088/SSOFinish.aspx'; //trang của dịch vụ
+                        var logonPage = 'http://10.211.0.250:8080/SSO/Login.aspx?keyid=10020&URL=http://192.168.41.26:9090/Default.aspx';
+                        var IndexCP = 'http://192.168.41.26:9090/Default.aspx.aspx'; //trang của dịch vụ
                         if (ssodata.Status == 'SUCCESS') {
                             //verify the token is genuine
                             $.ajax({
@@ -32,7 +32,7 @@
                                     }
                                     else {
                                         alert("Đăng nhập thành công điều hướng về trang của CP")
-                                        //document.location = IndexCP;
+                                        document.location = IndexCP;
                                     }
                                 },
                                 error: function (data) {

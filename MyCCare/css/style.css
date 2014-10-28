@@ -4,6 +4,17 @@ body {background:#A8A8B7;padding-top:15px; padding-bottom:20px;}
 .contain_popup {width:98%;background:#fff;margin:0 auto; box-shadow:1px 1px 3px 0px #333}
 .title_containpopup {position:relative; background:#00468C;height:33px}
 .title_containpopup h1 {color:#fff;line-height:32px;height:32px;padding-left:20px; font-size:13px;}
+.title_containpopup .login
+{
+    position:absolute;
+    right:8px;
+    top:8px;
+}
+.title_containpopup .login *{
+    color:#fff;
+    font-size:13px;
+    font-weight:bold;
+}
 .tbl_style {width:100%;border:1pt solid #ccc;border-collapse:collapse; background:url('../images/linear3.jpg') repeat-x 0px 100%}
 .tbl_style td, .tbl_style th {border:1pt solid #ccc;border-collapse:collapse;padding:5px 0px}
 .tbl_style thead {color:#00468C;padding:8px 0px}
@@ -42,6 +53,11 @@ select.dropdownlist {border:1pt solid #ccc; padding:1px}
 .longkuteo td {line-height:0px;color:#fff !important; background:#fff; opacity:1;border:none}
 .longkuteo td span {color:#fff !important}
 
+.usercontrolarea {position:absolute;right:9px;top:9px;color:#fff;}
+.usercontrolarea a {color:#fff; font-weight:normal; color:#eee}
+.usercontrolarea a:hover {text-decoration:underline}
+.usercontrolarea .iconUser { background: url("../images/iconUser.png") no-repeat scroll 0 0; display: inline-block; height: 16px; margin-right: 5px; width: 16px;}
+.usercontrolarea .iconLogout {background: url("../images/iconLogout.png") no-repeat scroll 0 0; display: inline-block; height: 16px; margin-right: 5px; width: 16px;}
 .loading_updatepanel {
     position: absolute;
     top: 50%;

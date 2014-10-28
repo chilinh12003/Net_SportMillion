@@ -10,7 +10,7 @@
 namespace MyCCare.Admin_CCare {
     
     
-    public partial class Ad_ConfigService {
+    public partial class Ad_HistoryMark {
         
         /// <summary>
         /// tbx_MSISDN control.
@@ -22,15 +22,6 @@ namespace MyCCare.Admin_CCare {
         protected global::System.Web.UI.HtmlControls.HtmlInputText tbx_MSISDN;
         
         /// <summary>
-        /// sel_Service control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect sel_Service;
-        
-        /// <summary>
         /// btn_Search control.
         /// </summary>
         /// <remarks>
@@ -40,21 +31,30 @@ namespace MyCCare.Admin_CCare {
         protected global::System.Web.UI.WebControls.Button btn_Search;
         
         /// <summary>
-        /// sel_IsNotify control.
+        /// sel_Service control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect sel_IsNotify;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect sel_Service;
         
         /// <summary>
-        /// btn_Save control.
+        /// tbx_FromDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_Save;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText tbx_FromDate;
+        
+        /// <summary>
+        /// tbx_ToDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText tbx_ToDate;
     }
 }

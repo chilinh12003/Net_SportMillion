@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SSO
+namespace MyCCare
 {
 
 
-    public partial class SSOFinish
+    public partial class Default
     {
 
         /// <summary>

@@ -85,7 +85,6 @@ namespace PostXML
 
                 StreamWriter writer = new StreamWriter(req.GetRequestStream());
 
-
                 // Write the XML text into the stream
                 writer.WriteLine(XMLRquest);
                 writer.Close();

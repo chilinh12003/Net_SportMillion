@@ -9,14 +9,64 @@ using Newtonsoft.Json;
 using System.Web;
 using System.Web.SessionState;
 using MyUtility;
-namespace SSO
+namespace MyCCare
 {
     /// <summary>
     /// Summary description for Login1
     /// </summary>
     public class Login1 : IHttpHandler, IRequiresSessionState
     {
-
+        /// <summary>
+        /// Nếu đã đăng nhập thì trả về true. nếu chưa thì chuyển đến trang login
+        /// </summary>
+        /// <returns></returns>
+        public static bool CheckAndRedirectLogin()
+        {
+            if (MyCurrent.CurrentPage.Session == null ||
+                MyCurrent.CurrentPage.Session["Username"] == null ||
+                MyCurrent.CurrentPage.Session["Role"] == null)
+            {
+                MyCurrent.CurrentPage.Response.Redirect("~/Login.aspx");
+                return false;
+            }
+                
+             if (!string.IsNullOrEmpty(MyCurrent.CurrentPage.Session["Username"].ToString()) &&
+                !string.IsNullOrEmpty(MyCurrent.CurrentPage.Session["Role"].ToString()))
+                return true;
+            else
+            {
+                MyCurrent.CurrentPage.Response.Redirect("~/Login.aspx");
+                return false;
+            }
+        }
+        
+        public static bool IsAdmin()
+        {
+            if (MyCurrent.CurrentPage.Session != null && MyCurrent.CurrentPage.Session["Role"] != null &&
+                MyCurrent.CurrentPage.Session["Role"].ToString().Equals("2",StringComparison.CurrentCultureIgnoreCase))
+                return true;
+            else return false;
+        }
+        public static string GetUserName()
+        {
+            if (MyCurrent.CurrentPage.Session != null && MyCurrent.CurrentPage.Session["Username"] != null)
+                return MyCurrent.CurrentPage.Session["Username"].ToString();
+            return string.Empty;
+        }
+        public static string GetRole()
+        {
+            if (MyCurrent.CurrentPage.Session != null && MyCurrent.CurrentPage.Session["Role"] != null)
+                return MyCurrent.CurrentPage.Session["Role"].ToString();
+            return string.Empty;
+        }
+        public static void Logout()
+        {
+            if (MyCurrent.CurrentPage.Session != null)
+            {
+                MyCurrent.CurrentPage.Session["Role"] = null;
+                MyCurrent.CurrentPage.Session["Username"] = null;
+            }
+        }
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "text/plain";
@@ -54,6 +104,8 @@ namespace SSO
                         role = CheckRole(user.Value);
                         items.Username = user.Value;
                         items.Role = role;
+                        MyLogfile.WriteLogData("Username:" + items.Username.ToString());
+                        MyLogfile.WriteLogData("role:" + items.Role.ToString());
                         HttpContext.Current.Session.Add("Username", items.Username);
                         HttpContext.Current.Session.Add("Role", items.Role);
                         ketqua = 1;

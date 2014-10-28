@@ -97,12 +97,13 @@ namespace MyCCare.Admin_CCare
                 }
 
                 WS_SportMillion.SportMillionSoapClient mClient = new WS_SportMillion.SportMillionSoapClient();
-                Signature = MSISDN + "|CMS|" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
+                Signature = MSISDN + "|CMS|" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + "|TRIEUPHUTT";
                 Signature = MySecurity.AES.Encrypt(Signature, MySetting.AdminSetting.RegWSKey);
                 System.Net.ServicePointManager.Expect100Continue = false;
-                Result = mClient.Dereg((int)MyConfig.ChannelType.CSKH, Signature, CommandCode);
+                //Result = mClient.Dereg((int)MyConfig.ChannelType.CSKH, Signature, CommandCode);
+                Result = mClient.DeReg_VNP(Login1.GetUserName(), MyCurrent.GetRequestIP, Signature, WS_SportMillion.ChannelType.CSKH);
                 string[] Arr_Result = Result.Split('|');
-
+                
                 ErrorCode = Arr_Result[0];
                 ErrorDesc = Arr_Result[1];
 
@@ -148,10 +149,11 @@ namespace MyCCare.Admin_CCare
                 }
 
                 WS_SportMillion.SportMillionSoapClient mClient = new WS_SportMillion.SportMillionSoapClient();
-                Signature = MSISDN + "|CMS|" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
+                Signature = MSISDN + "|CMS|" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + "|TRIEUPHUTT";
                 Signature = MySecurity.AES.Encrypt(Signature, MySetting.AdminSetting.RegWSKey);
                 System.Net.ServicePointManager.Expect100Continue = false;
-                Result = mClient.Reg((int)MyConfig.ChannelType.CSKH, Signature, CommandCode);
+                //Result = mClient.Reg((int)MyConfig.ChannelType.CSKH, Signature, CommandCode);
+                Result = mClient.DeReg_VNP(Login1.GetUserName(), MyCurrent.GetRequestIP, Signature, WS_SportMillion.ChannelType.CSKH);
                 string[] Arr_Result = Result.Split('|');
 
                 ErrorCode = Arr_Result[0];
@@ -176,6 +178,42 @@ namespace MyCCare.Admin_CCare
             finally
             {
                 MyLogfile.WriteLogData("Register", "CommandCode:" + CommandCode + "|MSISDN:" + MSISDN + "|Signature:" + Signature + "|Result:" + Result);
+            }
+        }
+
+        protected void rpt_Data_UnSub_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+             {
+                 var lbtn_Reg = e.Item.FindControl("lbtn_Reg");
+                 if(lbtn_Reg != null)
+                 {
+                     ((LinkButton)lbtn_Reg).Enabled = Login1.IsAdmin();
+                     if (!Login1.IsAdmin())
+                         ((LinkButton)lbtn_Reg).OnClientClick = string.Empty;
+                 }
+
+             }
+        }
+
+        protected void rpt_Data_Sub_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                var lbtn_Dereg = e.Item.FindControl("lbtn_Dereg");
+                if (lbtn_Dereg != null)
+                {
+                    ((LinkButton)lbtn_Dereg).Enabled = Login1.IsAdmin();
+                    if (!Login1.IsAdmin())
+                        ((LinkButton)lbtn_Dereg).OnClientClick = string.Empty;
+                }
+                var lbtn_Reset = e.Item.FindControl("lbtn_Reset");
+                if (lbtn_Reset != null)
+                {
+                    ((LinkButton)lbtn_Reset).Enabled = Login1.IsAdmin();
+                    if (!Login1.IsAdmin())
+                        ((LinkButton)lbtn_Reset).OnClientClick = string.Empty;
+                }
             }
         }
 

@@ -10,6 +10,10 @@ namespace MyCCare.MasterPages
     public partial class Admin : System.Web.UI.MasterPage
     {
         public string Title = "GUI - TRIỆU PHÚ THỂ THAO";
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            Login1.CheckAndRedirectLogin();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
 

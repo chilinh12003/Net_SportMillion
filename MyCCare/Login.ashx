@@ -1,1 +1,1 @@
-﻿<%@ WebHandler Language="C#" CodeBehind="Login.ashx.cs" Class="SSO.Login1" %>
+﻿<%@ WebHandler Language="C#" CodeBehind="Login.ashx.cs" Class="MyCCare.Login1" %>

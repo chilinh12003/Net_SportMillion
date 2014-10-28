@@ -15,12 +15,12 @@
     </div>
     <div class='tabtracuusddv'>
         <ul>
-        <li><a href='Ad_RegDereg.aspx' >Đăng ký / Hủy / Reset</a></li>
-        <li><a href='Ad_ResendMT.aspx' >Bù nội dung</a></li>
-        <li><a href='Ad_ConfigService.aspx' class='select'>Cài đặt dịch vụ</a></li>
-            </ul>
+            <li><a href='Ad_RegDereg.aspx'>Đăng ký / Hủy / Reset</a></li>
+            <li><a href='Ad_ResendMT.aspx'>Bù nội dung</a></li>
+            <li><a href='Ad_ConfigService.aspx' class='select'>Cài đặt dịch vụ</a></li>
+        </ul>
     </div>
-     <div class='fillterarea'>
+    <div class='fillterarea'>
         <table cellspacing="5" cellpadding="5">
             <tbody>
                 <tr>
@@ -33,10 +33,35 @@
                             <option>-- Chọn gói cước --</option>
                         </select></td>
                     <td width="200" align="right" rowspan="2">
-                        <asp:Button CssClass="btn_search" runat="server" ID="btn_Search" Text="Tra cứu" OnClick="btn_Search_Click"/></td>
+                        <asp:Button CssClass="btn_search" runat="server" ID="btn_Search" Text="Tra cứu" OnClick="btn_Search_Click" /></td>
                 </tr>
             </tbody>
         </table>
     </div>
+    <%if(IsShow()){ %>
+    <div class='p10 bor'>
+        <table class="tbl_style center bumaduthuong" style='width: auto'>
+            <tbody>
+                <tr>
+                    <th>Nội dung</th>
+                    <th width='160'>Giá trị</th>
+                </tr>
+                <tr>
+                    <td>Nhận thông báo về thông tin trận đấu</td>
+                   <td><select runat="server" id="sel_IsNotify">
+                       <option value="0">Nhận thông báo</option>
+                       <option value="1">Không nhận thông báo</option>
+                       </select></td>
+                </tr>
+                <tr>
+                    <td colspan='2' align='right'>
+                        <asp:Button runat="server" ID="btn_Save" Text="Thực hiện" OnClick="btn_Save_Click" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <%} %>
 
 </asp:Content>

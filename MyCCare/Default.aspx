@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SSOFinish.aspx.cs" Inherits="SSO.SSOFinish" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="MyCCare.Default" %>
 
 <!DOCTYPE html>
 

@@ -31,6 +31,57 @@ namespace MyCCare.WS_SportMillion {
         [System.ServiceModel.OperationContractAttribute(Action="http://hbcom.vn/GetInfo", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataTable GetInfo(string Signature);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://hbcom.vn/Reg_VNP", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        string Reg_VNP(string UserName, string IP, string Signature, MyCCare.WS_SportMillion.ChannelType mChannel);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://hbcom.vn/DeReg_VNP", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        string DeReg_VNP(string UserName, string IP, string Signature, MyCCare.WS_SportMillion.ChannelType mChannel);
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.34234")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://hbcom.vn/")]
+    public enum ChannelType {
+        
+        /// <remarks/>
+        SMS,
+        
+        /// <remarks/>
+        IVR,
+        
+        /// <remarks/>
+        WEB,
+        
+        /// <remarks/>
+        WAP,
+        
+        /// <remarks/>
+        USSD,
+        
+        /// <remarks/>
+        CLIENT,
+        
+        /// <remarks/>
+        API,
+        
+        /// <remarks/>
+        UNSUB,
+        
+        /// <remarks/>
+        CSKH,
+        
+        /// <remarks/>
+        MAXRETRY,
+        
+        /// <remarks/>
+        SUBNOTEXIST,
+        
+        /// <remarks/>
+        SYSTEM,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -74,6 +125,14 @@ namespace MyCCare.WS_SportMillion {
         
         public System.Data.DataTable GetInfo(string Signature) {
             return base.Channel.GetInfo(Signature);
+        }
+        
+        public string Reg_VNP(string UserName, string IP, string Signature, MyCCare.WS_SportMillion.ChannelType mChannel) {
+            return base.Channel.Reg_VNP(UserName, IP, Signature, mChannel);
+        }
+        
+        public string DeReg_VNP(string UserName, string IP, string Signature, MyCCare.WS_SportMillion.ChannelType mChannel) {
+            return base.Channel.DeReg_VNP(UserName, IP, Signature, mChannel);
         }
     }
 }

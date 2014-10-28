@@ -68,6 +68,7 @@
   <ItemGroup>
     <Content Include="Admin_CCare\Ad_ConfigService.aspx" />
     <Content Include="Admin_CCare\Ad_HistoryCharge.aspx" />
+    <Content Include="Admin_CCare\Ad_HistoryMark.aspx" />
     <Content Include="Admin_CCare\Ad_HistoryMOMT.aspx" />
     <Content Include="Admin_CCare\Ad_HistoryRegDereg.aspx" />
     <Content Include="Admin_CCare\Ad_HistoryUsing.aspx" />
@@ -92,12 +93,18 @@
     <Content Include="Calendar\js_calendar.html" />
     <Content Include="Calendar\lgpl.txt" />
     <Content Include="css\Admin_Paging.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="images\iconLogout.png" />
+    <Content Include="images\iconUser.png" />
     <Content Include="js\jquery-1.8.3.min.js" />
     <Content Include="Login.aspx" />
+    <Content Include="LogOut.aspx" />
     <Content Include="MasterPages\Admin.Master" />
     <Content Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <Content Include="Login.ashx" />
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\MyCCare.pubxml" />
     <None Include="Service References\WS_SportMillion\SportMillion.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -152,7 +159,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="SSOFinish.aspx" />
     <Content Include="Templates\GUI - Cài đặt dịch vụ - Bù mã dự thưởng.html" />
     <Content Include="Templates\GUI - Cài đặt dịch vụ - Bù nội dung.html" />
     <Content Include="Templates\GUI - Cài đặt dịch vụ - Cài đặt dịch vụ.html" />
@@ -184,6 +190,13 @@
     </Compile>
     <Compile Include="Admin_CCare\Ad_HistoryCharge.aspx.designer.cs">
       <DependentUpon>Ad_HistoryCharge.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_CCare\Ad_HistoryMark.aspx.cs">
+      <DependentUpon>Ad_HistoryMark.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_CCare\Ad_HistoryMark.aspx.designer.cs">
+      <DependentUpon>Ad_HistoryMark.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin_CCare\Ad_HistoryMOMT.aspx.cs">
       <DependentUpon>Ad_HistoryMOMT.aspx</DependentUpon>
@@ -241,6 +254,16 @@
     <Compile Include="Admin_Control\Admin_Paging.ascx.designer.cs">
       <DependentUpon>Admin_Paging.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Login.ashx.cs">
       <DependentUpon>Login.ashx</DependentUpon>
     </Compile>
@@ -250,6 +273,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LogOut.aspx.cs">
+      <DependentUpon>LogOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogOut.aspx.designer.cs">
+      <DependentUpon>LogOut.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPages\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
@@ -263,13 +293,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="SSOFinish.aspx.cs">
-      <DependentUpon>SSOFinish.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SSOFinish.aspx.designer.cs">
-      <DependentUpon>SSOFinish.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

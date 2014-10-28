@@ -23,9 +23,8 @@ namespace MyCCare.Admin_CCare
         {
             try
             {
-
                 MyCCare.MasterPages.Admin mMaster = (MyCCare.MasterPages.Admin)Page.Master;
-                mMaster.Title = "GUI - Lịch sử trừ cước";
+                mMaster.Title = "GUI - Thông tin dịch vụ";
 
                 if (!IsPostBack)
                 {

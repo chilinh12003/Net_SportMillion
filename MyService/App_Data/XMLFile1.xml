@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+<RQST>
+  <name>subscribe</name>
+  <requestid>{0}</requestid>
+  <msisdn>{1}</msisdn>
+  <service>{2}</service>
+  <package>{3}</package>
+  <promotion>0</promotion>
+  <trial>0</trial>
+  <bundle>0</bundle>
+  <note>Test</note>
+  <application>{4}</application>
+  <channel>{5}</channel>
+  <username>{6}</username>
+  <userip>{7}</userip>
+</RQST>
+<RQST>
+  <name>unsubscribe</name>
+  <requestid>{0}</requestid>
+  <msisdn>{1}</msisdn>
+  <service>{2}</service>
+  <package>{3}</package>
+  <policy>0</policy>
+  <promotion>0</promotion> 
+  <note>Test</note>
+  <application>{4}</application>
+  <channel>{5}</channel>
+  <username>{6}</username>
+  <userip>{7}</userip>
+</RQST>
+  </root>
