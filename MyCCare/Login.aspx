@@ -16,7 +16,7 @@
                     function (ssodata) {
                         // get url to logon page in case this operation fails
                         var logonPage = 'http://10.211.0.250:8080/SSO/Login.aspx?keyid=10020&URL=http://192.168.41.26:9090/Default.aspx';
-                        var IndexCP = 'http://192.168.41.26:9090/Default.aspx.aspx'; //trang của dịch vụ
+                        var IndexCP = 'http://192.168.41.26:9090/Default.aspx'; //trang của dịch vụ
                         if (ssodata.Status == 'SUCCESS') {
                             //verify the token is genuine
                             $.ajax({

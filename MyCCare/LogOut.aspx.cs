@@ -12,6 +12,7 @@ namespace MyCCare
         protected void Page_Load(object sender, EventArgs e)
         {
             Login1.Logout();
+            Response.Redirect("~/Default.aspx");
         }
     }
 }

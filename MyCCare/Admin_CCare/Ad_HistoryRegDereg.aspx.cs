@@ -29,6 +29,7 @@ namespace MyCCare.Admin_CCare
                 if (!IsPostBack)
                 {
                     ViewState["SortBy"] = string.Empty;
+                    tbx_MSISDN.Value = MySetting.AdminSetting.MSISDN;
 
                     tbx_FromDate.Value = MyConfig.StartDayOfMonth.ToString(MyConfig.ShortDateFormat);
                     tbx_ToDate.Value = DateTime.Now.ToString(MyConfig.ShortDateFormat);
@@ -145,6 +146,7 @@ namespace MyCCare.Admin_CCare
                     return;
                 }
                 tbx_MSISDN.Value = MSISDN;
+                MySetting.AdminSetting.MSISDN = MSISDN;
                 Admin_Paging1.ResetLoadData();
             }
             catch (Exception ex)

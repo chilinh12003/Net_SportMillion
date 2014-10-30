@@ -66,6 +66,7 @@ namespace MyCCare
                 MyCurrent.CurrentPage.Session["Role"] = null;
                 MyCurrent.CurrentPage.Session["Username"] = null;
             }
+
         }
         public void ProcessRequest(HttpContext context)
         {
@@ -77,7 +78,7 @@ namespace MyCCare
         //hàm validatetoken, đăng nhập và gán quyền
         public int ValidateToken(string token)
         {
-            int ketqua = 0; // nếu user không tồn tại trong hệ thống thì trả về 0
+            int ketqua = 0; //nếu user không tồn tại trong hệ thống thì trả về 0
             string sURL = "http://10.211.0.250:8080/SSO/SSOService.svc/user/ValidateTokenUrl?token=" + token + "<@-@>10020";
             var client = new WebClient();
             string html = client.DownloadString(sURL);
@@ -97,7 +98,6 @@ namespace MyCCare
                     HttpContext.Current.Session.Add("Username", null);
                 else
                 {
-                    
                     if (HttpContext.Current.Session["Username"] == null ||
                          HttpContext.Current.Session["Username"].ToString() == string.Empty)
                     {

@@ -29,6 +29,7 @@ namespace MyCCare.Admin_CCare
                 if (!IsPostBack)
                 {
                     ViewState["SortBy"] = string.Empty;
+                    tbx_MSISDN.Value = MySetting.AdminSetting.MSISDN;
                 }
             }
             catch (Exception ex)
@@ -51,6 +52,7 @@ namespace MyCCare.Admin_CCare
                     return;
                 }
                 tbx_MSISDN.Value = MSISDN;
+                MySetting.AdminSetting.MSISDN = MSISDN;
                 int PID = MyPID.GetPIDByPhoneNumber(MSISDN, MySetting.AdminSetting.MaxPID);
                 DataTable mTable_Sub = mSub.Select(2, PID.ToString(), MSISDN);
                 rpt_Data_Sub.DataSource = mTable_Sub;

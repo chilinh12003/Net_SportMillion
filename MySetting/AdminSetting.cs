@@ -141,6 +141,45 @@ namespace MySetting
         }
 
         /// <summary>
+        /// Lưu MSISDN xuống session
+        /// </summary>
+        public static string MSISDN
+        {
+            get
+            {
+                try
+                {
+                    if(MyCurrent.CurrentPage.Session["MSISDN"] == null ||
+                        string.IsNullOrEmpty( MyCurrent.CurrentPage.Session["MSISDN"].ToString()))
+                    {
+                        return string.Empty;
+                    }
+                    else
+                    {
+                        return MyCurrent.CurrentPage.Session["MSISDN"].ToString();
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MyLogfile.WriteLogError(ex);
+                    return string.Empty;
+                }
+                
+            }
+            set
+            {
+                try
+                {
+                    MyCurrent.CurrentPage.Session["MSISDN"] = value;
+                }
+                catch (Exception ex)
+                {
+                    MyLogfile.WriteLogError(ex);
+                }
+
+            }
+        }
+        /// <summary>
         /// Key dùng để mã hóa tạo chữ ký khi call WS đăng ký dịch vụ
         /// </summary>
         public static string RegWSKey = "wre34WD45F";

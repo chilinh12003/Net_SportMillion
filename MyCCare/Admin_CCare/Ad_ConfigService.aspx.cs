@@ -27,7 +27,9 @@ namespace MyCCare.Admin_CCare
 
                 if (!IsPostBack)
                 {
-                    ViewState["SortBy"] = string.Empty;
+                    ViewState["SortBy"] = string.Empty; 
+                    tbx_MSISDN.Value = MySetting.AdminSetting.MSISDN;
+                    
                 }
 
                 if(string.IsNullOrEmpty( tbx_MSISDN.Value))
@@ -54,6 +56,8 @@ namespace MyCCare.Admin_CCare
                     return;
                 }
                 tbx_MSISDN.Value = MSISDN;
+                MySetting.AdminSetting.MSISDN = MSISDN;
+
                 int PID = MyPID.GetPIDByPhoneNumber(MSISDN, MySetting.AdminSetting.MaxPID);
                 DataTable mTable = mSub.Select(2, PID.ToString(), MSISDN);
                 if(mTable == null || mTable.Rows.Count < 1)
