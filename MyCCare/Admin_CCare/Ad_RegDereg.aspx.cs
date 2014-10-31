@@ -154,8 +154,8 @@ namespace MyCCare.Admin_CCare
                 Signature = MSISDN + "|CMS|" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + "|TRIEUPHUTT";
                 Signature = MySecurity.AES.Encrypt(Signature, MySetting.AdminSetting.RegWSKey);
                 System.Net.ServicePointManager.Expect100Continue = false;
-                //Result = mClient.Reg((int)MyConfig.ChannelType.CSKH, Signature, CommandCode);
-                Result = mClient.DeReg_VNP(Login1.GetUserName(), MyCurrent.GetRequestIP, Signature, WS_SportMillion.ChannelType.CSKH);
+                
+                Result = mClient.Reg_VNP(Login1.GetUserName(), MyCurrent.GetRequestIP, Signature, WS_SportMillion.ChannelType.CSKH);
                 string[] Arr_Result = Result.Split('|');
 
                 ErrorCode = Arr_Result[0];
