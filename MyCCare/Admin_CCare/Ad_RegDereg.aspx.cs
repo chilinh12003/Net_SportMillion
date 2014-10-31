@@ -42,6 +42,7 @@ namespace MyCCare.Admin_CCare
         {
             try
             {
+
                 string MSISDN = tbx_MSISDN.Value;
                 MyConfig.Telco mTelco = MyConfig.Telco.Nothing;
                 MyCheck.CheckPhoneNumber(ref MSISDN, ref mTelco, "84");
@@ -69,6 +70,11 @@ namespace MyCCare.Admin_CCare
                         mTable_UnSub.Rows.Add(mRow);
                     }
                     rpt_Data_UnSub.DataSource = mTable_UnSub;
+                    rpt_Data_UnSub.DataBind();
+                }
+                else
+                {
+                    rpt_Data_UnSub.DataSource = new DataTable();
                     rpt_Data_UnSub.DataBind();
                 }
                 ViewState["MSISDN"] = MSISDN;
@@ -119,6 +125,7 @@ namespace MyCCare.Admin_CCare
                 }
 
                 System.Threading.Thread.Sleep(3000);
+                
                 btn_Search_Click(null, null);
             }
             catch (Exception ex)
