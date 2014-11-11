@@ -14,13 +14,13 @@
             $(function ()
             {
                 // log user out from SSO service
-                $.get('http//10.211.0.250:8080/SSO/SSOService.svc/user/Logout?callback=?', {},
+                $.get('http//thethao.vinaphone.com.vn:8080/u/SSO/SSOService.svc/user/Logout?callback=?', {},
                     function (ssodata)
                     {
                         // client's no longer logged in, redirect to logon page
                         // giá trị trả về dạng json
                         //?( {"LogoutResult":true} );
-                        document.location = 'http://192.168.41.26:9090/login.aspx';
+                        document.location = 'http://thethao.vinaphone.com.vn:8080/cskh/login.aspx';
                     }, 'jsonp');
             });
         </script>

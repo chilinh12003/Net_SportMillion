@@ -161,6 +161,16 @@ namespace MyTool.ReportSync
                                 double UnsubTotal = mObj_Previous.UnsubTotal + mObj_Current.UnsubNew;
                                 mFieldInfo.SetValue(mObj_Current, UnsubTotal);
                             }
+                            else if (mProType == RP_Sub_Object.PropertyType.SubTotal_Partner)
+                            {
+                                double SubTotal_Partner = mObj_Previous.SubTotal_Partner + mObj_Current.SubNew_Partner;
+                                mFieldInfo.SetValue(mObj_Current, SubTotal_Partner);
+                            }
+                            else if (mProType == RP_Sub_Object.PropertyType.UnsubTotal_Partner)
+                            {
+                                double UnsubTotal_Partner = mObj_Previous.UnsubTotal_Partner + mObj_Current.UnsubNew_Partner;
+                                mFieldInfo.SetValue(mObj_Current, UnsubTotal_Partner);
+                            }
                         }
                     }
 
@@ -176,6 +186,16 @@ namespace MyTool.ReportSync
                         {
                             double UnsubTotal = mObj_Current.UnsubNew;
                             mFieldInfo.SetValue(mObj_Current, UnsubTotal);
+                        }
+                        else if (mProType == RP_Sub_Object.PropertyType.SubTotal_Partner)
+                        {
+                            double SubTotal_Partner = mObj_Current.SubNew_Partner;
+                            mFieldInfo.SetValue(mObj_Current, SubTotal_Partner);
+                        }
+                        else if (mProType == RP_Sub_Object.PropertyType.UnsubTotal_Partner)
+                        {
+                            double UnsubTotal_Partner = mObj_Current.UnsubNew_Partner;
+                            mFieldInfo.SetValue(mObj_Current, UnsubTotal_Partner);
                         }
                     }
                 }
@@ -303,8 +323,7 @@ namespace MyTool.ReportSync
                 DataTable mTable_RP_Sub = mRP_Sub.Select(2, (new DateTime(BeginDate.Year, BeginDate.Month, 1)).ToString(MyConfig.DateFormat_InsertToDB),
                                                             (new DateTime(BeginDate.Year, BeginDate.Month, DateTime.DaysInMonth(BeginDate.Year, BeginDate.Month))).ToString(MyConfig.DateFormat_InsertToDB)
                                                             );
-                //Ngày hiện tại
-                RP_Sub mRP_Sub_Current = new RP_Sub(this.ConnectionKey_Des);
+               
                 while (!StopThread)
                 {
                     try
@@ -336,7 +355,8 @@ namespace MyTool.ReportSync
                                                                          BeginDate.ToString(MyConfig.DateFormat_InsertToDB),
                                                                          EndDate.ToString(MyConfig.DateFormat_InsertToDB));
 
-                            UpdateToList(ref mList_Current, RP_Sub_Object.PropertyType.SubNew, mTable, true);
+
+                            UpdateToList(ref mList_Current, RP_Sub_Object.PropertyType.SubNew, mTable, true);                          
 
                             //Đăng ký mới trong ngày từ SMS
                             mTable = mChargeLog.Select(8, PID.ToString(), ((int)ChargeLog.ChargeType.REG_DAILY).ToString(), ((int)ChargeLog.ChargeStatus.ChargeSuccess).ToString(),
@@ -353,7 +373,23 @@ namespace MyTool.ReportSync
 
                             UpdateToList(ref mList_Current, RP_Sub_Object.PropertyType.SubWAP, mTable, true);
 
-                            //Lấy tổng đăng ký từ đầu đến giờ
+                            //Thuê bao đăng ký không thành công trong ngày
+                            mTable = mChargeLog.Select(12, PID.ToString(), ((int)ChargeLog.ChargeType.REG_DAILY).ToString(), ((int)ChargeLog.ChargeStatus.ChargeSuccess).ToString(),
+                                                                         BeginDate.ToString(MyConfig.DateFormat_InsertToDB),
+                                                                         EndDate.ToString(MyConfig.DateFormat_InsertToDB));
+
+
+                            UpdateToList(ref mList_Current, RP_Sub_Object.PropertyType.SubFail, mTable, true);
+
+                            //Lấy dk giả lập
+                            mTable = mChargeLog.Select(13, PID.ToString(), ((int)ChargeLog.ChargeType.REG_DAILY).ToString(), ((int)ChargeLog.ChargeStatus.ChargeSuccess).ToString(),
+                                                                   BeginDate.ToString(MyConfig.DateFormat_InsertToDB),
+                                                                   EndDate.ToString(MyConfig.DateFormat_InsertToDB), ((int)ChargeLog.NoteType.ChangePartner).ToString());
+
+                            UpdateToList(ref mList_Current, RP_Sub_Object.PropertyType.SubNew_Partner, mTable, true);
+
+
+                            //Lấy tổng đăng ký thành công từ đầu đến giờ
                             if (mList_Previous.Count == 0 || mList_Previous[0].IsNull)
                             {
                                 //nếu không tồn tại report cho ngày hôm trước thì tính từ đầu.
@@ -363,11 +399,21 @@ namespace MyTool.ReportSync
                                                                       EndDate.ToString(MyConfig.DateFormat_InsertToDB));
 
                                 UpdateToList(ref mList_Current, RP_Sub_Object.PropertyType.SubTotal, mTable, true);
+
+                                //Lấy tổng cảc sản lượng giả lập từ đầu đến giờ
+                                mTable = mChargeLog.Select(13, PID.ToString(), ((int)ChargeLog.ChargeType.REG_DAILY).ToString(), ((int)ChargeLog.ChargeStatus.ChargeSuccess).ToString(),
+                                                                     FirstServiceDate.ToString(MyConfig.DateFormat_InsertToDB),
+                                                                     EndDate.ToString(MyConfig.DateFormat_InsertToDB), ((int)ChargeLog.NoteType.ChangePartner).ToString());
+
+                                UpdateToList(ref mList_Current, RP_Sub_Object.PropertyType.SubTotal_Partner, mTable, true);
                             }
                             else
                             {
                                 //Tổng đăng ký = Tổng đăng ký ngày hôm trước + Đăng ký mới
                                 UpdateToList(ref mList_Current, mList_Previous, RP_Sub_Object.PropertyType.SubTotal);
+
+                                //Tổng Dk giả lập = Tổng dk giả lập hôm trước + dk giả lập mới
+                                UpdateToList(ref mList_Current, mList_Previous, RP_Sub_Object.PropertyType.SubTotal_Partner);
                             }
 
                             #endregion
@@ -394,6 +440,21 @@ namespace MyTool.ReportSync
                                                                         EndDate.ToString(MyConfig.DateFormat_InsertToDB));
                             UpdateToList(ref mList_Current, RP_Sub_Object.PropertyType.UnsubExtend, mTable, true);
 
+                            //Huy đăng ký không thành công trong ngày
+                            mTable = mChargeLog.Select(12, PID.ToString(), ((int)ChargeLog.ChargeType.UNREG_DAILY).ToString(), ((int)ChargeLog.ChargeStatus.ChargeSuccess).ToString(),
+                                                                         BeginDate.ToString(MyConfig.DateFormat_InsertToDB),
+                                                                         EndDate.ToString(MyConfig.DateFormat_InsertToDB));
+
+
+                            UpdateToList(ref mList_Current, RP_Sub_Object.PropertyType.UnsubFail, mTable, true);
+
+                            //Lấy Hủy dk giả lập
+                            mTable = mChargeLog.Select(13, PID.ToString(), ((int)ChargeLog.ChargeType.UNREG_DAILY).ToString(), ((int)ChargeLog.ChargeStatus.ChargeSuccess).ToString(),
+                                                                   BeginDate.ToString(MyConfig.DateFormat_InsertToDB),
+                                                                   EndDate.ToString(MyConfig.DateFormat_InsertToDB), ((int)ChargeLog.NoteType.ChangePartner).ToString());
+
+                            UpdateToList(ref mList_Current, RP_Sub_Object.PropertyType.UnsubNew_Partner, mTable, true);
+
 
                             //Lấy tổng Hủy từ đầu đến giờ
                             if (mList_Previous.Count == 0 || mList_Previous[0].IsNull)
@@ -405,11 +466,21 @@ namespace MyTool.ReportSync
                                                                       EndDate.ToString(MyConfig.DateFormat_InsertToDB));
 
                                 UpdateToList(ref mList_Current, RP_Sub_Object.PropertyType.UnsubTotal, mTable, true);
+
+                                //Lấy tổng cảc sản lượng giả lập từ đầu đến giờ
+                                mTable = mChargeLog.Select(13, PID.ToString(), ((int)ChargeLog.ChargeType.UNREG_DAILY).ToString(), ((int)ChargeLog.ChargeStatus.ChargeSuccess).ToString(),
+                                                                     FirstServiceDate.ToString(MyConfig.DateFormat_InsertToDB),
+                                                                     EndDate.ToString(MyConfig.DateFormat_InsertToDB), ((int)ChargeLog.NoteType.ChangePartner).ToString());
+
+                                UpdateToList(ref mList_Current, RP_Sub_Object.PropertyType.UnsubTotal_Partner, mTable, true);
                             }
                             else
                             {
                                 //Tổng đăng ký = Tổng đăng ký ngày hôm trước + Đăng ký mới
                                 UpdateToList(ref mList_Current, mList_Previous, RP_Sub_Object.PropertyType.UnsubTotal);
+
+                                //Tổng Dk giả lập = Tổng dk giả lập hôm trước + dk giả lập mới
+                                UpdateToList(ref mList_Current, mList_Previous, RP_Sub_Object.PropertyType.UnsubTotal_Partner);
                             }
 
                             #endregion
@@ -426,6 +497,24 @@ namespace MyTool.ReportSync
                                                                         BeginDate.ToString(MyConfig.DateFormat_InsertToDB),
                                                                         EndDate.ToString(MyConfig.DateFormat_InsertToDB));
                             UpdateToList(ref mList_Current, RP_Sub_Object.PropertyType.RenewSuccess, mTable, true);
+
+                            //Tổng số lượng gia hạnh thành công giá 5000
+                            mTable = mChargeLog.Select(14, PID.ToString(), ((int)ChargeLog.ChargeType.RENEW_DAILY).ToString(), ((int)ChargeLog.ChargeStatus.ChargeSuccess).ToString(),
+                                                                        BeginDate.ToString(MyConfig.DateFormat_InsertToDB),
+                                                                        EndDate.ToString(MyConfig.DateFormat_InsertToDB), "5000");
+                            UpdateToList(ref mList_Current, RP_Sub_Object.PropertyType.Renew5000, mTable, true);
+
+                            //Tổng số lượng gia hạnh thành công giá 3000
+                            mTable = mChargeLog.Select(14, PID.ToString(), ((int)ChargeLog.ChargeType.RENEW_DAILY).ToString(), ((int)ChargeLog.ChargeStatus.ChargeSuccess).ToString(),
+                                                                        BeginDate.ToString(MyConfig.DateFormat_InsertToDB),
+                                                                        EndDate.ToString(MyConfig.DateFormat_InsertToDB), "3000");
+                            UpdateToList(ref mList_Current, RP_Sub_Object.PropertyType.Renew3000, mTable, true);
+
+                            //Tổng số lượng gia hạnh thành công giá 1000
+                            mTable = mChargeLog.Select(14, PID.ToString(), ((int)ChargeLog.ChargeType.RENEW_DAILY).ToString(), ((int)ChargeLog.ChargeStatus.ChargeSuccess).ToString(),
+                                                                        BeginDate.ToString(MyConfig.DateFormat_InsertToDB),
+                                                                        EndDate.ToString(MyConfig.DateFormat_InsertToDB), "1000");
+                            UpdateToList(ref mList_Current, RP_Sub_Object.PropertyType.Renew1000, mTable, true);
 
                             #endregion
 
@@ -444,6 +533,8 @@ namespace MyTool.ReportSync
                             UpdateToList(ref mList_Current, RP_Sub_Object.PropertyType.SaleRenew, mTable, true);
 
                             #endregion
+
+
                         }
 
                         //SubOther là trường được tính ra từ các trường đã có sẵn

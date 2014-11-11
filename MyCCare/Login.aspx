@@ -12,11 +12,11 @@
         <script type="text/javascript">
             $(document).ready(function () {
                 $(function () {
-                    $.get('http://10.211.0.250:8080/SSO/SSOService.svc/user/RequestToken?callback=?', {},
+                    $.get('http://thethao.vinaphone.com.vn:8080/u/SSO/SSOService.svc/user/RequestToken?callback=?', {},
                     function (ssodata) {
                         // get url to logon page in case this operation fails
-                        var logonPage = 'http://10.211.0.250:8080/SSO/Login.aspx?keyid=10020&URL=http://192.168.41.26:9090/Default.aspx';
-                        var IndexCP = 'http://192.168.41.26:9090/Default.aspx'; //trang của dịch vụ
+                        var logonPage = 'http://thethao.vinaphone.com.vn:8080/u/SSO/Login.aspx?keyid=10020&URL=http://thethao.vinaphone.com.vn:8080/cskh/Default.aspx';
+                        var IndexCP = 'http://thethao.vinaphone.com.vn:8080/cskh/Default.aspx'; //trang của dịch vụ
                         if (ssodata.Status == 'SUCCESS') {
                             //verify the token is genuine
                             $.ajax({

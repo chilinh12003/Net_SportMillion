@@ -20,6 +20,13 @@ namespace MySportMillion.Service
             UNREG_DAILY = 3,
 
         }
+
+        public enum NoteType
+        {
+            Nothing = 0,
+            ChangePartner = 1,
+
+        }
         public enum ChargeStatus
         {
             ChargeSuccess = 0,
@@ -83,6 +90,8 @@ namespace MySportMillion.Service
         /// <param name="Type">
         /// <para>Type = 8: Lay số lượng thuê bao theo từng dịch vụ và đối tác (Para_1 = PID, Para_2 = ChargeTypeID,Para_3 = ChargeStatusID, Para_4 = ChannelTypeID, Para_5 = BeginDate, Para_6 = EndDate</para>
         /// <para>Type = 11: Lấy tổng tiền theo từng dịch vụ và đối tác (Para_1 = PID, Para_2 = ChargeTypeID,Para_3 = ChargeStatusID, Para_4 = ChannelTypeID, Para_5 = BeginDate, Para_6 = EndDate</para>
+        /// <para>Type = 13: Lay số lượng thuê bao theo từng dịch vụ và đối tác (Para_1 = PID, Para_2 = ChargeTypeID,Para_3 = ChargeStatusID , Para_4 = BeginDate, Para_5 = EndDate, Para_6 = NoteTypeID</para>
+        /// <para>Type = 14: Lấy số lần charge theo từng dịch vụ và đối tác, giá (Para_1 = PID, Para_2 = ChargeTypeID,Para_3 = ChargeStatusID, Para_4 = BeginDate, Para_5 = EndDate, para_6 = price)</para>
         /// </param>
         /// <param name="Para_1"></param>
         /// <param name="Para_2"></param>
@@ -111,6 +120,7 @@ namespace MySportMillion.Service
         /// <param name="Type">
         /// <para>Type = 7: Lay số lượng thuê bao theo từng dịch vụ và đối tác (Para_1 = PID, Para_2 = ChargeTypeID,Para_3 = ChargeStatusID, Para_4 = BeginDate, Para_5 = EndDate</para>
         /// <para>Type = 10: Lấy tổng tiền theo từng dịch vụ và đối tác (Para_1 = PID, Para_2 = ChargeTypeID,Para_3 = ChargeStatusID, Para_4 = BeginDate, Para_5 = EndDate</para>
+        /// <para>Type = 12: Lay số lượng thuê bao theo từng dịch vụ và đối tác và != ChargeStatusID (Para_1 = PID, Para_2 = ChargeTypeID,Para_3 = ChargeStatusID , Para_4 = BeginDate, Para_5 = EndDate</para>
         /// </param>
         /// <param name="Para_1"></param>
         /// <param name="Para_2"></param>

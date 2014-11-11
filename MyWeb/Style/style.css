@@ -67,6 +67,7 @@ a.logout
     color:#00A1DE;
     padding-top:6px;
     font-weight:bold;
+    white-space: nowrap;
 }
 .banner .menu-sub .item:hover
 {
@@ -84,6 +85,7 @@ a.logout
     color: #666666;
     padding-top: 6px;
     font-weight: bold;
+    white-space: nowrap;
 }
 .banner .menu-sub .item-login:hover
 {
@@ -109,6 +111,7 @@ a.logout
     margin-right:15px;
     display:inline-block;
     padding-top:2px;
+    white-space: nowrap;
 }
 .menu .item:hover
 {
@@ -168,6 +171,7 @@ a.logout
     padding-top: 6px;
     font-size:11px;
     font-weight:bold;
+    white-space: nowrap;
 }
 
 .footer-menu .item:hover
