@@ -278,10 +278,10 @@ namespace MyAdmin.Admin
                 //Nếu là Edit
                 if (EditID > 0)
                 {
-                    if (mMenuAdmin.Update(0, EditID, MenuID_1, MenuID_2, MenuID_3, MenuID_4, Microsoft.Security.Application.Encoder.HtmlEncode(tbx_CateName.Value),
-                                        Microsoft.Security.Application.Encoder.HtmlEncode(tbx_UploadImage.Value), Priority, chk_Active.Checked,
-                                        Microsoft.Security.Application.Encoder.HtmlEncode(tbx_PageCode.Value),
-                                        Microsoft.Security.Application.Encoder.HtmlEncode(tbx_Link.Value)))
+                    if (mMenuAdmin.Update(0, EditID, MenuID_1, MenuID_2, MenuID_3, MenuID_4, (tbx_CateName.Value),
+                                        (tbx_UploadImage.Value), Priority, chk_Active.Checked,
+                                        (tbx_PageCode.Value),
+                                        (tbx_Link.Value)))
                     {
                         if (IsApply)
                         {
@@ -304,10 +304,10 @@ namespace MyAdmin.Admin
                 }
                 else
                 {
-                    if (mMenuAdmin.Insert(0, MenuID_1, MenuID_2, MenuID_3,MenuID_4, Microsoft.Security.Application.Encoder.HtmlEncode(tbx_CateName.Value),
-                                        Microsoft.Security.Application.Encoder.HtmlEncode(tbx_UploadImage.Value), Priority, chk_Active.Checked,
-                                        Microsoft.Security.Application.Encoder.HtmlEncode(tbx_PageCode.Value),
-                                        Microsoft.Security.Application.Encoder.HtmlEncode(tbx_Link.Value)))
+                    if (mMenuAdmin.Insert(0, MenuID_1, MenuID_2, MenuID_3,MenuID_4, (tbx_CateName.Value),
+                                        (tbx_UploadImage.Value), Priority, chk_Active.Checked,
+                                        (tbx_PageCode.Value),
+                                        (tbx_Link.Value)))
                     {
                         if (IsApply)
                         {

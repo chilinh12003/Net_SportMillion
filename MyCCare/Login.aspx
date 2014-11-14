@@ -8,15 +8,16 @@
     <script src="JS/jquery-1.8.3.min.js" type="text/javascript"></script>
 </head>
 <body>
+    
     <form id="form1" runat="server">
         <script type="text/javascript">
             $(document).ready(function () {
                 $(function () {
-                    $.get('http://thethao.vinaphone.com.vn:8080/u/SSO/SSOService.svc/user/RequestToken?callback=?', {},
+                    $.get('<%=MyCCare.Login1.SSOLink %>/SSO/SSOService.svc/user/RequestToken?callback=?', {},
                     function (ssodata) {
                         // get url to logon page in case this operation fails
-                        var logonPage = 'http://thethao.vinaphone.com.vn:8080/u/SSO/Login.aspx?keyid=10020&URL=http://thethao.vinaphone.com.vn:8080/cskh/Default.aspx';
-                        var IndexCP = 'http://thethao.vinaphone.com.vn:8080/cskh/Default.aspx'; //trang của dịch vụ
+                        var logonPage = '<%=MyCCare.Login1.SSOLink %>/SSO/Login.aspx?keyid=10020&URL=<%=MyUtility.MyConfig.Domain %>/Default.aspx';
+                        var IndexCP = '<%=MyUtility.MyConfig.Domain %>/Default.aspx'; //trang của dịch vụ
                         if (ssodata.Status == 'SUCCESS') {
                             //verify the token is genuine
                             $.ajax({

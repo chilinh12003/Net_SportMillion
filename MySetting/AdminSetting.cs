@@ -47,7 +47,7 @@ namespace MySetting
 
             [DescriptionAttribute("Số lượng thuê bao đăng ký dịch vụ")]
             ReportCountSub,
-            
+
             [DescriptionAttribute("Số lượng thuê bao hủy dịch vụ")]
             ReportCountUnSub,
 
@@ -62,19 +62,31 @@ namespace MySetting
             [DescriptionAttribute("Lịch sử trừ tiền")]
             ChargeLog,
 
-  [DescriptionAttribute("Lịch sử đăng ký/huỷ dịch vụ của thuê bao")]
+            [DescriptionAttribute("Thống kê thê bao theo ngày")]
+            RP_DaySub_VNP,
+
+            [DescriptionAttribute("Thống kê gia hạn theo ngày")]
+            RP_DayRenew_VNP,
+
+            [DescriptionAttribute("Thống kê thê bao theo tuần")]
+            RP_WeekSub_VNP,
+
+            [DescriptionAttribute("Thống kê gia hạn theo tuần")]
+            RP_WeekRenew_VNP,
+
+            [DescriptionAttribute("Lịch sử đăng ký/huỷ dịch vụ của thuê bao")]
             History_Reg_Dereg,
 
-  [DescriptionAttribute("Lịch sử gia hạn dịch vụ của thuê bao")]
-  History_Renew,
+            [DescriptionAttribute("Lịch sử gia hạn dịch vụ của thuê bao")]
+            History_Renew,
 
 
-  [DescriptionAttribute("Lịch sử MO/MT của thuê bao")]
-  History_MO_MT,
-  [DescriptionAttribute("Lịch sử tương tác, sử dụng dịch vụ của thuê bao")]
-  History_Interaction,
-  [DescriptionAttribute("Thông tin sử dụng dịch vụ của thuê bao")]
-  CheckDetailInfo,
+            [DescriptionAttribute("Lịch sử MO/MT của thuê bao")]
+            History_MO_MT,
+            [DescriptionAttribute("Lịch sử tương tác, sử dụng dịch vụ của thuê bao")]
+            History_Interaction,
+            [DescriptionAttribute("Thông tin sử dụng dịch vụ của thuê bao")]
+            CheckDetailInfo,
             [DescriptionAttribute("Chỉ số KPI")]
             KPI,
 
@@ -131,7 +143,7 @@ namespace MySetting
                 return "9696";
             }
         }
-        
+
         public static int MaxPID
         {
             get
@@ -149,8 +161,8 @@ namespace MySetting
             {
                 try
                 {
-                    if(MyCurrent.CurrentPage.Session["MSISDN"] == null ||
-                        string.IsNullOrEmpty( MyCurrent.CurrentPage.Session["MSISDN"].ToString()))
+                    if (MyCurrent.CurrentPage.Session["MSISDN"] == null ||
+                        string.IsNullOrEmpty(MyCurrent.CurrentPage.Session["MSISDN"].ToString()))
                     {
                         return string.Empty;
                     }
@@ -159,12 +171,12 @@ namespace MySetting
                         return MyCurrent.CurrentPage.Session["MSISDN"].ToString();
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MyLogfile.WriteLogError(ex);
                     return string.Empty;
                 }
-                
+
             }
             set
             {
@@ -218,7 +230,7 @@ namespace MySetting
                 {
                     Temp = Temp.Trim();
                     bool bValue = false;
-                    bool.TryParse(Temp,out bValue);
+                    bool.TryParse(Temp, out bValue);
                     return bValue;
                 }
             }

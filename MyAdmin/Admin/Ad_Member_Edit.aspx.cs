@@ -215,16 +215,16 @@ namespace Administrator.Admin
             if (EditID > 0)
                 mNewRow["MemberID"] = EditID;
 
-            mNewRow["MemberName"] = Microsoft.Security.Application.Encoder.HtmlEncode(tbx_MemberName.Value);
+            mNewRow["MemberName"] = (tbx_MemberName.Value);
             
-            mNewRow["LoginName"] = Microsoft.Security.Application.Encoder.HtmlEncode(tbx_LoginName.Value);
+            mNewRow["LoginName"] = (tbx_LoginName.Value);
             mNewRow["Password"] = MySecurity.Encrypt_MD5(tbx_Pass.Value);
             mNewRow["Sex"] = rad_Female.Checked?false:true;
             mNewRow["Birthday"] = tbx_Birthday.Value.Length > 0 ? DateTime.ParseExact(tbx_Birthday.Value, MyConfig.ShortDateFormat, null).ToString(MyConfig.DateFormat_InsertToDB) :null;
-            mNewRow["Email"] = Microsoft.Security.Application.Encoder.HtmlEncode(tbx_Email.Value);
-            mNewRow["Phone"] = Microsoft.Security.Application.Encoder.HtmlEncode(tbx_Phone.Value);
-            mNewRow["Address"] = Microsoft.Security.Application.Encoder.HtmlEncode(tbx_Address.Value);
-            mNewRow["ImagePath"] = Microsoft.Security.Application.Encoder.HtmlEncode(tbx_UploadImage.Value);
+            mNewRow["Email"] = (tbx_Email.Value);
+            mNewRow["Phone"] = (tbx_Phone.Value);
+            mNewRow["Address"] = (tbx_Address.Value);
+            mNewRow["ImagePath"] = (tbx_UploadImage.Value);
             mNewRow["MemberGroupID"] = int.Parse(sel_MemberGroup.Value);
             mNewRow["LastLoginDate"] =null;
             mNewRow["CreateDate"] = DateTime.Now.ToString(MyConfig.DateFormat_InsertToDB);

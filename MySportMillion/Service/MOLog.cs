@@ -306,8 +306,7 @@ namespace MySportMillion.Service
                 throw ex;
             }
         }
-
-
+        
         public DataSet CreateDataSet()
         {
             try
@@ -348,7 +347,56 @@ namespace MySportMillion.Service
                 throw ex;
             }
         }
+ 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Type">
+        /// <para>Type = 4: Lấy Số lượng MT(Para_1 = PID,  Para_2 = BeginDate, Para_3 = EndDate)</para>
+        /// </param>
+        /// <param name="Para_1"></param>
+        /// <param name="Para_2"></param>
+        /// <param name="Para_3"></param>
+        /// <returns></returns>
+        public DataTable Select(int Type, string Para_1, string Para_2, string Para_3)
+        {
+            try
+            {
+                string[] mPara = { "Type", "Para_1", "Para_2", "Para_3"};
+                string[] mValue = { Type.ToString(), Para_1, Para_2, Para_3 };
+                return mGet.GetDataTable("Sp_MOLog_Select", mPara, mValue);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Type">
+        /// <para>Type = 5: Lấy Số MO theo list MTType(Para_1 = PID, Para_2 = List MTTypeID, Para_3 = BeginDate, Para_4 = EndDate)</para>
+        /// <para>Type = 6: Lấy Số MO theo not in list MTType(Para_1 = PID, Para_2 = List MTTypeID, Para_3 = BeginDate, Para_4 = EndDate)</para>
+        /// </param>
+        /// <param name="Para_1"></param>
+        /// <param name="Para_2"></param>
+        /// <param name="Para_3"></param>
+        /// <param name="Para_4"></param>
+        /// <returns></returns>
+        public DataTable Select(int Type, string Para_1, string Para_2, string Para_3, string Para_4)
+        {
+            try
+            {
+                string[] mPara = { "Type", "Para_1", "Para_2", "Para_3", "Para_4" };
+                string[] mValue = { Type.ToString(), Para_1, Para_2, Para_3, Para_4 };
+                return mGet.GetDataTable("Sp_MOLog_Select", mPara, mValue);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public int TotalRow(int? Type, string SearchContent, int PID, int MTTypeID, int ChannelTypeID, DateTime BeginDate, DateTime EndDate)
         {

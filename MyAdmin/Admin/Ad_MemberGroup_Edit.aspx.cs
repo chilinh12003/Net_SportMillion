@@ -127,8 +127,8 @@ namespace MyAdmin.Admin
             DataRow mNewRow = mSet.Tables["Child"].NewRow();
            
 
-            mNewRow["MemberGroupID"] = Microsoft.Security.Application.Encoder.HtmlEncode(tbx_MemberGroupID.Value);
-            mNewRow["MemberGroupName"] = Microsoft.Security.Application.Encoder.HtmlEncode(tbx_MemberGroupName.Value);
+            mNewRow["MemberGroupID"] = (tbx_MemberGroupID.Value);
+            mNewRow["MemberGroupName"] = (tbx_MemberGroupName.Value);
             if (sel_Parnter.SelectedIndex >= 0 && sel_Parnter.Items.Count > 0)
             {
                 mNewRow["PartnerID"] = int.Parse(sel_Parnter.Value);

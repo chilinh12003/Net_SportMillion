@@ -12,7 +12,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MyAdmin</RootNamespace>
     <AssemblyName>MyAdmin</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <SccProjectName>
     </SccProjectName>
     <SccLocalPath>
@@ -67,7 +67,7 @@
     </Reference>
     <Reference Include="MyUtility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Projects\DLL Libraries\Source\MyUtility\bin\Debug\MyUtility.dll</HintPath>
+      <HintPath>..\..\MyLibrary\MyUtility\bin\Debug\MyUtility.dll</HintPath>
     </Reference>
     <Reference Include="NetSpell.SpellChecker, Version=2.1.7.20561, Culture=neutral, PublicKeyToken=318b389f0db66e46">
       <SpecificVersion>False</SpecificVersion>
@@ -80,6 +80,10 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -115,6 +119,10 @@
     <Content Include="Admin_CCare\Ad_SubInfo.aspx" />
     <Content Include="Admin_CCare\Ad_CheckSubInfo.aspx" />
     <Content Include="Admin_Control\Admin_Paging_VNP.ascx" />
+    <Content Include="Admin_ReportVNP\Ad_RP_Renew_VNP.aspx" />
+    <Content Include="Admin_ReportVNP\Ad_RP_Renew_Week_VNP.aspx" />
+    <Content Include="Admin_ReportVNP\Ad_RP_Sub_VNP.aspx" />
+    <Content Include="Admin_ReportVNP\Ad_RP_Sub_Week_VNP.aspx" />
     <Content Include="Admin_Report\Ad_ChargeByDay.aspx" />
     <Content Include="Admin_Report\Ad_ChargeByDay_Price.aspx" />
     <Content Include="Admin_Report\Ad_ChargeLog.aspx" />
@@ -363,6 +371,34 @@
     </Compile>
     <Compile Include="Admin_News\Ad_News_Edit.aspx.designer.cs">
       <DependentUpon>Ad_News_Edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_ReportVNP\Ad_RP_Renew_VNP.aspx.cs">
+      <DependentUpon>Ad_RP_Renew_VNP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_ReportVNP\Ad_RP_Renew_VNP.aspx.designer.cs">
+      <DependentUpon>Ad_RP_Renew_VNP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_ReportVNP\Ad_RP_Renew_Week_VNP.aspx.cs">
+      <DependentUpon>Ad_RP_Renew_Week_VNP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_ReportVNP\Ad_RP_Renew_Week_VNP.aspx.designer.cs">
+      <DependentUpon>Ad_RP_Renew_Week_VNP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_ReportVNP\Ad_RP_Sub_VNP.aspx.cs">
+      <DependentUpon>Ad_RP_Sub_VNP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_ReportVNP\Ad_RP_Sub_VNP.aspx.designer.cs">
+      <DependentUpon>Ad_RP_Sub_VNP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_ReportVNP\Ad_RP_Sub_Week_VNP.aspx.cs">
+      <DependentUpon>Ad_RP_Sub_Week_VNP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_ReportVNP\Ad_RP_Sub_Week_VNP.aspx.designer.cs">
+      <DependentUpon>Ad_RP_Sub_Week_VNP.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin_Report\Ad_ChargeByDay.aspx.cs">
       <DependentUpon>Ad_ChargeByDay.aspx</DependentUpon>

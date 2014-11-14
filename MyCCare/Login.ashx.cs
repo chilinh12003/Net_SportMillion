@@ -75,11 +75,58 @@ namespace MyCCare
             var ketqua = ValidateToken(token);
             context.Response.Write(ketqua);
         }
+        public static string SSOLink
+        {
+            get
+            {
+                try
+                {
+                    string temp = MyConfig.GetKeyInConfigFile("SSOLink");
+                    if(string.IsNullOrEmpty(temp))
+                    {
+                        return "http://10.211.0.250:8080";
+                    }
+                    else
+                    {
+                        return temp;
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MyLogfile.WriteLogError(ex);
+                    return "http://10.211.0.250:8080";
+                }
+            }
+        }
+
+        public static string SSOLink_Private
+        {
+            get
+            {
+                try
+                {
+                    string temp = MyConfig.GetKeyInConfigFile("SSOLink_Private");
+                    if (string.IsNullOrEmpty(temp))
+                    {
+                        return "http://10.211.0.250:8080";
+                    }
+                    else
+                    {
+                        return temp;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MyLogfile.WriteLogError(ex);
+                    return "http://10.211.0.250:8080";
+                }
+            }
+        }
         //hàm validatetoken, đăng nhập và gán quyền
         public int ValidateToken(string token)
         {
             int ketqua = 0; //nếu user không tồn tại trong hệ thống thì trả về 0
-            string sURL = "http://10.211.0.250:8080/SSO/SSOService.svc/user/ValidateTokenUrl?token=" + token + "<@-@>10020";
+            string sURL = SSOLink_Private + "/SSO/SSOService.svc/user/ValidateTokenUrl?token=" + token + "<@-@>10020";
             var client = new WebClient();
             string html = client.DownloadString(sURL);
             MyLogfile.WriteLogData("html:" + html);
@@ -125,7 +172,7 @@ namespace MyCCare
         //hàm kiểm tra quyền
         public string CheckRole(string Username)
         {
-            string sURLRole = "http://10.211.0.250:8080/Role/ServiceRole.svc/user/CheckRole?username=" + Username;
+            string sURLRole = SSOLink_Private + "/Role/ServiceRole.svc/user/CheckRole?username=" + Username;
             var client = new WebClient();
             string role = client.DownloadString(sURLRole);
             MyLogfile.WriteLogData("Role:" + role);

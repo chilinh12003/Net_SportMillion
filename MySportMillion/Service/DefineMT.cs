@@ -68,6 +68,16 @@ namespace MySportMillion.Service
             /// Đăng ký từ CCOS của vinaphone và không được miễn phí 
             /// </summary>
             RegCCOSSuccessNotFree = 223,
+
+            /// <summary>
+            /// Đăng ký từ CCOS của vinaphone và được miễn phí chu kỳ cước đầu
+            /// </summary>
+            RegMOBILEADSSuccessFree = 230,
+
+            /// <summary>
+            /// Đăng ký từ CCOS của vinaphone và không được miễn phí 
+            /// </summary>
+            RegMOBILEADSSuccessNotFree = 231,
             #endregion
 
             // -----HỦY DỊCH VỤ

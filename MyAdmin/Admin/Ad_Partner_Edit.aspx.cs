@@ -145,14 +145,14 @@ namespace MyAdmin.Admin
                 mNewRow["ValidString"] = mPartner.CreateValidString(tbx_PartnerUserName.Value, tbx_PartnerPassword.Value);
             }
            
-            mNewRow["PartnerUserName"] = Microsoft.Security.Application.Encoder.HtmlEncode(tbx_PartnerUserName.Value);
+            mNewRow["PartnerUserName"] = (tbx_PartnerUserName.Value);
             
-            mNewRow["PartnerName"] = Microsoft.Security.Application.Encoder.HtmlEncode(tbx_PartnerName.Value);
-            mNewRow["Phone"] = Microsoft.Security.Application.Encoder.HtmlEncode(tbx_Phone.Value);
-            mNewRow["Email"] = Microsoft.Security.Application.Encoder.HtmlEncode(tbx_Email.Value);
-            mNewRow["Phone"] = Microsoft.Security.Application.Encoder.HtmlEncode(tbx_Phone.Value);
-            mNewRow["Address"] = Microsoft.Security.Application.Encoder.HtmlEncode(tbx_Address.Value);
-            mNewRow["Website"] = Microsoft.Security.Application.Encoder.HtmlEncode(tbx_Website.Value);
+            mNewRow["PartnerName"] = (tbx_PartnerName.Value);
+            mNewRow["Phone"] = (tbx_Phone.Value);
+            mNewRow["Email"] = (tbx_Email.Value);
+            mNewRow["Phone"] = (tbx_Phone.Value);
+            mNewRow["Address"] = (tbx_Address.Value);
+            mNewRow["Website"] = (tbx_Website.Value);
             mNewRow["IsActive"] = chk_Active.Checked;
             if (sel_PartnerType.SelectedIndex >= 0 && sel_PartnerType.Items.Count > 0)
             {

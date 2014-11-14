@@ -307,16 +307,16 @@ namespace MyAdmin.Admin_Service
                 mNewRow["MatchID"] = EditID;
          
 
-            mNewRow["TeamName1"] = Microsoft.Security.Application.Encoder.HtmlEncode(tbx_TeamName1.Value);
-            mNewRow["TeamName2"] = Microsoft.Security.Application.Encoder.HtmlEncode(tbx_TeamName2.Value);
+            mNewRow["TeamName1"] = (tbx_TeamName1.Value);
+            mNewRow["TeamName2"] = (tbx_TeamName2.Value);
             mNewRow["Description"] = tbx_Description.Value;
             mNewRow["CreateDate"] = DateTime.Now.ToString(MyConfig.DateFormat_InsertToDB);
 
-            mNewRow["AnswerKQ"] =Microsoft.Security.Application.Encoder.HtmlEncode( tbx_AnswerKQ.Value);
-            mNewRow["AnswerBT"] = Microsoft.Security.Application.Encoder.HtmlEncode(tbx_AnswerBT.Value);
-            mNewRow["AnswerGB"] = Microsoft.Security.Application.Encoder.HtmlEncode(tbx_AnswerGB.Value);
-            mNewRow["AnswerTS"] = Microsoft.Security.Application.Encoder.HtmlEncode(tbx_AnswerTS.Value);
-            mNewRow["AnswerTV"] = Microsoft.Security.Application.Encoder.HtmlEncode(tbx_AnswerTV.Value);
+            mNewRow["AnswerKQ"] =( tbx_AnswerKQ.Value);
+            mNewRow["AnswerBT"] = (tbx_AnswerBT.Value);
+            mNewRow["AnswerGB"] = (tbx_AnswerGB.Value);
+            mNewRow["AnswerTS"] = (tbx_AnswerTS.Value);
+            mNewRow["AnswerTV"] = (tbx_AnswerTV.Value);
 
             int Priority = 0;
             if (int.TryParse(tbx_Priority.Value, out Priority))
