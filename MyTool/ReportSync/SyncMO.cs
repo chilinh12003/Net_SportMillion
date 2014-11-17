@@ -232,10 +232,10 @@ namespace MyTool.ReportSync
                         ListID = "200,201,202,203,204,205,220,221,222,223,230,231";
                         break;
                     case RP_MO_Object.PropertyType.MORegSuccess:
-                        ListID = "200,201,202,203,204,222,223,230,231";
+                        ListID = "200,201,204,222,223,230,231";
                         break;
                     case RP_MO_Object.PropertyType.MORegFail:
-                        ListID = "220";
+                        ListID = "202,203,220";
                         break;
                     case RP_MO_Object.PropertyType.MORegBlanceTooLow:
                         ListID = "205";
@@ -251,11 +251,14 @@ namespace MyTool.ReportSync
                     case RP_MO_Object.PropertyType.MODeregTotal:
                         ListID = "300,301,302,303,304,305,400";
                         break;
+                    case RP_MO_Object.PropertyType.MODeregConfirm:
+                        ListID = "302";
+                        break;
                     case RP_MO_Object.PropertyType.MODeregSuccess:
                         ListID = "300";
                         break;
                     case RP_MO_Object.PropertyType.MODeregFail:
-                        ListID = "301,302,303,305,400";
+                        ListID = "301,303,305,400";
                         break;
                     case RP_MO_Object.PropertyType.MODeregError:
                         ListID = "304";
@@ -300,7 +303,7 @@ namespace MyTool.ReportSync
             try
             {
                 Console.WriteLine("------------------------------------------");
-                Console.WriteLine("BAT DAU CHAY CHUONG TRINH");
+                Console.WriteLine("BAT DAU CHAY CHUONG TRINH SyncMO");
 
                 if (StartDate != DateTime.MinValue)
                 {
@@ -392,6 +395,13 @@ namespace MyTool.ReportSync
                                                                                       BeginDate.ToString(MyConfig.DateFormat_InsertToDB),
                                                                                       EndDate.ToString(MyConfig.DateFormat_InsertToDB));
                             UpdateToList(ref mList_Current, RP_MO_Object.PropertyType.MODeregTotal, mTable, true);
+
+                            mTable = mMOLog.Select(5, PID.ToString(), GetListMTTypeID(RP_MO_Object.PropertyType.MODeregConfirm),
+                                                                                      BeginDate.ToString(MyConfig.DateFormat_InsertToDB),
+                                                                                      EndDate.ToString(MyConfig.DateFormat_InsertToDB));
+
+                            UpdateToList(ref mList_Current, RP_MO_Object.PropertyType.MODeregConfirm, mTable, true);
+
 
                             mTable = mMOLog.Select(5, PID.ToString(), GetListMTTypeID(RP_MO_Object.PropertyType.MODeregSuccess),
                                                                    BeginDate.ToString(MyConfig.DateFormat_InsertToDB),

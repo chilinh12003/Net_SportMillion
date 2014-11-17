@@ -313,7 +313,7 @@ namespace MyTool.ReportSync
             try
             {
                 Console.WriteLine("------------------------------------------");
-                Console.WriteLine("BAT DAU CHAY CHUONG TRINH");
+                Console.WriteLine("BAT DAU CHAY CHUONG TRINH SyncSub");
 
                 if (StartDate != DateTime.MinValue)
                 {

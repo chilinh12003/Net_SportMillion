@@ -15,11 +15,11 @@ using MySportMillion.Report;
 
 namespace MyAdmin.Admin_ReportVNP
 {
-    public partial class Ad_RP_Renew_Week_VNP : System.Web.UI.Page
+    public partial class Ad_RP_MOMT_VNP : System.Web.UI.Page
     {
         public GetRole mGetRole;
         public int PageIndex = 1;
-        RP_Sub mRP_Sub = new RP_Sub();
+        RP_MO mRP_MO = new RP_MO();
         public DateTime ReportDate_Save = DateTime.MinValue;
         public DateTime ReportDate_Save_Total = DateTime.MinValue;
 
@@ -165,16 +165,6 @@ namespace MyAdmin.Admin_ReportVNP
             return true;
         }
 
-        public string GetDay(int year, int week)
-        {
-            string Result = string.Empty;
-            DateTime FirtOfWeek = MyConvert.GetFirstDayOfWeek(year, week);
-            DateTime LastOfWeek = MyConvert.GetLastDayOfWeek(year, week);
-
-            Result = FirtOfWeek.ToString(MyConfig.ShortDateFormat) + "-" + LastOfWeek.ToString(MyConfig.ShortDateFormat);
-            return Result;
-        }
-        
         protected void Page_Init(object sender, EventArgs e)
         {
             bool IsRedirect = false;
@@ -183,7 +173,7 @@ namespace MyAdmin.Admin_ReportVNP
                 //Phân quyền
                 if (ViewState["Role"] == null)
                 {
-                    mGetRole = new GetRole(MySetting.AdminSetting.ListPage.RP_WeekRenew_VNP, Member.MemberGroupID());
+                    mGetRole = new GetRole(MySetting.AdminSetting.ListPage.RP_DayMOMT_VNP, Member.MemberGroupID());
                 }
                 else
                 {
@@ -230,39 +220,6 @@ namespace MyAdmin.Admin_ReportVNP
             }
         }
 
-        private bool ModifyDate(ref DateTime BeginDate, ref DateTime EndDate)
-        {
-            try
-            {
-                DateTime Current = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
-
-                int Week_Begin = MyConvert.GetWeekOfYear(BeginDate);
-                int Week_End = MyConvert.GetWeekOfYear(EndDate);
-                int Week_Current = MyConvert.GetWeekOfYear(Current);
-
-                DateTime FirstDate_Begin = MyConvert.GetFirstDayOfWeek( BeginDate.Year,Week_Begin);
-                DateTime LastDate_End = MyConvert.GetLastDayOfWeek(EndDate.Year,Week_End);
-                DateTime LastDate_Current = MyConvert.GetLastDayOfWeek(Current.AddDays(-7).Year, Week_Current-1);
-
-                if (LastDate_End >= Current)
-                {
-                    LastDate_End = LastDate_Current;
-                }
-
-                BeginDate = FirstDate_Begin;
-                EndDate = LastDate_End;
-
-                if(BeginDate > EndDate)
-                {
-                    return false;
-                }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
         int Admin_Paging1_GetTotalPage_Callback_Change()
         {
             try
@@ -273,12 +230,7 @@ namespace MyAdmin.Admin_ReportVNP
                 DateTime BeginDate = tbx_FromDate.Value.Length > 0 ? DateTime.ParseExact(tbx_FromDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
                 DateTime EndDate = tbx_ToDate.Value.Length > 0 ? DateTime.ParseExact(tbx_ToDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
 
-                if(!ModifyDate(ref BeginDate,ref EndDate))
-                {
-                    MyMessage.ShowError("Ngày tháng không hợp lệ, xin vui lòng kiểm tra lại.");
-                    return 0;
-                }
-                return mRP_Sub.TotalRow_Week_VNP(SearchType, BeginDate, EndDate);
+                return mRP_MO.TotalRow_VNP(SearchType, BeginDate, EndDate);
             }
             catch (Exception ex)
             {
@@ -296,15 +248,9 @@ namespace MyAdmin.Admin_ReportVNP
                 DateTime BeginDate = tbx_FromDate.Value.Length > 0 ? DateTime.ParseExact(tbx_FromDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
                 DateTime EndDate = tbx_ToDate.Value.Length > 0 ? DateTime.ParseExact(tbx_ToDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
 
-                if (!ModifyDate(ref BeginDate, ref EndDate))
-                {
-                    MyMessage.ShowError("Ngày tháng không hợp lệ, xin vui lòng kiểm tra lại.");
-                    return new DataTable();
-                }
-
                 PageIndex = (Admin_Paging1.mPaging.CurrentPageIndex - 1) * Admin_Paging1.mPaging.PageSize + 1;
 
-                DataTable mTable = mRP_Sub.Search_Week_VNP(SearchType, Admin_Paging1.mPaging.BeginRow, Admin_Paging1.mPaging.EndRow, BeginDate, EndDate, SortBy);
+                DataTable mTable = mRP_MO.Search_VNP(SearchType, Admin_Paging1.mPaging.BeginRow, Admin_Paging1.mPaging.EndRow, BeginDate, EndDate, SortBy);
 
                 List<string> List_ReportDay = new List<string>();
                 List<double> List_SubNew = new List<double>();
@@ -317,16 +263,16 @@ namespace MyAdmin.Admin_ReportVNP
                 for (int i = mTable.Rows.Count - 1; i >= 0; i--)
                 {
                     DataRow mRow = mTable.Rows[i];
-                    List_ReportDay.Add(mRow["ReportWeek"].ToString() + "/" + mRow["ReportYear"].ToString());
+                    List_ReportDay.Add(((DateTime)mRow["ReportDay"]).ToString("dd/MM"));
 
-                    List_RenewTotal.Add((double)mRow["RenewTotal"]);
-                    List_RenewSuccess.Add((double)mRow["RenewSuccess"]);
+                    List_RenewTotal.Add((double)mRow["MOTotal"]);
+                    List_RenewSuccess.Add((double)mRow["MOSuccess"]);
 
-                    if ((double)mRow["RenewTotal"] > max)
-                        max = (double)mRow["RenewTotal"];
+                    if ((double)mRow["MOTotal"] > max)
+                        max = (double)mRow["MOTotal"];
 
-                    if ((double)mRow["RenewTotal"] < min)
-                        min = (double)mRow["RenewTotal"];
+                    if ((double)mRow["MOTotal"] < min)
+                        min = (double)mRow["MOTotal"];
 
                 }
 
@@ -345,9 +291,9 @@ namespace MyAdmin.Admin_ReportVNP
                 chart_Reg.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
                 chart_Reg.ChartAreas[0].AxisX.LabelAutoFitStyle = LabelAutoFitStyles.StaggeredLabels;
 
-                chart_Reg.Width = mTable.Rows.Count * 130;
-                chart_Reg.ChartAreas[0].AxisY.Maximum = chart_Reg.ChartAreas[0].AxisY.Maximum + 10000;
+                chart_Reg.Width = mTable.Rows.Count * 80;
                 
+                chart_Reg.ChartAreas[0].AxisY.Maximum = max + 1000;
 
                 return mTable;
             }

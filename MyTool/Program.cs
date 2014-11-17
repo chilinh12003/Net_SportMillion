@@ -40,11 +40,11 @@ namespace MyTool
 
             try
             {
-                //SyncMO mSyncMO = new SyncMO();
-                //mSyncMO.Run();
+                SyncMO mSyncMO = new SyncMO();
+                mSyncMO.Run();
 
-                SyncSub mSyncSub = new SyncSub();
-                mSyncSub.Run();
+                //SyncSub mSyncSub = new SyncSub();
+                //mSyncSub.Run();
 
             }
             catch (Exception ex)

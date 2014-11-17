@@ -119,6 +119,12 @@
     <Content Include="Admin_CCare\Ad_SubInfo.aspx" />
     <Content Include="Admin_CCare\Ad_CheckSubInfo.aspx" />
     <Content Include="Admin_Control\Admin_Paging_VNP.ascx" />
+    <Content Include="Admin_ReportVNP\Ad_RP_AnswerMO_VNP.aspx" />
+    <Content Include="Admin_ReportVNP\Ad_RP_AnswerMO_Week_VNP.aspx" />
+    <Content Include="Admin_ReportVNP\Ad_RP_MOMT_VNP.aspx" />
+    <Content Include="Admin_ReportVNP\Ad_RP_MOMT_Week_VNP.aspx" />
+    <Content Include="Admin_ReportVNP\Ad_RP_RegMO_VNP.aspx" />
+    <Content Include="Admin_ReportVNP\Ad_RP_RegMO_Week_VNP.aspx" />
     <Content Include="Admin_ReportVNP\Ad_RP_Renew_VNP.aspx" />
     <Content Include="Admin_ReportVNP\Ad_RP_Renew_Week_VNP.aspx" />
     <Content Include="Admin_ReportVNP\Ad_RP_Sub_VNP.aspx" />
@@ -371,6 +377,48 @@
     </Compile>
     <Compile Include="Admin_News\Ad_News_Edit.aspx.designer.cs">
       <DependentUpon>Ad_News_Edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_ReportVNP\Ad_RP_AnswerMO_VNP.aspx.cs">
+      <DependentUpon>Ad_RP_AnswerMO_VNP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_ReportVNP\Ad_RP_AnswerMO_VNP.aspx.designer.cs">
+      <DependentUpon>Ad_RP_AnswerMO_VNP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_ReportVNP\Ad_RP_AnswerMO_Week_VNP.aspx.cs">
+      <DependentUpon>Ad_RP_AnswerMO_Week_VNP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_ReportVNP\Ad_RP_AnswerMO_Week_VNP.aspx.designer.cs">
+      <DependentUpon>Ad_RP_AnswerMO_Week_VNP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_ReportVNP\Ad_RP_MOMT_VNP.aspx.cs">
+      <DependentUpon>Ad_RP_MOMT_VNP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_ReportVNP\Ad_RP_MOMT_VNP.aspx.designer.cs">
+      <DependentUpon>Ad_RP_MOMT_VNP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_ReportVNP\Ad_RP_MOMT_Week_VNP.aspx.cs">
+      <DependentUpon>Ad_RP_MOMT_Week_VNP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_ReportVNP\Ad_RP_MOMT_Week_VNP.aspx.designer.cs">
+      <DependentUpon>Ad_RP_MOMT_Week_VNP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_ReportVNP\Ad_RP_RegMO_VNP.aspx.cs">
+      <DependentUpon>Ad_RP_RegMO_VNP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_ReportVNP\Ad_RP_RegMO_VNP.aspx.designer.cs">
+      <DependentUpon>Ad_RP_RegMO_VNP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_ReportVNP\Ad_RP_RegMO_Week_VNP.aspx.cs">
+      <DependentUpon>Ad_RP_RegMO_Week_VNP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_ReportVNP\Ad_RP_RegMO_Week_VNP.aspx.designer.cs">
+      <DependentUpon>Ad_RP_RegMO_Week_VNP.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin_ReportVNP\Ad_RP_Renew_VNP.aspx.cs">
       <DependentUpon>Ad_RP_Renew_VNP.aspx</DependentUpon>

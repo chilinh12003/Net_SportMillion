@@ -74,8 +74,28 @@ namespace MySetting
             [DescriptionAttribute("Thống kê gia hạn theo tuần")]
             RP_WeekRenew_VNP,
 
+            [DescriptionAttribute("Thống kê MO/MT theo ngày")]
+            RP_DayMOMT_VNP,
+
+            [DescriptionAttribute("Thống kê MO/MT theo tuần")]
+            RP_WeekMOMT_VNP,
+
+            [DescriptionAttribute("Thống kê MO Đăng ký/Hủy theo ngày")]
+            RP_DayMOReg_VNP,
+
+            [DescriptionAttribute("Thống kê MO Đăng ký/Hủy theo tuần")]
+            RP_WeekMOReg_VNP,
+
+            [DescriptionAttribute("Thống kê MO Dự đoán theo ngày")]
+            RP_DayMOAnswer_VNP,
+
+            [DescriptionAttribute("Thống kê MO Dự đoán theo tuần")]
+            RP_WeekMOAnswer_VNP,
+
             [DescriptionAttribute("Lịch sử đăng ký/huỷ dịch vụ của thuê bao")]
             History_Reg_Dereg,
+
+
 
             [DescriptionAttribute("Lịch sử gia hạn dịch vụ của thuê bao")]
             History_Renew,
