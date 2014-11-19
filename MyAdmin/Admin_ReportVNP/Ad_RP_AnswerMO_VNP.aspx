@@ -9,6 +9,7 @@
     <script src="../Calendar/dhtmlgoodies_calendar/dhtmlgoodies_calendar.js" type="text/javascript"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_Tools" runat="server">
+    <a href="<%=LinkExportExcel() %>"><span class="Export"></span>Export</a>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_ToolBox" runat="server">
 </asp:Content>
@@ -29,19 +30,19 @@
             <tr class="Table_Header">
                 <th class="Table_TL border-none"></th>
                 <th class="last " rowspan="2">STT</th>
-                <th class="last" rowspan="2">Ngày</th>
+                <th rowspan="2">Ngày</th>
                 <th colspan="7">MO Dự đoán</th>
                 <th class="Table_TR border-none"></th>
             </tr>
             <tr class="Table_Header">
                 <th class="Table_TL_Repeat last border-none"></th>
-                <th class="last">Tổng</th>
-                <th class="last">Thành công</th>
-                <th class="last">Sai cú pháp</th>
-                <th class="last">Vượt SL MO/Ngày</th>
-                <th class="last">Hết hạn Dự đoán</th>
-                <th class="last">Lỗi hệ thống</th>
-                <th class="last" title="Trứ tiền không thành công, Chưa DK đã dữ đoán, Lỗi khác" >Lỗi khác</th>
+                <th>Tổng</th>
+                <th>Thành công</th>
+                <th>Sai cú pháp</th>
+                <th>Vượt SL MO/Ngày</th>
+                <th>Hết hạn Dự đoán</th>
+                <th>Lỗi hệ thống</th>
+                <th title="Trứ tiền không thành công, Chưa DK đã dữ đoán, Lỗi khác" >Lỗi khác</th>
               
                 <th class="Table_TR_Repeat last border-none"></th>
             </tr>

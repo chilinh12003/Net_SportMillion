@@ -22,7 +22,26 @@ namespace MyAdmin.Admin_ReportVNP
         RP_MO mRP_MO = new RP_MO();
         public DateTime ReportDate_Save = DateTime.MinValue;
         public DateTime ReportDate_Save_Total = DateTime.MinValue;
+        public string LinkExportExcel()
+        {
+            try
+            {
+                DateTime BeginDate = tbx_FromDate.Value.Length > 0 ? DateTime.ParseExact(tbx_FromDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
+                DateTime EndDate = tbx_ToDate.Value.Length > 0 ? DateTime.ParseExact(tbx_ToDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
+                string FileName = MySetting.AdminSetting.GenFileNameChartImage();
 
+                chart_Reg.SaveImage(MyFile.GetFullPathFile("~/u/" + FileName), ChartImageFormat.Png);
+                ExportExcelObject mEPObject = new ExportExcelObject(ExportExcelObject.ExportType.MOMT_Ngay, BeginDate, EndDate, DateTime.Now,FileName);
+
+                string Para = mEPObject.Encrypt();
+                return MyConfig.Domain + "/Admin_ReportVNP/ExportExcel.ashx?para=" + HttpUtility.UrlEncode(Para);
+            }
+            catch (Exception ex)
+            {
+                MyLogfile.WriteLogError(ex);
+                return "#";
+            }
+        }
         bool IsWhite
         {
             get
@@ -208,6 +227,7 @@ namespace MyAdmin.Admin_ReportVNP
 
                     tbx_FromDate.Value = MyConfig.StartDayOfMonth.ToString(MyConfig.ShortDateFormat);
                     tbx_ToDate.Value = DateTime.Now.ToString(MyConfig.ShortDateFormat);
+                    BindChart();
                 }
 
                 Admin_Paging1.rpt_Data = rpt_Data;
@@ -251,50 +271,7 @@ namespace MyAdmin.Admin_ReportVNP
                 PageIndex = (Admin_Paging1.mPaging.CurrentPageIndex - 1) * Admin_Paging1.mPaging.PageSize + 1;
 
                 DataTable mTable = mRP_MO.Search_VNP(SearchType, Admin_Paging1.mPaging.BeginRow, Admin_Paging1.mPaging.EndRow, BeginDate, EndDate, SortBy);
-
-                List<string> List_ReportDay = new List<string>();
-                List<double> List_SubNew = new List<double>();
-                List<double> List_UnsubNew = new List<double>();
-
-                List<double> List_RenewTotal = new List<double>();
-                List<double> List_RenewSuccess = new List<double>();
-
-                double min = 100000000, max = 0;
-                for (int i = mTable.Rows.Count - 1; i >= 0; i--)
-                {
-                    DataRow mRow = mTable.Rows[i];
-                    List_ReportDay.Add(((DateTime)mRow["ReportDay"]).ToString("dd/MM"));
-
-                    List_RenewTotal.Add((double)mRow["MOTotal"]);
-                    List_RenewSuccess.Add((double)mRow["MOSuccess"]);
-
-                    if ((double)mRow["MOTotal"] > max)
-                        max = (double)mRow["MOTotal"];
-
-                    if ((double)mRow["MOTotal"] < min)
-                        min = (double)mRow["MOTotal"];
-
-                }
-
-                chart_Reg.Series["Series_Total"].Points.DataBindXY(List_ReportDay, List_RenewTotal);
-                chart_Reg.Series["Series_Total"].IsValueShownAsLabel = true;
-
-                chart_Reg.Series["Series_Success"].Points.DataBindXY(List_ReportDay, List_RenewSuccess);
-                chart_Reg.Series["Series_Success"].IsValueShownAsLabel = true;
-
-                chart_Reg.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
-                chart_Reg.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
-
-                //chart_Reg.ChartAreas[0].AxisX.MinorTickMark.Enabled = true;
-                chart_Reg.ChartAreas[0].AxisX.Interval = 1;
-                chart_Reg.ChartAreas[0].AxisX.IsLabelAutoFit = true;
-                chart_Reg.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
-                chart_Reg.ChartAreas[0].AxisX.LabelAutoFitStyle = LabelAutoFitStyles.StaggeredLabels;
-
-                chart_Reg.Width = mTable.Rows.Count * 80;
                 
-                chart_Reg.ChartAreas[0].AxisY.Maximum = max + 1000;
-
                 return mTable;
             }
             catch (Exception ex)
@@ -342,6 +319,7 @@ namespace MyAdmin.Admin_ReportVNP
             try
             {
                 BindData();
+                BindChart();
             }
             catch (Exception ex)
             {
@@ -349,5 +327,63 @@ namespace MyAdmin.Admin_ReportVNP
             }
         }
 
+        private void BindChart()
+        {
+            try
+            {
+                DateTime BeginDate = tbx_FromDate.Value.Length > 0 ? DateTime.ParseExact(tbx_FromDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
+                DateTime EndDate = tbx_ToDate.Value.Length > 0 ? DateTime.ParseExact(tbx_ToDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
+
+                DataTable mTable = mRP_MO.Search_VNP(0, 0, 10000, BeginDate, EndDate, string.Empty);
+
+                List<string> List_ReportDay = new List<string>();
+                List<double> List_SubNew = new List<double>();
+                List<double> List_UnsubNew = new List<double>();
+
+                List<double> List_RenewTotal = new List<double>();
+                List<double> List_RenewSuccess = new List<double>();
+
+                double min = 100000000, max = 0;
+                for (int i = mTable.Rows.Count - 1; i >= 0; i--)
+                {
+                    DataRow mRow = mTable.Rows[i];
+                    List_ReportDay.Add(((DateTime)mRow["ReportDay"]).ToString("dd/MM"));
+
+                    List_RenewTotal.Add((double)mRow["MOTotal"]);
+                    List_RenewSuccess.Add((double)mRow["MOSuccess"]);
+
+                    if ((double)mRow["MOTotal"] > max)
+                        max = (double)mRow["MOTotal"];
+
+                    if ((double)mRow["MOTotal"] < min)
+                        min = (double)mRow["MOTotal"];
+
+                }
+
+                chart_Reg.Series["Series_Total"].Points.DataBindXY(List_ReportDay, List_RenewTotal);
+                chart_Reg.Series["Series_Total"].IsValueShownAsLabel = true;
+
+                chart_Reg.Series["Series_Success"].Points.DataBindXY(List_ReportDay, List_RenewSuccess);
+                chart_Reg.Series["Series_Success"].IsValueShownAsLabel = true;
+
+                chart_Reg.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
+                chart_Reg.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
+
+                //chart_Reg.ChartAreas[0].AxisX.MinorTickMark.Enabled = true;
+                chart_Reg.ChartAreas[0].AxisX.Interval = 1;
+                chart_Reg.ChartAreas[0].AxisX.IsLabelAutoFit = true;
+                chart_Reg.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
+                chart_Reg.ChartAreas[0].AxisX.LabelAutoFitStyle = LabelAutoFitStyles.StaggeredLabels;
+
+                chart_Reg.Width = mTable.Rows.Count * 80;
+
+                chart_Reg.ChartAreas[0].AxisY.Maximum = max + 1000;
+
+            }
+            catch (Exception ex)
+            {
+                MyLogfile.WriteLogError(ex);
+            }
+        }
     }
 }

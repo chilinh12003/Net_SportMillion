@@ -255,5 +255,85 @@ namespace MySetting
                 }
             }
         }
+
+       
+        /// <summary>
+        /// lấy ngày đầu tuần, cuối tuần của 1 tuần
+        /// </summary>
+        /// <param name="year"></param>
+        /// <param name="week"></param>
+        /// <returns></returns>
+        public static string GetIntervalDay(int year, int week)
+        {
+            string Result = string.Empty;
+            DateTime FirtOfWeek = MyConvert.GetFirstDayOfWeek(year, week);
+            DateTime LastOfWeek = MyConvert.GetLastDayOfWeek(year, week);
+
+            Result = FirtOfWeek.ToString(MyConfig.ShortDateFormat) + "-" + LastOfWeek.ToString(MyConfig.ShortDateFormat);
+            return Result;
+        }
+
+
+        /// <summary>
+        /// điều chỉnh ngày thành ngày bắt đầu của tuần, và ngày kết thúc của tuần trước đó
+        /// </summary>
+        /// <param name="BeginDate"></param>
+        /// <param name="EndDate"></param>
+        /// <returns></returns>
+        public static bool ModifyDateByWeek(ref DateTime BeginDate, ref DateTime EndDate)
+        {
+            try
+            {
+                DateTime Current = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+
+                int Week_Begin = MyConvert.GetWeekOfYear(BeginDate);
+                int Week_End = MyConvert.GetWeekOfYear(EndDate);
+                int Week_Current = MyConvert.GetWeekOfYear(Current);
+
+                DateTime FirstDate_Begin = MyConvert.GetFirstDayOfWeek(BeginDate.Year, Week_Begin);
+                DateTime LastDate_End = MyConvert.GetLastDayOfWeek(EndDate.Year, Week_End);
+                DateTime LastDate_Current = MyConvert.GetLastDayOfWeek(Current.AddDays(-7).Year, Week_Current - 1);
+
+                if (LastDate_End >= Current)
+                {
+                    LastDate_End = LastDate_Current;
+                }
+
+                BeginDate = FirstDate_Begin;
+                EndDate = LastDate_End;
+
+                if (BeginDate > EndDate)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static string GenFileNameChartImage()
+        {
+            try
+            {
+                int ChartOrder = 0;
+                if (MyCurrent.CurrentPage.Application["ChartOrder"] != null)
+                    ChartOrder = (int)MyCurrent.CurrentPage.Application["ChartOrder"];
+                ChartOrder++;
+
+                if (ChartOrder >= 100)
+                    ChartOrder = 0;
+                MyCurrent.CurrentPage.Application["ChartOrder"] = ChartOrder;
+
+                return "Chart_" + ChartOrder+".png";
+            }
+            catch (Exception ex)
+            {
+                MyLogfile.WriteLogError(ex);
+                return  "Chart_0.png";
+            }
+        }
     }
 }

@@ -9,6 +9,7 @@
     <script src="../Calendar/dhtmlgoodies_calendar/dhtmlgoodies_calendar.js" type="text/javascript"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_Tools" runat="server">
+    <a href="<%=LinkExportExcel() %>"><span class="Export"></span>Export</a>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_ToolBox" runat="server">
 </asp:Content>

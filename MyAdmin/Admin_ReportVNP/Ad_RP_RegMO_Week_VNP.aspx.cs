@@ -22,7 +22,26 @@ namespace MyAdmin.Admin_ReportVNP
         RP_MO mRP_MO = new RP_MO();
         public DateTime ReportDate_Save = DateTime.MinValue;
         public DateTime ReportDate_Save_Total = DateTime.MinValue;
+        public string LinkExportExcel()
+        {
+            try
+            {
+                DateTime BeginDate = tbx_FromDate.Value.Length > 0 ? DateTime.ParseExact(tbx_FromDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
+                DateTime EndDate = tbx_ToDate.Value.Length > 0 ? DateTime.ParseExact(tbx_ToDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
+                string FileName = MySetting.AdminSetting.GenFileNameChartImage();
 
+                chart_Reg.SaveImage(MyFile.GetFullPathFile("~/u/" + FileName), ChartImageFormat.Png);
+                ExportExcelObject mEPObject = new ExportExcelObject(ExportExcelObject.ExportType.MODangKyHuy_Tuan, BeginDate, EndDate, DateTime.Now,FileName);
+
+                string Para = mEPObject.Encrypt();
+                return MyConfig.Domain + "/Admin_ReportVNP/ExportExcel.ashx?para=" + HttpUtility.UrlEncode(Para);
+            }
+            catch (Exception ex)
+            {
+                MyLogfile.WriteLogError(ex);
+                return "#";
+            }
+        }
         bool IsWhite
         {
             get
@@ -80,15 +99,6 @@ namespace MyAdmin.Admin_ReportVNP
             return true;
         }
 
-        public string GetDay(int year, int week)
-        {
-            string Result = string.Empty;
-            DateTime FirtOfWeek = MyConvert.GetFirstDayOfWeek(year, week);
-            DateTime LastOfWeek = MyConvert.GetLastDayOfWeek(year, week);
-
-            Result = FirtOfWeek.ToString(MyConfig.ShortDateFormat) + "-" + LastOfWeek.ToString(MyConfig.ShortDateFormat);
-            return Result;
-        }
 
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -133,6 +143,7 @@ namespace MyAdmin.Admin_ReportVNP
 
                     tbx_FromDate.Value = MyConfig.StartDayOfMonth.ToString(MyConfig.ShortDateFormat);
                     tbx_ToDate.Value = DateTime.Now.ToString(MyConfig.ShortDateFormat);
+                    BindChart();
                 }
 
                 Admin_Paging1.rpt_Data = rpt_Data;
@@ -145,39 +156,6 @@ namespace MyAdmin.Admin_ReportVNP
             }
         }
 
-        private bool ModifyDate(ref DateTime BeginDate, ref DateTime EndDate)
-        {
-            try
-            {
-                DateTime Current = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
-
-                int Week_Begin = MyConvert.GetWeekOfYear(BeginDate);
-                int Week_End = MyConvert.GetWeekOfYear(EndDate);
-                int Week_Current = MyConvert.GetWeekOfYear(Current);
-
-                DateTime FirstDate_Begin = MyConvert.GetFirstDayOfWeek(BeginDate.Year, Week_Begin);
-                DateTime LastDate_End = MyConvert.GetLastDayOfWeek(EndDate.Year, Week_End);
-                DateTime LastDate_Current = MyConvert.GetLastDayOfWeek(Current.AddDays(-7).Year, Week_Current - 1);
-
-                if (LastDate_End >= Current)
-                {
-                    LastDate_End = LastDate_Current;
-                }
-
-                BeginDate = FirstDate_Begin;
-                EndDate = LastDate_End;
-
-                if (BeginDate > EndDate)
-                {
-                    return false;
-                }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
         int Admin_Paging1_GetTotalPage_Callback_Change()
         {
             try
@@ -188,7 +166,7 @@ namespace MyAdmin.Admin_ReportVNP
                 DateTime BeginDate = tbx_FromDate.Value.Length > 0 ? DateTime.ParseExact(tbx_FromDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
                 DateTime EndDate = tbx_ToDate.Value.Length > 0 ? DateTime.ParseExact(tbx_ToDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
 
-                if (!ModifyDate(ref BeginDate, ref EndDate))
+                if (!MySetting.AdminSetting.ModifyDateByWeek(ref BeginDate, ref EndDate))
                 {
                     MyMessage.ShowError("Ngày tháng không hợp lệ, xin vui lòng kiểm tra lại.");
                     return 0;
@@ -211,7 +189,7 @@ namespace MyAdmin.Admin_ReportVNP
                 DateTime BeginDate = tbx_FromDate.Value.Length > 0 ? DateTime.ParseExact(tbx_FromDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
                 DateTime EndDate = tbx_ToDate.Value.Length > 0 ? DateTime.ParseExact(tbx_ToDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
 
-                if (!ModifyDate(ref BeginDate, ref EndDate))
+                if (!MySetting.AdminSetting.ModifyDateByWeek(ref BeginDate, ref EndDate))
                 {
                     MyMessage.ShowError("Ngày tháng không hợp lệ, xin vui lòng kiểm tra lại.");
                     return new DataTable();
@@ -220,6 +198,75 @@ namespace MyAdmin.Admin_ReportVNP
                 PageIndex = (Admin_Paging1.mPaging.CurrentPageIndex - 1) * Admin_Paging1.mPaging.PageSize + 1;
 
                 DataTable mTable = mRP_MO.Search_Week_VNP(SearchType, Admin_Paging1.mPaging.BeginRow, Admin_Paging1.mPaging.EndRow, BeginDate, EndDate, SortBy);
+
+                return mTable;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        protected void lbtn_Sort_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //lbtn_Sort_1.CssClass = "Sort";
+                //lbtn_Sort_2.CssClass = "Sort";
+                //lbtn_Sort_3.CssClass = "Sort";
+                //lbtn_Sort_4.CssClass = "Sort";
+                //lbtn_Sort_5.CssClass = "Sort";
+                //lbtn_Sort_6.CssClass = "Sort";
+                //lbtn_Sort_7.CssClass = "Sort";
+
+                LinkButton mLinkButton = (LinkButton)sender;
+                ViewState["SortBy"] = mLinkButton.CommandArgument;
+
+                if (mLinkButton.CommandArgument.IndexOf(" ASC") >= 0)
+                {
+                    mLinkButton.CssClass = "SortActive_Up";
+                    mLinkButton.CommandArgument = mLinkButton.CommandArgument.Replace(" ASC", " DESC");
+                }
+                else
+                {
+                    mLinkButton.CssClass = "SortActive_Down";
+                    mLinkButton.CommandArgument = mLinkButton.CommandArgument.Replace(" DESC", " ASC");
+                }
+
+                BindData();
+            }
+            catch (Exception ex)
+            {
+                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.SortError, "Chilinh");
+            }
+        }
+
+        protected void btn_Search_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                BindData();
+                BindChart();
+            }
+            catch (Exception ex)
+            {
+                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.SeachError, "Chilinh");
+            }
+        }
+
+        private void BindChart()
+        {
+            try
+            {
+                DateTime BeginDate = tbx_FromDate.Value.Length > 0 ? DateTime.ParseExact(tbx_FromDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
+                DateTime EndDate = tbx_ToDate.Value.Length > 0 ? DateTime.ParseExact(tbx_ToDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
+
+                if (!MySetting.AdminSetting.ModifyDateByWeek(ref BeginDate, ref EndDate))
+                {
+                    return;
+                }
+
+                DataTable mTable = mRP_MO.Search_Week_VNP(0, 0, 10000, BeginDate, EndDate, string.Empty);
 
                 List<string> List_ReportDay = new List<string>();
                 List<double> List_SubNew = new List<double>();
@@ -270,59 +317,13 @@ namespace MyAdmin.Admin_ReportVNP
                 
                 
 
-                return mTable;
+                
+
             }
             catch (Exception ex)
             {
-                throw ex;
+                MyLogfile.WriteLogError(ex);
             }
         }
-
-        protected void lbtn_Sort_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //lbtn_Sort_1.CssClass = "Sort";
-                //lbtn_Sort_2.CssClass = "Sort";
-                //lbtn_Sort_3.CssClass = "Sort";
-                //lbtn_Sort_4.CssClass = "Sort";
-                //lbtn_Sort_5.CssClass = "Sort";
-                //lbtn_Sort_6.CssClass = "Sort";
-                //lbtn_Sort_7.CssClass = "Sort";
-
-                LinkButton mLinkButton = (LinkButton)sender;
-                ViewState["SortBy"] = mLinkButton.CommandArgument;
-
-                if (mLinkButton.CommandArgument.IndexOf(" ASC") >= 0)
-                {
-                    mLinkButton.CssClass = "SortActive_Up";
-                    mLinkButton.CommandArgument = mLinkButton.CommandArgument.Replace(" ASC", " DESC");
-                }
-                else
-                {
-                    mLinkButton.CssClass = "SortActive_Down";
-                    mLinkButton.CommandArgument = mLinkButton.CommandArgument.Replace(" DESC", " ASC");
-                }
-
-                BindData();
-            }
-            catch (Exception ex)
-            {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.SortError, "Chilinh");
-            }
-        }
-
-        protected void btn_Search_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                BindData();
-            }
-            catch (Exception ex)
-            {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.SeachError, "Chilinh");
-            }
-        }
-
     }
 }

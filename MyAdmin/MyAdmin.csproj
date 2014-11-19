@@ -57,6 +57,9 @@
     <Reference Include="AntiXSSLibrary">
       <HintPath>..\..\..\DLL\AntiXSS Library v4.2\NET35\AntiXSSLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="Common.Logging">
+      <HintPath>..\packages\Common.Logging.2.1.1\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
     <Reference Include="CuteEditor, Version=6.6.0.0, Culture=neutral, PublicKeyToken=3858aa6802b1223a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\DLL\CuteEditor.dll</HintPath>
@@ -72,6 +75,9 @@
     <Reference Include="NetSpell.SpellChecker, Version=2.1.7.20561, Culture=neutral, PublicKeyToken=318b389f0db66e46">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\DLL\NetSpell.SpellChecker.dll</HintPath>
+    </Reference>
+    <Reference Include="Pechkin">
+      <HintPath>..\packages\Pechkin.0.5.8.1\lib\net40\Pechkin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -151,6 +157,8 @@
     <Content Include="CSS\CheckInfo.css" />
     <Content Include="CSS\SubInfo.css" />
     <Content Include="Captcha.ashx" />
+    <Content Include="Admin_ReportVNP\ExportExcel.ashx" />
+    <Content Include="packages.config" />
     <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <None Include="Properties\PublishProfiles\Profile1.pubxml" />
     <None Include="Service References\WS_SportMillion\SportMillion.disco" />
@@ -164,6 +172,26 @@
     <Content Include="Images\Buttons\images.jpg" />
     <Content Include="Images\Images\Table_TL_Repeat.png" />
     <Content Include="Images\Images\Table_TR_Repeat.png" />
+    <Content Include="Templates\MOAnswerDay.html" />
+    <Content Include="Templates\MOMTDay.html" />
+    <Content Include="Templates\MOAnswerDay_Repeat.html" />
+    <Content Include="Templates\MOAnswerWeek.html" />
+    <Content Include="Templates\MOAnswerWeek_Repeat.html" />
+    <Content Include="Templates\MORegDay.html" />
+    <Content Include="Templates\MOMTDay_Repeat.html" />
+    <Content Include="Templates\MORegDay_Repeat.html" />
+    <Content Include="Templates\MOMTWeek.html" />
+    <Content Include="Templates\MORegWeek.html" />
+    <Content Include="Templates\MOMTWeek_Repeat.html" />
+    <Content Include="Templates\MORegWeek_Repeat.html" />
+    <Content Include="Templates\SubWeek.html" />
+    <Content Include="Templates\SubDay.html" />
+    <Content Include="Templates\RenewDay.html" />
+    <Content Include="Templates\SubWeek_Repeat.html" />
+    <Content Include="Templates\SubDay_Repeat.html" />
+    <Content Include="Templates\RenewDay_Repeat.html" />
+    <Content Include="Templates\RenewWeek_Repeat.html" />
+    <Content Include="Templates\RenewWeek.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -447,6 +475,9 @@
     </Compile>
     <Compile Include="Admin_ReportVNP\Ad_RP_Sub_Week_VNP.aspx.designer.cs">
       <DependentUpon>Ad_RP_Sub_Week_VNP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_ReportVNP\ExportExcel.ashx.cs">
+      <DependentUpon>ExportExcel.ashx</DependentUpon>
     </Compile>
     <Compile Include="Admin_Report\Ad_ChargeByDay.aspx.cs">
       <DependentUpon>Ad_ChargeByDay.aspx</DependentUpon>
@@ -823,7 +854,6 @@
     <Content Include="Images\Images\ToolBox_TC.png" />
     <Content Include="Images\Images\ToolBox_TL.png" />
     <Content Include="Images\Images\ToolBox_TR.png" />
-    <Content Include="Templates\Street_Repeat.htm" />
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References\" />

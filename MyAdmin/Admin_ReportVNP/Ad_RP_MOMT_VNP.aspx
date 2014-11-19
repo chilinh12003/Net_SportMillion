@@ -8,6 +8,7 @@
     <script src="../Calendar/dhtmlgoodies_calendar/dhtmlgoodies_calendar.js" type="text/javascript"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_Tools" runat="server">
+    <a href="<%=LinkExportExcel() %>"><span class="Export"></span>Export</a>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_ToolBox" runat="server">
 </asp:Content>
@@ -28,20 +29,20 @@
             <tr class="Table_Header">
                 <th class="Table_TL border-none"></th>
                 <th class="last " rowspan="2">STT</th>
-                <th class="last" rowspan="2">Ngày</th>
+                <th rowspan="2">Ngày</th>
                 <th colspan="2">MT</th>
                 <th colspan="5">MO</th>
                 <th class="Table_TR border-none"></th>
             </tr>
             <tr class="Table_Header">
                 <th class="Table_TL_Repeat last border-none"></th>
-                <th class="last">Tổng</th>
-                <th class="last">Gửi không thành công</th>
-                <th class="last">Tổng</th>
-                <th class="last">Xử lý Thành công</th>
-                <th class="last">Sai cú pháp</th>
-                <th class="last">Lỗi hệ thống</th>
-                <th class="last">Lỗi khác</th>
+                <th>Tổng</th>
+                <th>Gửi không thành công</th>
+                <th>Tổng</th>
+                <th>Xử lý Thành công</th>
+                <th>Sai cú pháp</th>
+                <th>Lỗi hệ thống</th>
+                <th>Lỗi khác</th>
                 <th class="Table_TR_Repeat last border-none"></th>
             </tr>
             <asp:Repeater runat="server" ID="rpt_Data">

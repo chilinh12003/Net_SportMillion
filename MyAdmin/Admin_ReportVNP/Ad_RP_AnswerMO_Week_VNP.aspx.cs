@@ -22,7 +22,26 @@ namespace MyAdmin.Admin_ReportVNP
         RP_MO mRP_MO = new RP_MO();
         public DateTime ReportDate_Save = DateTime.MinValue;
         public DateTime ReportDate_Save_Total = DateTime.MinValue;
+        public string LinkExportExcel()
+        {
+            try
+            {
+                DateTime BeginDate = tbx_FromDate.Value.Length > 0 ? DateTime.ParseExact(tbx_FromDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
+                DateTime EndDate = tbx_ToDate.Value.Length > 0 ? DateTime.ParseExact(tbx_ToDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
+                string FileName = MySetting.AdminSetting.GenFileNameChartImage();
 
+                chart_Reg.SaveImage(MyFile.GetFullPathFile("~/u/" + FileName), ChartImageFormat.Png);
+                ExportExcelObject mEPObject = new ExportExcelObject(ExportExcelObject.ExportType.MODuDoan_Tuan, BeginDate, EndDate, DateTime.Now,FileName);
+
+                string Para = mEPObject.Encrypt();
+                return MyConfig.Domain + "/Admin_ReportVNP/ExportExcel.ashx?para=" + HttpUtility.UrlEncode(Para);
+            }
+            catch (Exception ex)
+            {
+                MyLogfile.WriteLogError(ex);
+                return "#";
+            }
+        }
         bool IsWhite
         {
             get
@@ -80,16 +99,6 @@ namespace MyAdmin.Admin_ReportVNP
             return true;
         }
 
-        public string GetDay(int year, int week)
-        {
-            string Result = string.Empty;
-            DateTime FirtOfWeek = MyConvert.GetFirstDayOfWeek(year, week);
-            DateTime LastOfWeek = MyConvert.GetLastDayOfWeek(year, week);
-
-            Result = FirtOfWeek.ToString(MyConfig.ShortDateFormat) + "-" + LastOfWeek.ToString(MyConfig.ShortDateFormat);
-            return Result;
-        }
-
         protected void Page_Init(object sender, EventArgs e)
         {
             bool IsRedirect = false;
@@ -133,6 +142,7 @@ namespace MyAdmin.Admin_ReportVNP
 
                     tbx_FromDate.Value = MyConfig.StartDayOfMonth.ToString(MyConfig.ShortDateFormat);
                     tbx_ToDate.Value = DateTime.Now.ToString(MyConfig.ShortDateFormat);
+                    BindChart();
                 }
 
                 Admin_Paging1.rpt_Data = rpt_Data;
@@ -145,39 +155,6 @@ namespace MyAdmin.Admin_ReportVNP
             }
         }
 
-        private bool ModifyDate(ref DateTime BeginDate, ref DateTime EndDate)
-        {
-            try
-            {
-                DateTime Current = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
-
-                int Week_Begin = MyConvert.GetWeekOfYear(BeginDate);
-                int Week_End = MyConvert.GetWeekOfYear(EndDate);
-                int Week_Current = MyConvert.GetWeekOfYear(Current);
-
-                DateTime FirstDate_Begin = MyConvert.GetFirstDayOfWeek(BeginDate.Year, Week_Begin);
-                DateTime LastDate_End = MyConvert.GetLastDayOfWeek(EndDate.Year, Week_End);
-                DateTime LastDate_Current = MyConvert.GetLastDayOfWeek(Current.AddDays(-7).Year, Week_Current - 1);
-
-                if (LastDate_End >= Current)
-                {
-                    LastDate_End = LastDate_Current;
-                }
-
-                BeginDate = FirstDate_Begin;
-                EndDate = LastDate_End;
-
-                if (BeginDate > EndDate)
-                {
-                    return false;
-                }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
         int Admin_Paging1_GetTotalPage_Callback_Change()
         {
             try
@@ -188,7 +165,7 @@ namespace MyAdmin.Admin_ReportVNP
                 DateTime BeginDate = tbx_FromDate.Value.Length > 0 ? DateTime.ParseExact(tbx_FromDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
                 DateTime EndDate = tbx_ToDate.Value.Length > 0 ? DateTime.ParseExact(tbx_ToDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
 
-                if (!ModifyDate(ref BeginDate, ref EndDate))
+                if (!MySetting.AdminSetting.ModifyDateByWeek(ref BeginDate, ref EndDate))
                 {
                     MyMessage.ShowError("Ngày tháng không hợp lệ, xin vui lòng kiểm tra lại.");
                     return 0;
@@ -211,7 +188,7 @@ namespace MyAdmin.Admin_ReportVNP
                 DateTime BeginDate = tbx_FromDate.Value.Length > 0 ? DateTime.ParseExact(tbx_FromDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
                 DateTime EndDate = tbx_ToDate.Value.Length > 0 ? DateTime.ParseExact(tbx_ToDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
 
-                if (!ModifyDate(ref BeginDate, ref EndDate))
+                if (!MySetting.AdminSetting.ModifyDateByWeek(ref BeginDate, ref EndDate))
                 {
                     MyMessage.ShowError("Ngày tháng không hợp lệ, xin vui lòng kiểm tra lại.");
                     return new DataTable();
@@ -220,49 +197,6 @@ namespace MyAdmin.Admin_ReportVNP
                 PageIndex = (Admin_Paging1.mPaging.CurrentPageIndex - 1) * Admin_Paging1.mPaging.PageSize + 1;
 
                 DataTable mTable = mRP_MO.Search_Week_VNP(SearchType, Admin_Paging1.mPaging.BeginRow, Admin_Paging1.mPaging.EndRow, BeginDate, EndDate, SortBy);
-
-                List<string> List_ReportDay = new List<string>();
-                List<double> List_SubNew = new List<double>();
-                List<double> List_UnsubNew = new List<double>();
-
-                List<double> List_MOTotal = new List<double>();
-                List<double> List_MOSuccess = new List<double>();
-
-                double min = 100000000, max = 0;
-                for (int i = mTable.Rows.Count - 1; i >= 0; i--)
-                {
-                    DataRow mRow = mTable.Rows[i];
-                    List_ReportDay.Add(mRow["ReportWeek"].ToString() + "/" + mRow["ReportYear"].ToString());
-
-                    List_MOTotal.Add((double)mRow["MOAnswerTotal"]);
-                    List_MOSuccess.Add((double)mRow["MOAnswerSuccess"]);
-
-                    if ((double)mRow["MOAnswerTotal"] > max)
-                        max = (double)mRow["MOAnswerTotal"];
-
-                    if ((double)mRow["MOAnswerTotal"] < min)
-                        min = (double)mRow["MOAnswerTotal"];
-
-                }
-
-                chart_Reg.Series["Series_Total"].Points.DataBindXY(List_ReportDay, List_MOTotal);
-                chart_Reg.Series["Series_Total"].IsValueShownAsLabel = true;
-
-                chart_Reg.Series["Series_Success"].Points.DataBindXY(List_ReportDay, List_MOSuccess);
-                chart_Reg.Series["Series_Success"].IsValueShownAsLabel = true;
-
-                chart_Reg.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
-                chart_Reg.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
-
-                //chart_Reg.ChartAreas[0].AxisX.MinorTickMark.Enabled = true;
-                chart_Reg.ChartAreas[0].AxisX.Interval = 1;
-                chart_Reg.ChartAreas[0].AxisX.IsLabelAutoFit = true;
-                chart_Reg.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
-                chart_Reg.ChartAreas[0].AxisX.LabelAutoFitStyle = LabelAutoFitStyles.StaggeredLabels;
-
-                chart_Reg.Width = mTable.Rows.Count * 130;
-                //
-                //
 
                 return mTable;
             }
@@ -311,6 +245,7 @@ namespace MyAdmin.Admin_ReportVNP
             try
             {
                 BindData();
+                BindChart();
             }
             catch (Exception ex)
             {
@@ -318,5 +253,66 @@ namespace MyAdmin.Admin_ReportVNP
             }
         }
 
+        private void BindChart()
+        {
+            try
+            {
+                DateTime BeginDate = tbx_FromDate.Value.Length > 0 ? DateTime.ParseExact(tbx_FromDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
+                DateTime EndDate = tbx_ToDate.Value.Length > 0 ? DateTime.ParseExact(tbx_ToDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
+
+                if (!MySetting.AdminSetting.ModifyDateByWeek(ref BeginDate, ref EndDate))
+                {
+                    return;
+                }
+
+                DataTable mTable = mRP_MO.Search_Week_VNP(0, 0, 10000, BeginDate, EndDate, string.Empty);
+
+                List<string> List_ReportDay = new List<string>();
+                List<double> List_SubNew = new List<double>();
+                List<double> List_UnsubNew = new List<double>();
+
+                List<double> List_MOTotal = new List<double>();
+                List<double> List_MOSuccess = new List<double>();
+
+                double min = 100000000, max = 0;
+                for (int i = mTable.Rows.Count - 1; i >= 0; i--)
+                {
+                    DataRow mRow = mTable.Rows[i];
+                    List_ReportDay.Add(mRow["ReportWeek"].ToString() + "/" + mRow["ReportYear"].ToString());
+
+                    List_MOTotal.Add((double)mRow["MOAnswerTotal"]);
+                    List_MOSuccess.Add((double)mRow["MOAnswerSuccess"]);
+
+                    if ((double)mRow["MOAnswerTotal"] > max)
+                        max = (double)mRow["MOAnswerTotal"];
+
+                    if ((double)mRow["MOAnswerTotal"] < min)
+                        min = (double)mRow["MOAnswerTotal"];
+
+                }
+
+                chart_Reg.Series["Series_Total"].Points.DataBindXY(List_ReportDay, List_MOTotal);
+                chart_Reg.Series["Series_Total"].IsValueShownAsLabel = true;
+
+                chart_Reg.Series["Series_Success"].Points.DataBindXY(List_ReportDay, List_MOSuccess);
+                chart_Reg.Series["Series_Success"].IsValueShownAsLabel = true;
+
+                chart_Reg.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
+                chart_Reg.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
+
+                //chart_Reg.ChartAreas[0].AxisX.MinorTickMark.Enabled = true;
+                chart_Reg.ChartAreas[0].AxisX.Interval = 1;
+                chart_Reg.ChartAreas[0].AxisX.IsLabelAutoFit = true;
+                chart_Reg.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
+                chart_Reg.ChartAreas[0].AxisX.LabelAutoFitStyle = LabelAutoFitStyles.StaggeredLabels;
+
+                chart_Reg.Width = mTable.Rows.Count * 130;
+
+            }
+            catch (Exception ex)
+            {
+                MyLogfile.WriteLogError(ex);
+            }
+        }
     }
 }

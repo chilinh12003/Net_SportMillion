@@ -9,6 +9,7 @@
     <script src="../Calendar/dhtmlgoodies_calendar/dhtmlgoodies_calendar.js" type="text/javascript"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_Tools" runat="server">
+    <a href="<%=LinkExportExcel() %>"><span class="Export"></span>Export</a>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_ToolBox" runat="server">
 </asp:Content>
@@ -55,7 +56,7 @@
                         <td><%#(Container.ItemIndex + PageIndex).ToString()%></td>
                         <td><b class="DanhDau"><%#Eval("ReportWeek").ToString()+"/" +Eval("ReportYear").ToString()%></b>
                             <br />
-                            (<%# GetDay((int)Eval("ReportYear"),(int)Eval("ReportWeek")) %>)
+                            (<%# MySetting.AdminSetting.GetIntervalDay((int)Eval("ReportYear"),(int)Eval("ReportWeek")) %>)
                         </td>
                        <td><%#((double)Eval("MORegTotal")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("MORegSuccess")).ToString(MyUtility.MyConfig.IntFormat)%></td>
@@ -77,7 +78,7 @@
                         <td><%#(Container.ItemIndex + PageIndex).ToString()%></td>
                         <td><b class="DanhDau"><%#Eval("ReportWeek").ToString()+"/" +Eval("ReportYear").ToString()%></b>
                             <br />
-                            (<%# GetDay((int)Eval("ReportYear"),(int)Eval("ReportWeek")) %>)
+                            (<%# MySetting.AdminSetting.GetIntervalDay((int)Eval("ReportYear"),(int)Eval("ReportWeek")) %>)
                         </td>
                        <td><%#((double)Eval("MORegTotal")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("MORegSuccess")).ToString(MyUtility.MyConfig.IntFormat)%></td>
