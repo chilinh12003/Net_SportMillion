@@ -18,11 +18,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8080/MyService_SportMillion/SportMillion.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:8082/MyService_SportMillion/SportMillion.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="SportMillion.wsdl" MetadataType="Wsdl" ID="5f3e4601-5a4f-47fc-b63c-8ebed404fb05" SourceId="1" SourceUrl="http://localhost:8080/MyService_SportMillion/SportMillion.asmx?wsdl" />
-    <MetadataFile FileName="SportMillion.disco" MetadataType="Disco" ID="3e864a70-dc9a-4294-a827-c54472a4a918" SourceId="1" SourceUrl="http://localhost:8080/MyService_SportMillion/SportMillion.asmx?disco" />
+    <MetadataFile FileName="SportMillion1.disco" MetadataType="Disco" ID="43611e73-8720-4b0b-b84b-8eeb42a11f10" SourceId="1" SourceUrl="http://localhost:8082/MyService_SportMillion/SportMillion.asmx?disco" />
+    <MetadataFile FileName="SportMillion1.wsdl" MetadataType="Wsdl" ID="c3900e1f-15bd-4707-8ab9-9bc56244ff3d" SourceId="1" SourceUrl="http://localhost:8082/MyService_SportMillion/SportMillion.asmx?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

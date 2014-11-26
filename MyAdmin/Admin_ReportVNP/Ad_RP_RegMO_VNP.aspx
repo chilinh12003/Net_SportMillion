@@ -25,28 +25,49 @@
     <asp:Button runat="server" ID="btn_Search" Text="Tìm kiếm" OnClick="btn_Search_Click" />
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="cph_Content" runat="server">
-    <table class="Data" border="0" cellpadding="0" cellspacing="0">
+    <table class="Data" border="0" cellpadding="4" cellspacing="0">
         <tbody>
             <tr class="Table_Header">
                 <th class="Table_TL border-none"></th>
                 <th class="last " rowspan="2">STT</th>
                 <th class="last" rowspan="2">Ngày</th>
-                <th colspan="5">MO Đăng ký</th>
-                <th colspan="5">MO Hủy</th>
+                 <th colspan="2">MT</th>
+                <th colspan="6">MO</th>
+                <th colspan="6">MO Đăng ký</th>
+                <th colspan="6">MO Hủy</th>
+                <th colspan="8">MO Dự đoán</th>
                 <th class="Table_TR border-none"></th>
             </tr>
             <tr class="Table_Header">
                 <th class="Table_TL_Repeat last border-none"></th>
                 <th class="last">Tổng</th>
+                <th class="last">Thất bại</th>
+                <th class="last">Tổng</th>
+                <th class="last">Thành công</th>
+                <th class="last">Sai C.Pháp</th>
+                <th class="last">Lỗi H.Thống</th>
+                <th class="last">Lỗi khác</th>
+                <th class="last">Tỷ lệ (%)</th>
+                <th class="last">Tổng</th>
                 <th class="last">Thành công</th>
                 <th class="last">Không đủ tiền</th>
-                <th class="last">Lỗi hệ thống</th>
+                <th class="last">Lỗi H.Thống</th>
                 <th class="last">Lỗi khác</th>
+                <th class="last">Tỷ lệ (%)</th>
                 <th class="last">Tổng</th>
                 <th class="last">Xác nhận hủy</th>
                 <th class="last">Thành công</th>
                 <th class="last">Thất bại</th>
-                <th class="last">Lỗi hệ thống</th>
+                <th class="last">Lỗi H.Thống</th>
+                <th class="last">Tỷ lệ (%)</th>
+                <th class="last">Tổng</th>
+                <th class="last">Thành công</th>
+                <th class="last">Sai C.Pháp</th>
+                <th class="last">Vượt MO/Ngày</th>
+                <th class="last" title="Dự đoán khi thời gian dự đoán đã hết">Hết hạn</th>
+                <th class="last">Lỗi H.Thống</th>
+                <th class="last" title="Trứ tiền không thành công, Chưa DK đã dữ đoán, Lỗi khác" >Lỗi khác</th>
+                <th class="last">Tỷ lệ (%)</th>
                 <th class="Table_TR_Repeat last border-none"></th>
             </tr>
             <asp:Repeater runat="server" ID="rpt_Data">
@@ -55,17 +76,38 @@
                         <td class="Table_ML_1 border-none"></td>
                         <td><%#(Container.ItemIndex + PageIndex).ToString()%></td>
                         <td><%#((DateTime)Eval("ReportDay")).ToString(MyUtility.MyConfig.ShortDateFormat) %></td>
+                        
+                        <td><%#((double)Eval("MTTotal")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#((double)Eval("MTFail")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#((double)Eval("MOTotal")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#((double)Eval("MOSuccess")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#((double)Eval("MOInvalid")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#((double)Eval("MOError")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#((double)Eval("MOFail")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#(((double)Eval("MOSuccess")/(double)Eval("MOTotal")) *100 ).ToString(MyUtility.MyConfig.DoubleFormat)%></td>
+
                         <td><%#((double)Eval("MORegTotal")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("MORegSuccess")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("MORegBlanceTooLow")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("MORegError")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("MORegFail")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#(((double)Eval("MORegSuccess")/(double)Eval("MORegTotal")) *100 ).ToString(MyUtility.MyConfig.DoubleFormat)%></td>
 
                         <td><%#((double)Eval("MODeregTotal")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("MODeregConfirm")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("MODeregSuccess")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("MODeregFail")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("MODeregError")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#(((double)Eval("MODeregSuccess")/(double)Eval("MODeregConfirm")) *100 ).ToString(MyUtility.MyConfig.DoubleFormat)%></td>
+                        
+                        <td><%#((double)Eval("MOAnswerTotal")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#((double)Eval("MOAnswerSuccess")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#((double)Eval("MOAnswerInvalid")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#((double)Eval("MOAnswerOver")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#((double)Eval("MOAnswerExpire")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#((double)Eval("MOAnswerError")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#((double)Eval("MOAnswerFail")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#(((double)Eval("MOAnswerSuccess")/(double)Eval("MOAnswerTotal")) *100 ).ToString(MyUtility.MyConfig.DoubleFormat)%></td>
                         <td class="Table_MR_1 border-none"></td>
                     </tr>
                 </ItemTemplate>
@@ -74,17 +116,38 @@
                         <td class="Table_ML_2 border-none"></td>
                         <td><%#(Container.ItemIndex + PageIndex).ToString()%></td>
                         <td><%#((DateTime)Eval("ReportDay")).ToString(MyUtility.MyConfig.ShortDateFormat) %></td>
+                        
+                        <td><%#((double)Eval("MTTotal")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#((double)Eval("MTFail")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#((double)Eval("MOTotal")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#((double)Eval("MOSuccess")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#((double)Eval("MOInvalid")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#((double)Eval("MOError")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#((double)Eval("MOFail")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#(((double)Eval("MOSuccess")/(double)Eval("MOTotal")) *100 ).ToString(MyUtility.MyConfig.DoubleFormat)%></td>
+
                         <td><%#((double)Eval("MORegTotal")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("MORegSuccess")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("MORegBlanceTooLow")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("MORegError")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("MORegFail")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#(((double)Eval("MORegSuccess")/(double)Eval("MORegTotal")) *100 ).ToString(MyUtility.MyConfig.DoubleFormat)%></td>
 
                         <td><%#((double)Eval("MODeregTotal")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("MODeregConfirm")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("MODeregSuccess")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("MODeregFail")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("MODeregError")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#(((double)Eval("MODeregSuccess")/(double)Eval("MODeregConfirm")) *100 ).ToString(MyUtility.MyConfig.DoubleFormat)%></td>
+                        
+                        <td><%#((double)Eval("MOAnswerTotal")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#((double)Eval("MOAnswerSuccess")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#((double)Eval("MOAnswerInvalid")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#((double)Eval("MOAnswerOver")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#((double)Eval("MOAnswerExpire")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#((double)Eval("MOAnswerError")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#((double)Eval("MOAnswerFail")).ToString(MyUtility.MyConfig.IntFormat)%></td>
+                        <td><%#(((double)Eval("MOAnswerSuccess")/(double)Eval("MOAnswerTotal")) *100 ).ToString(MyUtility.MyConfig.DoubleFormat)%></td>
                         <td class="Table_MR_2 border-none"></td>
                     </tr>
                 </AlternatingItemTemplate>

@@ -314,6 +314,7 @@ namespace MyTool.ReportSync
                 {
                     try
                     {
+                        
                         if (BeginDate > DateTime.Now)
                         {
                             BeginDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);

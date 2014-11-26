@@ -125,16 +125,8 @@
     <Content Include="Admin_CCare\Ad_SubInfo.aspx" />
     <Content Include="Admin_CCare\Ad_CheckSubInfo.aspx" />
     <Content Include="Admin_Control\Admin_Paging_VNP.ascx" />
-    <Content Include="Admin_ReportVNP\Ad_RP_AnswerMO_VNP.aspx" />
-    <Content Include="Admin_ReportVNP\Ad_RP_AnswerMO_Week_VNP.aspx" />
-    <Content Include="Admin_ReportVNP\Ad_RP_MOMT_VNP.aspx" />
-    <Content Include="Admin_ReportVNP\Ad_RP_MOMT_Week_VNP.aspx" />
     <Content Include="Admin_ReportVNP\Ad_RP_RegMO_VNP.aspx" />
-    <Content Include="Admin_ReportVNP\Ad_RP_RegMO_Week_VNP.aspx" />
-    <Content Include="Admin_ReportVNP\Ad_RP_Renew_VNP.aspx" />
-    <Content Include="Admin_ReportVNP\Ad_RP_Renew_Week_VNP.aspx" />
     <Content Include="Admin_ReportVNP\Ad_RP_Sub_VNP.aspx" />
-    <Content Include="Admin_ReportVNP\Ad_RP_Sub_Week_VNP.aspx" />
     <Content Include="Admin_Report\Ad_ChargeByDay.aspx" />
     <Content Include="Admin_Report\Ad_ChargeByDay_Price.aspx" />
     <Content Include="Admin_Report\Ad_ChargeLog.aspx" />
@@ -161,7 +153,6 @@
     <Content Include="packages.config" />
     <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <None Include="Properties\PublishProfiles\Profile1.pubxml" />
-    <None Include="Service References\WS_SportMillion\SportMillion.disco" />
     <None Include="Service References\WS_SportMillion\configuration91.svcinfo" />
     <None Include="Service References\WS_SportMillion\configuration.svcinfo" />
     <None Include="Service References\WS_SportMillion\Reference.svcmap">
@@ -172,29 +163,15 @@
     <Content Include="Images\Buttons\images.jpg" />
     <Content Include="Images\Images\Table_TL_Repeat.png" />
     <Content Include="Images\Images\Table_TR_Repeat.png" />
-    <Content Include="Templates\MOAnswerDay.html" />
-    <Content Include="Templates\MOMTDay.html" />
-    <Content Include="Templates\MOAnswerDay_Repeat.html" />
-    <Content Include="Templates\MOAnswerWeek.html" />
-    <Content Include="Templates\MOAnswerWeek_Repeat.html" />
+    <None Include="Service References\WS_SportMillion\SportMillion1.disco" />
     <Content Include="Templates\MORegDay.html" />
-    <Content Include="Templates\MOMTDay_Repeat.html" />
     <Content Include="Templates\MORegDay_Repeat.html" />
-    <Content Include="Templates\MOMTWeek.html" />
-    <Content Include="Templates\MORegWeek.html" />
-    <Content Include="Templates\MOMTWeek_Repeat.html" />
-    <Content Include="Templates\MORegWeek_Repeat.html" />
-    <Content Include="Templates\SubWeek.html" />
     <Content Include="Templates\SubDay.html" />
-    <Content Include="Templates\RenewDay.html" />
-    <Content Include="Templates\SubWeek_Repeat.html" />
     <Content Include="Templates\SubDay_Repeat.html" />
-    <Content Include="Templates\RenewDay_Repeat.html" />
-    <Content Include="Templates\RenewWeek_Repeat.html" />
-    <Content Include="Templates\RenewWeek.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Service References\WS_SportMillion\SportMillion1.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\Ad_Alert.aspx.cs">
@@ -406,34 +383,6 @@
     <Compile Include="Admin_News\Ad_News_Edit.aspx.designer.cs">
       <DependentUpon>Ad_News_Edit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin_ReportVNP\Ad_RP_AnswerMO_VNP.aspx.cs">
-      <DependentUpon>Ad_RP_AnswerMO_VNP.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin_ReportVNP\Ad_RP_AnswerMO_VNP.aspx.designer.cs">
-      <DependentUpon>Ad_RP_AnswerMO_VNP.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin_ReportVNP\Ad_RP_AnswerMO_Week_VNP.aspx.cs">
-      <DependentUpon>Ad_RP_AnswerMO_Week_VNP.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin_ReportVNP\Ad_RP_AnswerMO_Week_VNP.aspx.designer.cs">
-      <DependentUpon>Ad_RP_AnswerMO_Week_VNP.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin_ReportVNP\Ad_RP_MOMT_VNP.aspx.cs">
-      <DependentUpon>Ad_RP_MOMT_VNP.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin_ReportVNP\Ad_RP_MOMT_VNP.aspx.designer.cs">
-      <DependentUpon>Ad_RP_MOMT_VNP.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin_ReportVNP\Ad_RP_MOMT_Week_VNP.aspx.cs">
-      <DependentUpon>Ad_RP_MOMT_Week_VNP.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin_ReportVNP\Ad_RP_MOMT_Week_VNP.aspx.designer.cs">
-      <DependentUpon>Ad_RP_MOMT_Week_VNP.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admin_ReportVNP\Ad_RP_RegMO_VNP.aspx.cs">
       <DependentUpon>Ad_RP_RegMO_VNP.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -441,40 +390,12 @@
     <Compile Include="Admin_ReportVNP\Ad_RP_RegMO_VNP.aspx.designer.cs">
       <DependentUpon>Ad_RP_RegMO_VNP.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin_ReportVNP\Ad_RP_RegMO_Week_VNP.aspx.cs">
-      <DependentUpon>Ad_RP_RegMO_Week_VNP.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin_ReportVNP\Ad_RP_RegMO_Week_VNP.aspx.designer.cs">
-      <DependentUpon>Ad_RP_RegMO_Week_VNP.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin_ReportVNP\Ad_RP_Renew_VNP.aspx.cs">
-      <DependentUpon>Ad_RP_Renew_VNP.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin_ReportVNP\Ad_RP_Renew_VNP.aspx.designer.cs">
-      <DependentUpon>Ad_RP_Renew_VNP.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin_ReportVNP\Ad_RP_Renew_Week_VNP.aspx.cs">
-      <DependentUpon>Ad_RP_Renew_Week_VNP.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin_ReportVNP\Ad_RP_Renew_Week_VNP.aspx.designer.cs">
-      <DependentUpon>Ad_RP_Renew_Week_VNP.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admin_ReportVNP\Ad_RP_Sub_VNP.aspx.cs">
       <DependentUpon>Ad_RP_Sub_VNP.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin_ReportVNP\Ad_RP_Sub_VNP.aspx.designer.cs">
       <DependentUpon>Ad_RP_Sub_VNP.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin_ReportVNP\Ad_RP_Sub_Week_VNP.aspx.cs">
-      <DependentUpon>Ad_RP_Sub_Week_VNP.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin_ReportVNP\Ad_RP_Sub_Week_VNP.aspx.designer.cs">
-      <DependentUpon>Ad_RP_Sub_Week_VNP.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin_ReportVNP\ExportExcel.ashx.cs">
       <DependentUpon>ExportExcel.ashx</DependentUpon>
@@ -863,7 +784,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Service References\WS_SportMillion\SportMillion.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

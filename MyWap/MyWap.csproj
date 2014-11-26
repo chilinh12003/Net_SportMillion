@@ -216,18 +216,6 @@
       <DependentUpon>winner.ashx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reg\Accept.ashx.cs">
-      <DependentUpon>Accept.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="Reg\Deny.ashx.cs">
-      <DependentUpon>Deny.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="Reg\Register.ashx.cs">
-      <DependentUpon>Register.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="Reg\SportMillion.ashx.cs">
-      <DependentUpon>SportMillion.ashx</DependentUpon>
-    </Compile>
     <Compile Include="Service References\WS_SportMillion\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -276,12 +264,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Reg\Accept.ashx" />
-    <Content Include="Reg\Deny.ashx" />
-    <Content Include="Reg\Register.ashx" />
-    <Content Include="Reg\SportMillion.ashx" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

@@ -29,6 +29,11 @@ namespace MyCCare.Admin_CCare
                 {
                     ViewState["SortBy"] = string.Empty; 
                     tbx_MSISDN.Value = MySetting.AdminSetting.MSISDN;
+
+                    if (!string.IsNullOrEmpty(tbx_MSISDN.Value))
+                    {
+                        btn_Search_Click(null, null);
+                    }
                     
                 }
 

@@ -31,8 +31,13 @@ namespace MyCCare.Admin_CCare
                     ViewState["SortBy"] = string.Empty;
                     tbx_MSISDN.Value = MySetting.AdminSetting.MSISDN;
 
-                    tbx_FromDate.Value = MyConfig.StartDayOfMonth.ToString(MyConfig.ShortDateFormat);
-                    tbx_ToDate.Value = DateTime.Now.ToString(MyConfig.ShortDateFormat);
+                    tbx_FromDate.Value = MySetting.AdminSetting.BeginDate;
+                    tbx_ToDate.Value = MySetting.AdminSetting.EndDate;
+                }
+                else
+                {
+                    MySetting.AdminSetting.BeginDate = tbx_FromDate.Value;
+                    MySetting.AdminSetting.EndDate = tbx_ToDate.Value;
                 }
 
                 Admin_Paging1.rpt_Data = rpt_Data;

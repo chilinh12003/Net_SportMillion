@@ -33,7 +33,7 @@
                             <option>-- Chọn gói cước --</option>
                         </select></td>
                     <td width="200" align="right" rowspan="2">
-                        <asp:Button CssClass="btn_search" runat="server" ID="btn_Search" Text="Tra cứu" OnClick="btn_Search_Click" /></td>
+                        <asp:Button CssClass="btn_search"  runat="server" ID="btn_Search" Text="Tra cứu" OnClick="btn_Search_Click" /></td>
                 </tr>
             </tbody>
         </table>
@@ -55,7 +55,7 @@
                 </tr>
                 <tr>
                     <td colspan='2' align='right'>
-                        <asp:Button runat="server" ID="btn_Save" Text="Thực hiện" OnClick="btn_Save_Click" />
+                        <asp:Button runat="server" ID="btn_Save" Enabled="<%#MyCCare.Login1.IsAdmin() %>"   Text="Thực hiện" OnClick="btn_Save_Click" />
                     </td>
                 </tr>
             </tbody>

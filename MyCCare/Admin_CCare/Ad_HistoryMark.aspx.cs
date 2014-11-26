@@ -15,30 +15,106 @@ namespace MyCCare.Admin_CCare
     public partial class Ad_HistoryMark : System.Web.UI.Page
     {
         public int PageIndex = 1;
-        Subscriber mSub = new Subscriber();
+        AnswerLog mAnswerLog = new AnswerLog();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-
                 MyCCare.MasterPages.Admin mMaster = (MyCCare.MasterPages.Admin)Page.Master;
-                mMaster.Title = "GUI - Lịch sử trừ cước";
+                mMaster.Title = "GUI - Tra cứu điểm";
 
                 if (!IsPostBack)
                 {
+
                     ViewState["SortBy"] = string.Empty;
                     tbx_MSISDN.Value = MySetting.AdminSetting.MSISDN;
 
-                    tbx_FromDate.Value = MyConfig.StartDayOfMonth.ToString(MyConfig.ShortDateFormat);
-                    tbx_ToDate.Value = DateTime.Now.ToString(MyConfig.ShortDateFormat);
+                    tbx_FromDate.Value = MySetting.AdminSetting.BeginDate;
+                    tbx_ToDate.Value = MySetting.AdminSetting.EndDate;
                 }
+                else
+                {
+                    MySetting.AdminSetting.BeginDate = tbx_FromDate.Value;
+                    MySetting.AdminSetting.EndDate = tbx_ToDate.Value;
+                }
+
+                Admin_Paging1.rpt_Data = rpt_Data;
+                Admin_Paging1.GetData_Callback_Change += new MyAdmin.Admin_Control.Admin_Paging.GetData_Callback(Admin_Paging1_GetData_Callback_Change);
+                Admin_Paging1.GetTotalPage_Callback_Change += new MyAdmin.Admin_Control.Admin_Paging.GetTotalPage_Callback(Admin_Paging1_GetTotalPage_Callback_Change);
             }
             catch (Exception ex)
             {
                 MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.LoadDataError, "Chilinh");
             }
         }
+
+        int Admin_Paging1_GetTotalPage_Callback_Change()
+        {
+            try
+            {
+                int SearchType = 0;
+                string SortBy = ViewState["SortBy"].ToString();
+                string SearchContent = tbx_MSISDN.Value;
+
+                int PID = 0;
+
+                DateTime BeginDate = tbx_FromDate.Value.Length > 0 ? DateTime.ParseExact(tbx_FromDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
+                DateTime EndDate = tbx_ToDate.Value.Length > 0 ? DateTime.ParseExact(tbx_ToDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
+                EndDate = EndDate.AddDays(1);
+
+                MyConfig.Telco mTelco = MyConfig.Telco.Nothing;
+                MyCheck.CheckPhoneNumber(ref SearchContent, ref mTelco, "84");
+
+                if (mTelco != MyConfig.Telco.Vinaphone)
+                {
+                    return 0;
+                }
+                PID = MyPID.GetPIDByPhoneNumber(SearchContent, MySetting.AdminSetting.MaxPID);
+
+                return mAnswerLog.TotalRow(SearchType, SearchContent, PID, 0, BeginDate, EndDate);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        DataTable Admin_Paging1_GetData_Callback_Change()
+        {
+            try
+            {
+                int SearchType = 0;
+                string SortBy = ViewState["SortBy"].ToString();
+                string SearchContent = tbx_MSISDN.Value;
+
+                int PID = 0;
+
+                DateTime BeginDate = tbx_FromDate.Value.Length > 0 ? DateTime.ParseExact(tbx_FromDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
+                DateTime EndDate = tbx_ToDate.Value.Length > 0 ? DateTime.ParseExact(tbx_ToDate.Value, "dd/MM/yyyy", null) : DateTime.MinValue;
+                EndDate = EndDate.AddDays(1);
+
+                MyConfig.Telco mTelco = MyConfig.Telco.Nothing;
+                MyCheck.CheckPhoneNumber(ref SearchContent, ref mTelco, "84");
+
+                if (mTelco != MyConfig.Telco.Vinaphone)
+                {
+                    return new DataTable();
+                }
+                PID = MyPID.GetPIDByPhoneNumber(SearchContent, MySetting.AdminSetting.MaxPID);
+
+                PageIndex = (Admin_Paging1.mPaging.CurrentPageIndex - 1) * Admin_Paging1.mPaging.PageSize + 1;
+
+                DataTable mTable = mAnswerLog.Search(SearchType, Admin_Paging1.mPaging.BeginRow, Admin_Paging1.mPaging.EndRow, SearchContent, PID, 0, BeginDate, EndDate, SortBy);
+            
+                return mTable;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         protected void btn_Search_Click(object sender, EventArgs e)
         {
             try
@@ -54,7 +130,8 @@ namespace MyCCare.Admin_CCare
                 }
                 tbx_MSISDN.Value = MSISDN;
                 MySetting.AdminSetting.MSISDN = MSISDN;
-               
+
+                Admin_Paging1.ResetLoadData();
             }
             catch (Exception ex)
             {

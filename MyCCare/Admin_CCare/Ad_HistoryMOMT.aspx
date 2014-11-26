@@ -21,7 +21,8 @@
             <li><a href='Ad_HistoryRegDereg.aspx' >Lịch sử Đăng ký / Hủy</a></li>
             <li><a href='Ad_HistoryCharge.aspx' >Lịch sử trừ cước</a></li>
             <li><a href='Ad_HistoryUsing.aspx' >Lịch sử sử dụng</a></li>
-            <li><a href='Ad_HistoryMOMT.aspx' class='select'>Lịch sử MO /MT</a></li>
+            <li><a href='Ad_HistoryMOMT.aspx' class='select wrapping-link-inline '>Lịch sử MO /MT</a></li>
+            <li><a href='Ad_HistoryMark.aspx' class='wrapping-link-inline '>Tra cứu điểm</a></li>
         </ul>
     </div>
     <div class='fillterarea'>

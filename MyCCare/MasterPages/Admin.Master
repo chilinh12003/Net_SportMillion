@@ -26,10 +26,10 @@
                 <div class='containdatapopup'>
                     <div class='supportarea'>
                         <ul>
-                        <li class='labelsp'>Đầu mối giải quyết khiếu nại dịch vụ: </li>
-                        <li class='username'>Tống Thanh Tùng</li>
-                        <li class='email'>tungtt@hbcom.vn</li>
-                        <li class='mobile'>04.3516.1994</li>
+                        <li class='labelsp wrapping-link-inline '>Đầu mối giải quyết khiếu nại dịch vụ: </li>
+                        <li class='username wrapping-link-inline '>Tống Thanh Tùng</li>
+                        <li class='email wrapping-link-inline '>tungtt@hbcom.vn</li>
+                        <li class='mobile wrapping-link-inline '>04.3516.1994</li>
                         </ul>
                     </div>
                     <asp:ContentPlaceHolder ID="cph_Content" runat="server">

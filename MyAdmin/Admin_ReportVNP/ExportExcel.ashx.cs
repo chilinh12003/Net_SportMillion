@@ -25,11 +25,11 @@ namespace MyAdmin.Admin_ReportVNP
             GiaHan_Ngay = 1,
             [DescriptionAttribute("GiaHan_Tuan")]
             GiaHan_Tuan = 2,
-            [DescriptionAttribute("TheuBao_Ngay")]
+            [DescriptionAttribute("ThongKeThueBao")]
             TheuBao_Ngay = 3,
             [DescriptionAttribute("ThueBao_Tuan")]
             ThueBao_Tuan = 4,
-            [DescriptionAttribute("MODangKyHuy_Ngay")]
+            [DescriptionAttribute("ThongKeMO")]
             MODangKyHuy_Ngay = 5,
             [DescriptionAttribute("MODangKyHuy_Tuan")]
             MODangKyHuy_Tuan = 6,
@@ -185,7 +185,7 @@ namespace MyAdmin.Admin_ReportVNP
                     mEPObject = new ExportExcelObject(Para);
                 }
                 context.Response.ContentType = "application/ms-excel";
-                context.Response.AddHeader("content-disposition", "attachment; filename="+mEPObject.mExportType.ToString()+".xls");
+                context.Response.AddHeader("content-disposition", "attachment; filename=" + MyEnum.StringValueOf(mEPObject.mExportType) + ".xls");
                 context.Response.Write(BuildExcel().ToString());
 
             }
@@ -341,16 +341,37 @@ namespace MyAdmin.Admin_ReportVNP
                         foreach (DataRow mRow in mTable.Rows)
                         {
                             string[] arr = {((DateTime)mRow["ReportDay"]).ToString(MyConfig.ShortDateFormat),
-                              ((double)mRow["MORegTotal"]).ToString(MyUtility.MyConfig.IntFormat),
+                              ((double)mRow["MTTotal"]).ToString(MyUtility.MyConfig.IntFormat),
+                            ((double)mRow["MTFail"]).ToString(MyUtility.MyConfig.IntFormat),
+                            ((double)mRow["MOTotal"]).ToString(MyUtility.MyConfig.IntFormat),
+                            ((double)mRow["MOSuccess"]).ToString(MyUtility.MyConfig.IntFormat),
+                            ((double)mRow["MOInvalid"]).ToString(MyUtility.MyConfig.IntFormat),
+                            ((double)mRow["MOError"]).ToString(MyUtility.MyConfig.IntFormat),
+                            ((double)mRow["MOFail"]).ToString(MyUtility.MyConfig.IntFormat),
+                            (((double)mRow["MOSuccess"]/(double)mRow["MOTotal"])*100 ).ToString(MyUtility.MyConfig.DoubleFormat),
+
+                            ((double)mRow["MORegTotal"]).ToString(MyUtility.MyConfig.IntFormat),
                             ((double)mRow["MORegSuccess"]).ToString(MyUtility.MyConfig.IntFormat),
                             ((double)mRow["MORegBlanceTooLow"]).ToString(MyUtility.MyConfig.IntFormat),
                             ((double)mRow["MORegError"]).ToString(MyUtility.MyConfig.IntFormat),
                             ((double)mRow["MORegFail"]).ToString(MyUtility.MyConfig.IntFormat),
+                            (((double)mRow["MORegSuccess"]/(double)mRow["MORegTotal"]) *100 ).ToString(MyUtility.MyConfig.DoubleFormat),
+
                             ((double)mRow["MODeregTotal"]).ToString(MyUtility.MyConfig.IntFormat),
                             ((double)mRow["MODeregConfirm"]).ToString(MyUtility.MyConfig.IntFormat),
                             ((double)mRow["MODeregSuccess"]).ToString(MyUtility.MyConfig.IntFormat),
                             ((double)mRow["MODeregFail"]).ToString(MyUtility.MyConfig.IntFormat),
                             ((double)mRow["MODeregError"]).ToString(MyUtility.MyConfig.IntFormat),
+                            (((double)mRow["MODeregSuccess"]/(double)mRow["MODeregConfirm"]) *100 ).ToString(MyUtility.MyConfig.DoubleFormat),
+                        
+                            ((double)mRow["MOAnswerTotal"]).ToString(MyUtility.MyConfig.IntFormat),
+                            ((double)mRow["MOAnswerSuccess"]).ToString(MyUtility.MyConfig.IntFormat),
+                            ((double)mRow["MOAnswerInvalid"]).ToString(MyUtility.MyConfig.IntFormat),
+                            ((double)mRow["MOAnswerOver"]).ToString(MyUtility.MyConfig.IntFormat),
+                            ((double)mRow["MOAnswerExpire"]).ToString(MyUtility.MyConfig.IntFormat),
+                            ((double)mRow["MOAnswerError"]).ToString(MyUtility.MyConfig.IntFormat),
+                            ((double)mRow["MOAnswerFail"]).ToString(MyUtility.MyConfig.IntFormat),
+                            (((double)mRow["MOAnswerSuccess"]/(double)mRow["MOAnswerTotal"]) *100 ).ToString(MyUtility.MyConfig.DoubleFormat),
                                };
                             mBuilder_TR.Append(string.Format(Template_Repeat, arr));
 
@@ -467,12 +488,21 @@ namespace MyAdmin.Admin_ReportVNP
                                 ((double)mRow["SubWAP"]).ToString(MyUtility.MyConfig.IntFormat),
                                 ((double)mRow["SubOther"]).ToString(MyUtility.MyConfig.IntFormat),
                                 ((double)mRow["SubFail"]).ToString(MyUtility.MyConfig.IntFormat),
+                                (((double)mRow["SubNew"]/((double)mRow["SubNew"]+  (double)mRow["SubFail"])) *100 ).ToString(MyUtility.MyConfig.DoubleFormat),
                                 ((double)mRow["UnsubTotal"]).ToString(MyUtility.MyConfig.IntFormat),
                                 ((double)mRow["UnsubNew"]).ToString(MyUtility.MyConfig.IntFormat),
                                 ((double)mRow["UnsubSelf"]).ToString(MyUtility.MyConfig.IntFormat),
                                 ((double)mRow["UnsubExtend"]).ToString(MyUtility.MyConfig.IntFormat),
                                 ((double)mRow["UnsubOther"]).ToString(MyUtility.MyConfig.IntFormat),
                                 ((double)mRow["UnsubFail"]).ToString(MyUtility.MyConfig.IntFormat),
+                                (((double)mRow["UnsubNew"]/((double)mRow["UnsubNew"]+   (double)mRow["UnsubFail"])) *100 ).ToString(MyUtility.MyConfig.DoubleFormat),
+                                ((double)mRow["RenewTotal"]).ToString(MyUtility.MyConfig.IntFormat),
+                                ((double)mRow["RenewSuccess"]).ToString(MyUtility.MyConfig.IntFormat),
+                                ((double)mRow["RenewFail"]).ToString(MyUtility.MyConfig.IntFormat),
+                                ((double)mRow["RenewRate"]).ToString(MyUtility.MyConfig.DoubleFormat),
+                                ((double)mRow["SaleReg"]).ToString(MyUtility.MyConfig.IntFormat),
+                                ((double)mRow["SaleRenew"]).ToString(MyUtility.MyConfig.IntFormat),
+                                ((double)mRow["SaleReg"] + (double)mRow["SaleRenew"] ).ToString(MyUtility.MyConfig.IntFormat),
                                };
                             mBuilder_TR.Append(string.Format(Template_Repeat, arr));
 

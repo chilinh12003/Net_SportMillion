@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="oX1Sx4sh4N6SBQ9+XxO8H4ZNPWM=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="AOc9C87A2sRNmEXlDw6sNLUjNC8=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="SportMillionSoap">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="SportMillionSoap" contract="WS_SportMillion.SportMillionSoap" bindingType="basicHttpBinding" address="http://localhost:8080/MyService_SportMillion/SportMillion.asmx" bindingConfiguration="SportMillionSoap">
+    <endpoint name="SportMillionSoap" contract="WS_SportMillion.SportMillionSoap" bindingType="basicHttpBinding" address="http://localhost:8082/MyService_SportMillion/SportMillion.asmx" bindingConfiguration="SportMillionSoap">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:8080/MyService_SportMillion/SportMillion.asmx</serializedValue>
+          <serializedValue>http://localhost:8082/MyService_SportMillion/SportMillion.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

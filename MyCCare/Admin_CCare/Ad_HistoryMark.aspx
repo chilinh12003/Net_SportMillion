@@ -19,7 +19,8 @@
             <li><a href='Ad_HistoryRegDereg.aspx'>Lịch sử Đăng ký / Hủy</a></li>
             <li><a href='Ad_HistoryCharge.aspx'>Lịch sử trừ cước</a></li>
             <li><a href='Ad_HistoryUsing.aspx'>Lịch sử sử dụng</a></li>
-            <li><a href='Ad_HistoryMOMT.aspx' class='select'>Lịch sử MO /MT</a></li>
+            <li><a href='Ad_HistoryMOMT.aspx' class='wrapping-link-inline '>Lịch sử MO /MT</a></li>
+            <li><a href='Ad_HistoryMark.aspx' class='select wrapping-link-inline '>Tra cứu điểm</a></li>
         </ul>
     </div>
     <div class='fillterarea'>
@@ -47,24 +48,36 @@
             </tr>
         </table>
     </div>
-    <table class="tbl_style">
-        <tbody>
-            <tr>
-                <td width='20%' valign='top'>
-                    <div class='menuleftmdt'>
-                        <ul>
-                            <li><a href='#' class='active'>Điểm tuần</a></li>
-                            <li><a href='GUI - Tra cứu sử dụng dịch vụ - Tra cứu mã dự thưởng - Tuan.html'>Mã dự thưởng tuần</a></li>
-                            <li><a href='GUI - Tra cứu sử dụng dịch vụ - Tra cứu mã dự thưởng - Ngay.html'>Mã dự thưởng ngày</a></li>
-                            <li><a href='GUI - Tra cứu sử dụng dịch vụ - Tra cứu mã dự thưởng - Lspsmdt.html'>Lịch sử phát sinh mã dự thưởng</a></li>
-                        </ul>
-                    </div>
-                </td>
-                <td>
-                    <div class='p8'>
-                        <h4 class='mb10'>Tổng mã dự thưởng tháng:</h4>
-                </td>
-            </tr>
-        </tbody>
+    <table class='tbl_style'>
+        <thead>
+           <tr>
+					<th>Ngày</th>
+                    <th>Điểm dự đoán Kết Quả</th>
+                    <th>Điểm dự đoán Bàn Thắng</th>
+                    <th>Điểm dự đoán Giữ Bóng</th>
+                    <th>Điểm dự đoán Tỷ Số</th>
+                    <th>Điểm dự đoán Thẻ Vàng</th>
+					<th>Điểm gia hạn</th>
+					<th>Tổng điểm ngày</th>
+					<th>Tổng điểm tuần</th>
+				</tr>
+        </thead>
+        <asp:Repeater runat="server" ID="rpt_Data">
+            <ItemTemplate>
+                <tr>
+                    <td align='center'><%#Eval("CodeDate") == DBNull.Value ? string.Empty : ((DateTime)Eval("CodeDate")).ToString(MyUtility.MyConfig.ShortDateFormat)%></td>
+                    <td align='center'><%#Eval("MarkKQ")%></td>
+                    <td align='center'><%#Eval("MarkBT")%></td>
+                    <td align='center'><%#Eval("MarkGB")%></td>
+                    <td align='center'><%#Eval("MarkTS")%></td>
+                    <td align='center'><%#Eval("MarkTV")%></td>
+                    <td align='center'><%#Eval("ChargeMark")%></td>
+                    <td align='center'><%#Eval("DayMark")%></td>
+                    <td align='center'><%#Eval("WeekMark")%></td>
+                </tr>
+            </ItemTemplate>
+        </asp:Repeater>
     </table>
+
+    <uc1:Admin_Paging ID="Admin_Paging1" runat="server" />
 </asp:Content>

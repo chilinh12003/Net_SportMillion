@@ -544,19 +544,21 @@ select, input, label
 	width:10px;
 	font-size:0;
 	background:url("../Images/Images/Table_TL.png") no-repeat top right;
-	 
+	 padding:0px;
 }
 .Table_TR
 {
 	width:10px;
 	font-size:0;
 	background:url("../Images/Images/Table_TR.png") no-repeat top left;
+    padding:0px;
 }
 .Table_TL_Repeat
 {
 	width:10px;
 	font-size:0;
 	background:url("../Images/Images/Table_TL_Repeat.png") repeat-y top right;
+    padding:0px;
 	 
 }
 .Table_TR_Repeat
@@ -564,6 +566,7 @@ select, input, label
 	width:10px;
 	font-size:0;
 	background:url("../Images/Images/Table_TR_Repeat.png") repeat-y top left;
+    padding:0px;
 }
 .Table_TR_Flag
 {

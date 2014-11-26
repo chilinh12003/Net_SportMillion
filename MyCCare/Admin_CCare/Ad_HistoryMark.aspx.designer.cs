@@ -56,5 +56,23 @@ namespace MyCCare.Admin_CCare {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText tbx_ToDate;
+        
+        /// <summary>
+        /// rpt_Data control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rpt_Data;
+        
+        /// <summary>
+        /// Admin_Paging1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::MyAdmin.Admin_Control.Admin_Paging Admin_Paging1;
     }
 }
