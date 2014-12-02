@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using MyUtility;
+
 namespace MyCCare
 {
     public partial class LogOut : System.Web.UI.Page
@@ -12,7 +12,7 @@ namespace MyCCare
         protected void Page_Load(object sender, EventArgs e)
         {
             Login1.Logout();
-            Response.Redirect(MyConfig.Domain + "/Default.aspx");
+            Response.Redirect(Login1.SSOLink_Private + "/SSO/Logout.aspx");
         }
     }
 }

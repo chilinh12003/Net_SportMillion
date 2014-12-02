@@ -12,9 +12,14 @@ namespace MyCCare
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                Login1.Logout();
+            }
+
             if (!string.IsNullOrEmpty(Login1.GetUserName()))
             {
-                Response.Redirect(MyConfig.Domain+ "/Admin_CCare/Ad_SubInfo.aspx");
+                Response.Redirect(MyConfig.Domain + "/Admin_CCare/Ad_SubInfo.aspx");
             }
         }
     }
