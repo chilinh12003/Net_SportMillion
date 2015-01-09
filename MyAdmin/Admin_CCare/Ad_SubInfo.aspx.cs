@@ -5,14 +5,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
-using MyUtility;
+using MyUtility; using MyBase.MyWeb;
 using MySportMillion;
 using MySportMillion.Service;
 using MySportMillion.Sub;
 
 namespace MyAdmin.Admin_CCare
 {
-    public partial class Ad_SubInfo : System.Web.UI.Page
+    public partial class Ad_SubInfo : MyASPXBase
     {
 
         MOLog mMOLog = new MOLog();

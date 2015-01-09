@@ -4,11 +4,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
-using MyUtility;
+using MyUtility; using MyBase.MyWeb;
 using MySportMillion;
 namespace MyAdmin.Admin
 {
-    public partial class Ad_Permission_Edit : System.Web.UI.Page
+    public partial class Ad_Permission_Edit : MyASPXBase
     {
         public GetRole mGetRole;
         Role mRole = new Role();
@@ -98,7 +98,7 @@ namespace MyAdmin.Admin
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex);
+                mLog.Error(ex);
             }
         }
 
@@ -120,7 +120,7 @@ namespace MyAdmin.Admin
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.CheckPermissionError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.CheckPermissionError, true, ex);
                 return false;
             }
             return true;
@@ -238,7 +238,7 @@ namespace MyAdmin.Admin
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.SaveDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.SaveDataError, true, ex);
             }
         }
 
@@ -250,7 +250,7 @@ namespace MyAdmin.Admin
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.SaveDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.SaveDataError, true, ex);
             }
         }
 
@@ -263,7 +263,7 @@ namespace MyAdmin.Admin
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.LoadDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.LoadDataError, true, ex);
             }
         }
 

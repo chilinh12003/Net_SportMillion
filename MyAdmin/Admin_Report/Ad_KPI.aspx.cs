@@ -5,7 +5,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
-using MyUtility;
+using MyUtility; using MyBase.MyWeb;
 using MySportMillion;
 using MySportMillion.Service;
 using MySportMillion.Sub;
@@ -13,7 +13,7 @@ using MySportMillion.Sub;
 using System.ComponentModel;
 namespace MyAdmin.Admin_Report
 {
-    public partial class Ad_KPI : System.Web.UI.Page
+    public partial class Ad_KPI : MyASPXBase
     {
         public enum KPIType
         {
@@ -64,7 +64,7 @@ namespace MyAdmin.Admin_Report
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.CheckPermissionError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.CheckPermissionError, true, ex);
                 return false;
             }
             return true;
@@ -92,7 +92,7 @@ namespace MyAdmin.Admin_Report
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.LoadDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.LoadDataError, true, ex);
             }
             if (IsRedirect)
             {
@@ -121,7 +121,7 @@ namespace MyAdmin.Admin_Report
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.LoadDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.LoadDataError, true, ex);
             }
         }
 
@@ -227,7 +227,7 @@ namespace MyAdmin.Admin_Report
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.LoadDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.LoadDataError, true, ex);
             }
 
         }

@@ -5,10 +5,10 @@ using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using MyUtility;
+using MyUtility; using MyBase.MyWeb;
 namespace MyCCare
 {
-    public partial class Login : System.Web.UI.Page
+    public partial class Login : MyASPXBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {

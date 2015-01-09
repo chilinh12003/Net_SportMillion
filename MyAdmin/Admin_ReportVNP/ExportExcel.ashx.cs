@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.SessionState;
-using MyUtility;
+using MyUtility; using MyBase.MyWeb;
 using MySetting;
 using System.Text;
 using System.Data;
@@ -171,6 +171,7 @@ namespace MyAdmin.Admin_ReportVNP
     /// </summary>
     public class ExportExcel : IHttpHandler, IRequiresSessionState
     {
+        MyLog mLog = new MyLog(typeof(ExportExcel));
         string Para = string.Empty;
         ExportExcelObject mEPObject = new ExportExcelObject();
 
@@ -191,7 +192,7 @@ namespace MyAdmin.Admin_ReportVNP
             }
             catch(Exception ex)
             {
-                MyLogfile.WriteLogError(ex);
+                mLog.Error(ex);
                 context.Response.Write(GetData("Defaul", "Yeu cau export excel khong hop le").ToString());
             }
         }

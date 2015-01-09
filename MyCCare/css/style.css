@@ -41,7 +41,7 @@ input.textbox {background:url('../images/bg_textbox.jpg') repeat-x 0px 0px;borde
 select.dropdownlist {border:1pt solid #ccc; padding:1px}
 .btn_search {height:22px;border:1pt solid #B5B8C8;background:url('../images/btn_search.jpg') no-repeat 5px center #FAFAFA;padding-left:20px;border-radius:4px;padding-right:10px;cursor:pointer}
 .btnsearch2dong {padding:15px 20px 15px 29px; height:auto;background-position:10px center}
-.btn_add {height:22px;line-height:22px;border:1pt solid #B5B8C8;background:url('../images/addnew.gif') no-repeat 5px center #FAFAFA;padding-left:20px;border-radius:4px;padding-right:10px;cursor:pointer}
+.btn_add {height:22px;line-height:22px;border:1pt solid #B5B8C8;background:url('../images/addnew.gif') no-repeat 5px center #FAFAFA;padding-left:10px;border-radius:4px;padding-right:10px;cursor:pointer}
 .btn_delete {height:22px;line-height:22px;border:1pt solid #B5B8C8;background:url('../images/del_file.png') no-repeat 5px center #FAFAFA;padding-left:20px;border-radius:4px;padding-right:10px;cursor:pointer}
 .btn_save {height:22px;line-height:22px;border:1pt solid #B5B8C8;background:url('../images/nav_save_btn.jpg') no-repeat 5px center #FAFAFA;padding-left:20px;border-radius:4px;padding-right:10px;cursor:pointer}
 .btn_cancel {height:22px;line-height:22px;border:1pt solid #B5B8C8;background:url('../images/cancel.gif') no-repeat 5px center #FAFAFA;padding-left:20px;border-radius:4px;padding-right:10px;cursor:pointer}
@@ -208,4 +208,32 @@ input[type="color"]:focus,
     -moz-hyphens: auto;
     hyphens: auto;
     white-space:nowrap;
+}
+
+
+.guide
+{
+   
+}
+.guide table
+{
+    
+}
+.guide table th
+{
+    border: 1px solid #B5B8C8;
+    text-align:center;
+}
+.guide table td
+{
+    padding:5px;
+    border: 1px solid #B5B8C8;
+    text-align:center;
+}
+.mark
+{
+    font-weight:bold;
+    color:red;
+    margin-left:5px;
+    margin-right:10px;
 }

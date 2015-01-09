@@ -5,7 +5,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
-using MyUtility;
+using MyUtility; using MyBase.MyWeb;
 using MySportMillion;
 using MySportMillion.Service;
 using MySportMillion.Sub;
@@ -14,7 +14,7 @@ using System.IO;
 using MySportMillion.Gateway;
 namespace MyAdmin.Admin_CCare
 {
-    public partial class Ad_ResendMT : System.Web.UI.Page
+    public partial class Ad_ResendMT : MyASPXBase
     {
         public GetRole mGetRole;
         public int PageIndex = 1;
@@ -53,7 +53,7 @@ namespace MyAdmin.Admin_CCare
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.CheckPermissionError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.CheckPermissionError, true, ex);
                 return false;
             }
             return true;
@@ -81,7 +81,7 @@ namespace MyAdmin.Admin_CCare
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.LoadDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.LoadDataError, true, ex);
             }
             if (IsRedirect)
             {
@@ -107,7 +107,7 @@ namespace MyAdmin.Admin_CCare
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.LoadDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.LoadDataError, true, ex);
             }
         }
 
@@ -161,7 +161,7 @@ namespace MyAdmin.Admin_CCare
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.SeachError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.SeachError, true, ex);
             }
         }
 
@@ -212,7 +212,7 @@ namespace MyAdmin.Admin_CCare
             }
             finally
             {
-                MyLogfile.WriteLogData("_Resend_MT", "UserID:" + Member.MemberID().ToString() + "|USER_ID:" + USER_ID + "|COMMAND_CODE:" + COMMAND_CODE + "|REQUEST_ID:" + REQUEST_ID + "|INFO:" + MTContent + "|Result:" + Result.ToString());
+                mLog.Debug("_Resend_MT", "UserID:" + Member.MemberID().ToString() + "|USER_ID:" + USER_ID + "|COMMAND_CODE:" + COMMAND_CODE + "|REQUEST_ID:" + REQUEST_ID + "|INFO:" + MTContent + "|Result:" + Result.ToString());
             }
         }
 

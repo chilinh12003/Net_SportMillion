@@ -20,6 +20,7 @@
         <ul>
         <li><a href='Ad_RegDereg.aspx' >Đăng ký / Hủy / Reset</a></li>
         <li><a href='Ad_ResendMT.aspx' class='select'>Bù nội dung</a></li>
+        <li><a href='Ad_AddMark.aspx'>Bù điểm</a></li>
         <li><a href='Ad_ConfigService.aspx'>Cài đặt dịch vụ</a></li>
             </ul>
     </div>

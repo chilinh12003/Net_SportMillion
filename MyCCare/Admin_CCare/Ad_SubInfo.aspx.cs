@@ -5,7 +5,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
-using MyUtility;
+using MyUtility; using MyBase.MyWeb;
 using MySportMillion;
 using MySportMillion.Service;
 using MySportMillion.Sub;
@@ -13,7 +13,7 @@ using MySportMillion.Sub;
 
 namespace MyCCare.Admin_CCare
 {
-    public partial class Ad_SubInfo : System.Web.UI.Page
+    public partial class Ad_SubInfo : MyASPXBase
     {
         public int PageIndex = 1;
         Subscriber mSub = new Subscriber();
@@ -38,7 +38,7 @@ namespace MyCCare.Admin_CCare
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.LoadDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.LoadDataError, true, ex);
             }
         }
 
@@ -152,7 +152,7 @@ namespace MyCCare.Admin_CCare
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.SeachError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.SeachError, true, ex);
             }
         }
 

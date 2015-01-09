@@ -9,6 +9,8 @@ namespace MySportMillion
 {
     public class MemberLog
     {
+        static MyLog mLog = new MyLog(typeof(MemberLog));
+
         public enum ActionType
         {
             Insert = 1,
@@ -191,7 +193,7 @@ namespace MySportMillion
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex);
+                mLog.Error(ex);
                 return false;
             }
         }
@@ -237,7 +239,7 @@ namespace MySportMillion
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex);
+                mLog.Error(ex);
                 return false;
             }
         }

@@ -36,11 +36,11 @@ namespace MyWap.Page
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex);
+                mLog.Error(ex);
             }
             finally
             {
-                MyLogfile.WriteLogData("CHECK_CODE_GET_MSISDN", "GetMSISDN_ToURL:" + GetMSISDN_ToURL);
+                mLog.Debug("CHECK_CODE_GET_MSISDN", "GetMSISDN_ToURL:" + GetMSISDN_ToURL);
             }
             Response.Redirect(GetMSISDN_URL + HttpUtility.UrlEncode(Para_Encrypt), false);
         }

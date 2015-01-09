@@ -53,7 +53,7 @@
     <table class='tbl_style'>
         <thead>
             <tr>
-                <th>Thời gian hệ thống nhận MO</th>
+                <th>Thời gian nhận</th>
                 <th>Nội dung MO</th>
                 <th>Trạng thái</th>
                 <th>Cước phí MO</th>

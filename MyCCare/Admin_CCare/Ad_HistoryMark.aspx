@@ -48,19 +48,39 @@
             </tr>
         </table>
     </div>
+    <div class='fillterarea'>
+        <table style="line-height:20px;">
+            <tr><td colspan="2"><h3>Thông tin điểm hiện tại của Thuê bao</h3></td>
+            </tr>
+            <tr>
+                <td style="width:110px;">Điểm gia hạn:</td>
+                <td class="mark"><%=this.ChargeMark.ToString() %></td>
+                
+            </tr>     
+            <tr>
+                 <td>Điểm dự đoán:</td>
+                <td class="mark">(Điểm dự đoán sẽ được cập nhật vào sáng hôm sau)</td>
+            </tr>       
+            <tr>
+               
+                <td>Tổng điểm Tuần:</td>
+                <td class="mark"><%=this.WeekMark.ToString() %></td>
+            </tr>
+        </table>
+    </div>
     <table class='tbl_style'>
         <thead>
-           <tr>
-					<th>Ngày</th>
-                    <th>Điểm dự đoán Kết Quả</th>
-                    <th>Điểm dự đoán Bàn Thắng</th>
-                    <th>Điểm dự đoán Giữ Bóng</th>
-                    <th>Điểm dự đoán Tỷ Số</th>
-                    <th>Điểm dự đoán Thẻ Vàng</th>
-					<th>Điểm gia hạn</th>
-					<th>Tổng điểm ngày</th>
-					<th>Tổng điểm tuần</th>
-				</tr>
+            <tr>
+                <th>Ngày</th>
+                <th>Điểm dự đoán Kết Quả</th>
+                <th>Điểm dự đoán Bàn Thắng</th>
+                <th>Điểm dự đoán Giữ Bóng</th>
+                <th>Điểm dự đoán Tỷ Số</th>
+                <th>Điểm dự đoán Thẻ Vàng</th>
+                <th>Điểm gia hạn</th>
+                <th>Tổng điểm ngày</th>
+                <th>Tổng điểm tuần</th>
+            </tr>
         </thead>
         <asp:Repeater runat="server" ID="rpt_Data">
             <ItemTemplate>

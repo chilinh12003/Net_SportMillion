@@ -7,6 +7,7 @@ namespace MySetting
 {
     public class AdminSetting
     {
+      static  MyLog mLog = new MyLog(typeof(AdminSetting));
 
         public enum ListPage
         {
@@ -292,12 +293,10 @@ namespace MySetting
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex);
+                mLog.Error(ex);
                 return  "Chart_0.png";
             }
         }
-
-
 
         /// <summary>
         /// Lưu MSISDN xuống session
@@ -320,7 +319,7 @@ namespace MySetting
                 }
                 catch (Exception ex)
                 {
-                    MyLogfile.WriteLogError(ex);
+                    mLog.Error(ex);
                     return string.Empty;
                 }
 
@@ -333,7 +332,7 @@ namespace MySetting
                 }
                 catch (Exception ex)
                 {
-                    MyLogfile.WriteLogError(ex);
+                    mLog.Error(ex);
                 }
 
             }
@@ -357,7 +356,7 @@ namespace MySetting
                 }
                 catch (Exception ex)
                 {
-                    MyLogfile.WriteLogError(ex);
+                    mLog.Error(ex);
                     return MyConfig.StartDayOfMonth.ToString(MyConfig.ShortDateFormat);
                 }
 
@@ -370,7 +369,7 @@ namespace MySetting
                 }
                 catch (Exception ex)
                 {
-                    MyLogfile.WriteLogError(ex);
+                    mLog.Error(ex);
                 }
 
             }
@@ -394,7 +393,7 @@ namespace MySetting
                 }
                 catch (Exception ex)
                 {
-                    MyLogfile.WriteLogError(ex);
+                    mLog.Error(ex);
                     return DateTime.Now.ToString(MyConfig.ShortDateFormat);
                 }
 
@@ -407,7 +406,7 @@ namespace MySetting
                 }
                 catch (Exception ex)
                 {
-                    MyLogfile.WriteLogError(ex);
+                    mLog.Error(ex);
                 }
 
             }

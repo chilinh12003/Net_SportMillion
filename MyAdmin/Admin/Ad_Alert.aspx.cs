@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using MyUtility;
+using MyUtility; using MyBase.MyWeb;
 namespace MyAdmin.Admin
 {
-    public partial class Ad_Alert : System.Web.UI.Page
+    public partial class Ad_Alert : MyASPXBase
     {
         public string str_Alert = string.Empty;
         public int iAlertType = 0;

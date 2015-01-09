@@ -5,7 +5,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
-using MyUtility;
+using MyUtility; using MyBase.MyWeb;
 using MySportMillion;
 using MySportMillion.Service;
 using MySportMillion.Sub;
@@ -15,7 +15,7 @@ using MySportMillion.Gateway;
 
 namespace MyAdmin.Admin_CCare
 {
-    public partial class Ad_Register : System.Web.UI.Page
+    public partial class Ad_Register : MyASPXBase
     {
         public GetRole mGetRole;
         public int PageIndex = 1;
@@ -36,7 +36,7 @@ namespace MyAdmin.Admin_CCare
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.CheckPermissionError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.CheckPermissionError, true, ex);
                 return false;
             }
             return true;
@@ -64,7 +64,7 @@ namespace MyAdmin.Admin_CCare
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.LoadDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.LoadDataError, true, ex);
             }
             if (IsRedirect)
             {
@@ -88,7 +88,7 @@ namespace MyAdmin.Admin_CCare
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.LoadDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.LoadDataError, true, ex);
             }
         }
 
@@ -138,11 +138,11 @@ namespace MyAdmin.Admin_CCare
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.SaveDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.SaveDataError, true, ex);
             }
             finally
             {
-                MyLogfile.WriteLogData("Register", "CommandCode:" + CommandCode + "|MSISDN:" + MSISDN + "|Signature:" + Signature + "|Result:" + Result);
+                mLog.Debug("Register", "CommandCode:" + CommandCode + "|MSISDN:" + MSISDN + "|Signature:" + Signature + "|Result:" + Result);
             }
         }
 
@@ -192,11 +192,11 @@ namespace MyAdmin.Admin_CCare
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.SaveDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.SaveDataError, true, ex);
             }
             finally
             {
-                MyLogfile.WriteLogData("Register", "CommandCode:" + CommandCode + "|MSISDN:" + MSISDN + "|Signature:" + Signature + "|Result:" + Result);
+                mLog.Debug("Register", "CommandCode:" + CommandCode + "|MSISDN:" + MSISDN + "|Signature:" + Signature + "|Result:" + Result);
             }
         }
 
@@ -239,11 +239,11 @@ namespace MyAdmin.Admin_CCare
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.LoadDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.LoadDataError, true, ex);
             }
             finally
             {
-                //MyLogfile.WriteLogData("Register", "CommandCode:" + CommandCode + "|MSISDN:" + MSISDN + "|RequestID:" + RequestID + "|Result:" + Result);
+                //mLog.Debug("Register", "CommandCode:" + CommandCode + "|MSISDN:" + MSISDN + "|RequestID:" + RequestID + "|Result:" + Result);
             }
         }
     }

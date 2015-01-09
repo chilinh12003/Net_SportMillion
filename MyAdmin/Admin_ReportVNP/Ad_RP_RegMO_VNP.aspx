@@ -98,7 +98,7 @@
                         <td><%#((double)Eval("MODeregSuccess")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("MODeregFail")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("MODeregError")).ToString(MyUtility.MyConfig.IntFormat)%></td>
-                        <td><%#(((double)Eval("MODeregSuccess")/(double)Eval("MODeregConfirm")) *100 ).ToString(MyUtility.MyConfig.DoubleFormat)%></td>
+                        <td><%#(((double)Eval("MODeregSuccess")/((double)Eval("MODeregTotal") - (double)Eval("MODeregConfirm"))) *100 ).ToString(MyUtility.MyConfig.DoubleFormat)%></td>
                         
                         <td><%#((double)Eval("MOAnswerTotal")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("MOAnswerSuccess")).ToString(MyUtility.MyConfig.IntFormat)%></td>
@@ -138,7 +138,7 @@
                         <td><%#((double)Eval("MODeregSuccess")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("MODeregFail")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("MODeregError")).ToString(MyUtility.MyConfig.IntFormat)%></td>
-                        <td><%#(((double)Eval("MODeregSuccess")/(double)Eval("MODeregConfirm")) *100 ).ToString(MyUtility.MyConfig.DoubleFormat)%></td>
+                        <td><%#(((double)Eval("MODeregSuccess")/((double)Eval("MODeregTotal") - (double)Eval("MODeregConfirm"))) *100 ).ToString(MyUtility.MyConfig.DoubleFormat)%></td>
                         
                         <td><%#((double)Eval("MOAnswerTotal")).ToString(MyUtility.MyConfig.IntFormat)%></td>
                         <td><%#((double)Eval("MOAnswerSuccess")).ToString(MyUtility.MyConfig.IntFormat)%></td>

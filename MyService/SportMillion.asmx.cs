@@ -26,6 +26,8 @@ namespace MyService
     // [System.Web.Script.Services.ScriptService]
     public class SportMillion : System.Web.Services.WebService
     {
+        MyLog mLog = new MyLog(typeof(SportMillion));
+
         Subscriber mSub = new Subscriber();
         UnSubscriber mUnSub = new UnSubscriber();
         sms_receive_queue mQuere = new sms_receive_queue(MySetting.AdminSetting.MySQLConnection_Gateway);
@@ -111,7 +113,7 @@ namespace MyService
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex);
+                mLog.Error(ex);
                 return mResult;
             }
         }
@@ -156,13 +158,13 @@ namespace MyService
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex);
+                mLog.Error(ex);
                 mResult = REGResult.Error;
                 return BuildResult(mResult);
             }
             finally
             {
-                MyLogfile.WriteLogData("CHECK-->PartnerKey:" + mSig.PartnerKey + "|MSISDN:" + mSig.MSISDN + "|UniqueID:" + mSig.UniqueID + "|Signature:" + Signature + "|Result:" + BuildResult(mResult));
+                 mLog.Info("CHECK-->PartnerKey:" + mSig.PartnerKey + "|MSISDN:" + mSig.MSISDN + "|UniqueID:" + mSig.UniqueID + "|Signature:" + Signature + "|Result:" + BuildResult(mResult));
             }
 
         }
@@ -209,13 +211,13 @@ namespace MyService
             catch (Exception ex)
             {
 
-                MyLogfile.WriteLogError(ex);
+                mLog.Error(ex);
                 mResult = REGResult.Error;
                 return BuildResult(mResult);
             }
             finally
             {
-                MyLogfile.WriteLogData("REQUEST-->PartnerKey:" + mSig.PartnerKey + "|MSISDN:" + mSig.MSISDN + "|UniqueID:" + mSig.UniqueID + "|ChannelType:" + ChannelType.ToString() + "|Signature:" + Signature + "|Result:" + BuildResult(mResult));
+                mLog.Info("REQUEST-->PartnerKey:" + mSig.PartnerKey + "|MSISDN:" + mSig.MSISDN + "|UniqueID:" + mSig.UniqueID + "|ChannelType:" + ChannelType.ToString() + "|Signature:" + Signature + "|Result:" + BuildResult(mResult));
             }
 
         }
@@ -264,13 +266,13 @@ namespace MyService
             catch (Exception ex)
             {
 
-                MyLogfile.WriteLogError(ex);
+                mLog.Error(ex);
                 mResult = REGResult.Error;
                 return BuildResult(mResult);
             }
             finally
             {
-                MyLogfile.WriteLogData("REQUEST-->PartnerKey:" + mSig.PartnerKey + "|MSISDN:" + mSig.MSISDN + "|UniqueID:" + mSig.UniqueID + "|ChannelType:" + ChannelType.ToString() + "|Signature:" + Signature + "|Result:" + BuildResult(mResult));
+                 mLog.Info("REQUEST-->PartnerKey:" + mSig.PartnerKey + "|MSISDN:" + mSig.MSISDN + "|UniqueID:" + mSig.UniqueID + "|ChannelType:" + ChannelType.ToString() + "|Signature:" + Signature + "|Result:" + BuildResult(mResult));
             }
 
         }
@@ -285,7 +287,7 @@ namespace MyService
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex);
+                mLog.Error(ex);
             }
 
             return mTable_Return;
@@ -384,13 +386,13 @@ namespace MyService
             catch (Exception ex)
             {
 
-                MyLogfile.WriteLogError(ex);
+                mLog.Error(ex);
                 mResult = REGResult.Error;
                 return BuildResult(mResult);
             }
             finally
             {
-                MyLogfile.WriteLogData("REQUEST-->PartnerKey:" + mSig.PartnerKey + "|MSISDN:" + mSig.MSISDN + "|UniqueID:" + mSig.UniqueID + "|ChannelType:" + mChannel.ToString() + "|Signature:" + Signature + "|Result:" + BuildResult(mResult));
+                 mLog.Info("REQUEST-->PartnerKey:" + mSig.PartnerKey + "|MSISDN:" + mSig.MSISDN + "|UniqueID:" + mSig.UniqueID + "|ChannelType:" + mChannel.ToString() + "|Signature:" + Signature + "|Result:" + BuildResult(mResult));
             }
         }
 
@@ -434,13 +436,13 @@ namespace MyService
             catch (Exception ex)
             {
 
-                MyLogfile.WriteLogError(ex);
+                mLog.Error(ex);
                 mResult = REGResult.Error;
                 return BuildResult(mResult);
             }
             finally
             {
-                MyLogfile.WriteLogData("REQUEST-->PartnerKey:" + mSig.PartnerKey + "|MSISDN:" + mSig.MSISDN + "|UniqueID:" + mSig.UniqueID + "|ChannelType:" + mChannel.ToString() + "|Signature:" + Signature + "|Result:" + BuildResult(mResult));
+                 mLog.Info("REQUEST-->PartnerKey:" + mSig.PartnerKey + "|MSISDN:" + mSig.MSISDN + "|UniqueID:" + mSig.UniqueID + "|ChannelType:" + mChannel.ToString() + "|Signature:" + Signature + "|Result:" + BuildResult(mResult));
             }
         }
 
@@ -543,12 +545,12 @@ namespace MyService
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex);
+                mLog.Error(ex);
             }
             finally
             {
-                MyLogfile.WriteLogData("POST_XML_VNP", "REQUEST XML --> " + XMLRquest);
-                MyLogfile.WriteLogData("POST_XML_VNP", "RESPONSE XML --> " + XMLResponse);
+                mLog.Info( "POST_XML_VNP REQUEST XML --> " + XMLRquest);
+                mLog.Info( "POST_XML_VNP RESPONSE XML --> " + XMLResponse);
 
                 if (req != null) req.GetRequestStream().Close();
                 if (rsp != null) rsp.GetResponseStream().Close();

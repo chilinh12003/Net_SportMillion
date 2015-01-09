@@ -19,6 +19,7 @@
         <ul>
         <li><a href='Ad_RegDereg.aspx' class='select'>Đăng ký / Hủy / Reset</a></li>
         <li><a href='Ad_ResendMT.aspx'>Bù nội dung</a></li>
+        <li><a href='Ad_AddMark.aspx' >Bù điểm</a></li>
         <li><a href='Ad_ConfigService.aspx'>Cài đặt dịch vụ</a></li>
             </ul>
     </div>
@@ -68,7 +69,6 @@
                         <td></td>
                         <td colspan='2'>
                             <asp:LinkButton runat="server" Enabled="<%#MyCCare.Login1.IsAdmin() %>"   CssClass="btnintbl" CommandArgument='<%#Eval("MSISDN") %>' ID="lbtn_Reg" Text="Đăng ký" OnClick="tbx_Reg_Click" OnClientClick='<%# "return ConfirmReg(\""+Eval("MSISDN")+"\",\"Triệu phú thể thao\");"%>'><span class='icondk'>Đăng ký</span></asp:LinkButton>
-
                         </td>
                     </tr>
                 </ItemTemplate>
@@ -77,6 +77,16 @@
     </table>
 
     <uc1:Admin_Paging ID="Admin_Paging1" runat="server" ShowPageSize="false" />
+    	<h4 class='mb10'>Hủy theo file</h4>
+				<table>
+					<tr>
+						<td>Gói cước:</td>
+						<td><select class="dropdownlist" style="width:150px"><option>-- Chọn gói cước --</option></select></td>
+						<td align='right' width='180'>Chọn file (File mẫu <a href="../u/FileMau.txt">FileMau.txt</a>):</td>
+						<td> <input type="file" runat="server" id="file_UploadText" /></td>
+                        <td><asp:LinkButton runat="server"  CssClass="btnintbl" ID="lbtn_DeregFile"  Text="Hủy" OnClick="lbtn_DeregFile_Click" OnClientClick='<%# "return ConfirmDereg_File();"%>'><span class='iconhuy'>Hủy</span></asp:LinkButton></td>
+					</tr>
+				</table>
     <script language="javascript" type="text/javascript">
         function ConfirmDereg(MSISDN, ServiceName) {
             debugger;

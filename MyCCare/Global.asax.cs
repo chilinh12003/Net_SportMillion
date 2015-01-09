@@ -19,7 +19,6 @@ namespace MyCCare
         {
             //Session["Username"] = "admin_vas";
             //Session["Role"] = "2";
-
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

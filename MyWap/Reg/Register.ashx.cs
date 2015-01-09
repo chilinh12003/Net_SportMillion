@@ -42,11 +42,11 @@ namespace MyWap.Reg
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex);
+                mLog.Error(ex);
             }
             finally
             {
-                MyLogfile.WriteLogData("REGIETER_GET_MSISDN", "GetMSISDN_ToURL:" + GetMSISDN_ToURL + "|KeywordID:" + KeywordID.ToString());
+                mLog.Debug("REGIETER_GET_MSISDN", "GetMSISDN_ToURL:" + GetMSISDN_ToURL + "|KeywordID:" + KeywordID.ToString());
             }
             Response.Redirect(GetMSISDN_URL + HttpUtility.UrlEncode(Para_Encrypt), false);
         }

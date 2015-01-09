@@ -8,12 +8,12 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
-using MyUtility;
+using MyUtility; using MyBase.MyWeb;
 using MySportMillion;
 using MyUtility.UploadFile;
 namespace Administrator.Admin
 {
-    public partial class Ad_Member_Edit : System.Web.UI.Page
+    public partial class Ad_Member_Edit : MyASPXBase
     {
         public GetRole mGetRole;
         Member mMember = new Member();
@@ -55,7 +55,7 @@ namespace Administrator.Admin
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.CheckPermissionError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.CheckPermissionError, true, ex);
                 return false;
             }
             return true;
@@ -83,7 +83,7 @@ namespace Administrator.Admin
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.LoadDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.LoadDataError, true, ex);
             }
             if (IsRedirect)
             {
@@ -152,7 +152,7 @@ namespace Administrator.Admin
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.LoadDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.LoadDataError, true, ex);
             }
 
         }
@@ -203,7 +203,8 @@ namespace Administrator.Admin
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.UploadFileError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.UploadFileError, true, ex);
+                
             }
         }
 
@@ -332,7 +333,7 @@ namespace Administrator.Admin
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.SaveDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.SaveDataError, true, ex);
             }
         }
 
@@ -344,7 +345,7 @@ namespace Administrator.Admin
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.SaveDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.SaveDataError, true, ex);
             }
         }
     }

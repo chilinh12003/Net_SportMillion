@@ -8,14 +8,16 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using System.Web;
 using System.Web.SessionState;
-using MyUtility;
+using MyUtility; using MyBase.MyWeb;
 namespace MyCCare
 {
     /// <summary>
     /// Summary description for Login1
     /// </summary>
-    public class Login1 : IHttpHandler, IRequiresSessionState
+    public class Login1 : MyASHXBase
     {
+        public static MyLog mLog = new MyLog(typeof(Login1));
+
         /// <summary>
         /// Nếu đã đăng nhập thì trả về true. nếu chưa thì chuyển đến trang login
         /// </summary>
@@ -92,7 +94,7 @@ namespace MyCCare
                 }
                 catch (Exception ex)
                 {
-                    MyLogfile.WriteLogError(ex);
+                    mLog.Error(ex);
                     return "http://10.211.0.250:8080";
                 }
             }
@@ -116,35 +118,35 @@ namespace MyCCare
                 }
                 catch (Exception ex)
                 {
-                    MyLogfile.WriteLogError(ex);
                     return "http://10.211.0.250:8080";
                 }
             }
         }
 
-        public void ProcessRequest(HttpContext context)
+        public override void WriteHTML()
         {
             string token = string.Empty;
             int ketqua = -1;
             try
             {
-                context.Response.ContentType = "text/plain";
-                token = context.Request.QueryString["token"];
+                Response.ContentType = "text/plain";
+                token = Request.QueryString["token"];
 
                 ketqua = ValidateToken(token);
 
-                context.Response.Write(ketqua);
+                Response.Write(ketqua);
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex);
+                mLog.Error(ex);
             }
             finally
             {
-                MyLogfile.WriteLogData("Request-->token:" + token + "|Ketqua:" + ketqua.ToString());
+                mLog.Debug("Request-->token:" + token + "|Ketqua:" + ketqua.ToString());
             }
 
         }
+       
 
         /// <summary>
         /// Luốn luôn kiểm tra tocken xem còn xác thực hay không
@@ -171,7 +173,7 @@ namespace MyCCare
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex);
+                mLog.Error(ex);
                 return false;
             }
         }
@@ -188,14 +190,14 @@ namespace MyCCare
                 string sURL = SSOLink_Private + "/SSO/SSOService.svc/user/ValidateTokenUrl?token=" + token + "<@-@>10020";
                 var client = new WebClient();
                 string html = client.DownloadString(sURL);
-                MyLogfile.WriteLogData("html:" + html);
+                mLog.Debug("html:" + html);
                 string role = "";
                 dynamic data = JsonConvert.DeserializeObject(html);
                 var user = data.ValidateTokenUrlResult.Username;
                 var SessionToken = data.ValidateTokenUrlResult.SessionToken;
 
-                MyLogfile.WriteLogData("user:" + user);
-                MyLogfile.WriteLogData("SessionToken:" + SessionToken);
+                mLog.Debug("user:" + user);
+                mLog.Debug("SessionToken:" + SessionToken);
                 // gán session đănng nhập cho user
                 AdminInfo items = new AdminInfo();
 
@@ -212,8 +214,8 @@ namespace MyCCare
                         role = CheckRole(user.Value);
                         items.Username = user.Value;
                         items.Role = role;
-                        MyLogfile.WriteLogData("Username:" + items.Username.ToString());
-                        MyLogfile.WriteLogData("role:" + items.Role.ToString());
+                        mLog.Debug("Username:" + items.Username.ToString());
+                        mLog.Debug("role:" + items.Role.ToString());
                         HttpContext.Current.Session.Add("Username", items.Username);
                         HttpContext.Current.Session.Add("Role", items.Role);
                         ketqua = 1;
@@ -225,9 +227,9 @@ namespace MyCCare
             catch (Exception ex)
             {
                 ketqua = 0;
-                MyLogfile.WriteLogError(ex);
+                mLog.Error(ex);
             }
-            MyLogfile.WriteLogData("ketqua:" + ketqua.ToString());
+            mLog.Debug("ketqua:" + ketqua.ToString());
             return ketqua;
         }
         //hàm kiểm tra quyền
@@ -236,12 +238,10 @@ namespace MyCCare
             string Result = string.Empty;
             try
             {
-
-
                 string sURLRole = SSOLink_Private + "/Role/ServiceRole.svc/user/CheckRole?username=" + Username;
                 var client = new WebClient();
                 string role = client.DownloadString(sURLRole);
-                MyLogfile.WriteLogData("Role:" + role);
+                mLog.Debug("Role:" + role);
                 dynamic data = JsonConvert.DeserializeObject(role);
                 long res = data.CheckRoleResult.Value;
 
@@ -250,18 +250,11 @@ namespace MyCCare
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex);
+                mLog.Error(ex);
             }
             return Result;
         }
 
-        public bool IsReusable
-        {
-            get
-            {
-                return false;
-            }
-        }
 
         public class AdminInfo
         {

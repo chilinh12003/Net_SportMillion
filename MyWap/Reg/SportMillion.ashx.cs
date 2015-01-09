@@ -19,40 +19,6 @@ namespace MyWap.Reg
 
         Keyword mKeyword = new Keyword("strConnection_SportMillion");
 
-        private void _RedirectWebsite()
-        {
-            try
-            {
-                string ListRedirectWeb = MyConfig.GetKeyInConfigFile("ListRedirectWeb");
-                if (!string.IsNullOrEmpty(ListRedirectWeb))
-                {
-                    string[] arr_url = ListRedirectWeb.Split('|');
-
-                    if (arr_url.Length > 1)
-                    {
-                        Random mRand = new Random();
-                        int mRand_Number = mRand.Next(0, arr_url.Length);
-
-                        Response.Redirect(arr_url[mRand_Number]);
-                        return;
-                    }
-                    else if (arr_url.Length == 1)
-                    {
-                        Response.Redirect(arr_url[0]);
-                        return;
-                    }
-                }
-               
-            }
-            catch (Exception ex)
-            {
-                MyLogfile.WriteLogError(ex);
-
-            }
-            Response.Redirect("http://thethao.vnexpress.net/");
-            return;
-        }
-
         public override void WriteHTML()
         {
             string Para = string.Empty;
@@ -67,7 +33,7 @@ namespace MyWap.Reg
             try
             {
                 MSISDN_VNP = string.Empty;
-                Para = "BhqUN3Fs0n91DKn2tCAUvo5CVs47MVDhdqTID4vVjfE2fJ7faCgkQEhBaKrdu6oWbWxdLexJzJ2RPgGtPPIyCw==";//Request.QueryString["para"];
+                Para = Request.QueryString["para"];
 
                 MyLoadHeader mHeader = new MyLoadHeader();
                 Write(mHeader.GetHTML());
@@ -198,12 +164,12 @@ namespace MyWap.Reg
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError("_Error", ex, false, MyNotice.EndUserError.LoadDataError, "Chilinh");
+                mLog.Error(ex);
                 Write(MyNotice.EndUserError.LoadDataError);
             }
             finally
             {
-                MyLogfile.WriteLogData("REGISTER", "REGISTER INFO: PartnerID:" + PartnerID.ToString() + "|Keyword:" + Keyword + "|MSISDN:" + MSISDN_VNP + "|ErrorCode:" + ErrorCode + "|ErrorDesc:" + ErrorDesc);
+                mLog.Debug("REGISTER", "REGISTER INFO: PartnerID:" + PartnerID.ToString() + "|Keyword:" + Keyword + "|MSISDN:" + MSISDN_VNP + "|ErrorCode:" + ErrorCode + "|ErrorDesc:" + ErrorDesc);
                 MyLoadFooter mFooter = new MyLoadFooter();
                 Write(mFooter.GetHTML());
             }

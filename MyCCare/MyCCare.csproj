@@ -40,7 +40,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MyUtility">
+    <Reference Include="MyBase">
+      <HintPath>..\..\MyLibrary\MyBase\bin\Debug\MyBase.dll</HintPath>
+    </Reference>
+    <Reference Include="MyUtility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\MyLibrary\MyUtility\bin\Debug\MyUtility.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -66,6 +70,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin_CCare\Ad_AddMark.aspx" />
     <Content Include="Admin_CCare\Ad_ConfigService.aspx" />
     <Content Include="Admin_CCare\Ad_HistoryCharge.aspx" />
     <Content Include="Admin_CCare\Ad_HistoryMark.aspx" />
@@ -174,9 +179,21 @@
     <Content Include="Templates\GUI - Tra cứu sử dụng dịch vụ - Tra cứu mã dự thưởng - Tuan.html" />
     <Content Include="Templates\GUI - Tra cứu sử dụng dịch vụ - Tra cứu mã dự thưởng.html" />
     <Content Include="Templates\GUI - Tra cứu thuê bao.html" />
-    <Content Include="Web.config" />
+    <Content Include="u\FileMau.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin_CCare\Ad_AddMark.aspx.cs">
+      <DependentUpon>Ad_AddMark.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_CCare\Ad_AddMark.aspx.designer.cs">
+      <DependentUpon>Ad_AddMark.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin_CCare\Ad_ConfigService.aspx.cs">
       <DependentUpon>Ad_ConfigService.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

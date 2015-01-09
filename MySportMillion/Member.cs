@@ -14,6 +14,8 @@ namespace MySportMillion
     /// </summary>
     public class Member
     {
+        static MyLog mLog = new MyLog(typeof(Member));
+
         MyExecuteData mExec = new MyExecuteData();
         MyGetData mGet = new MyGetData();
 
@@ -126,7 +128,7 @@ namespace MySportMillion
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex);
+                mLog.Error(ex);
                 return false;
             }
         }
@@ -206,7 +208,7 @@ namespace MySportMillion
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex);
+                mLog.Error(ex);
                 return 0;
             }
         }      

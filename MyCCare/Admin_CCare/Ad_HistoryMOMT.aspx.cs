@@ -5,14 +5,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
-using MyUtility;
+using MyUtility; using MyBase.MyWeb;
 using MySportMillion;
 using MySportMillion.Service;
 using MySportMillion.Sub;
 
 namespace MyCCare.Admin_CCare
 {
-    public partial class Ad_HistoryMOMT : System.Web.UI.Page
+    public partial class Ad_HistoryMOMT : MyASPXBase
     {
         public int PageIndex = 1;
         MOLog mMOLog = new MOLog();
@@ -45,7 +45,7 @@ namespace MyCCare.Admin_CCare
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.LoadDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.LoadDataError, true, ex);
             }
         }
 
@@ -119,6 +119,10 @@ namespace MyCCare.Admin_CCare
 
                 foreach (DataRow mRow in mTable.Rows)
                 {
+                    if ((int)mRow["ChannelTypeID"] != (int)MyConfig.ChannelType.SMS)
+                    {
+                        mRow["MO"] = string.Empty;
+                    }
 
                     DateTime mDate_Receive = (DateTime)mRow["LogDate"];
                     DateTime mDate_SendDate = new DateTime(mDate_Receive.Year, mDate_Receive.Month, mDate_Receive.Day, mDate_Receive.Hour, mDate_Receive.Minute, mDate_Receive.Second);
@@ -158,7 +162,7 @@ namespace MyCCare.Admin_CCare
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.SeachError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.SeachError, true, ex);
             }
         }
 

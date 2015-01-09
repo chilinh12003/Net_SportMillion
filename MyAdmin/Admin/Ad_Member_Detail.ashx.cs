@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.Web.SessionState;
-using MyUtility;
+using MyUtility; using MyBase.MyWeb;
 using MySportMillion;
 
 namespace MyAdmin.Admin
@@ -14,7 +14,7 @@ namespace MyAdmin.Admin
     /// Summary description for $codebehindclassname$
     /// </summary>
 
-    public class Ad_Member_Detail : IHttpHandler, IRequiresSessionState
+    public class Ad_Member_Detail : MyASHXBase
     {
 
         public void ProcessRequest(HttpContext context)
@@ -79,7 +79,7 @@ namespace MyAdmin.Admin
             catch (Exception ex)
             {
                 context.Response.Write("<div class='FaceBoxAlert_UnSuccess'>Có lỗi trong quá trình tải dữ liệu!</div>");
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.LoadDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.LoadDataError, true, ex);
             }
         }
 

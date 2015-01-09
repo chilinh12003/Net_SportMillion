@@ -8,13 +8,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
-using MyUtility;
+using MyUtility; using MyBase.MyWeb;
 using MySportMillion;
 using MyUtility.UploadFile;
 using Microsoft.Security.Application;
 namespace MyAdmin.Admin
 {
-    public partial class Ad_Category_Edit : System.Web.UI.Page
+    public partial class Ad_Category_Edit : MyASPXBase
     {
         public GetRole mGetRole;
 
@@ -81,7 +81,7 @@ namespace MyAdmin.Admin
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.CheckPermissionError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.CheckPermissionError, true, ex);
             }
             return true;
         }
@@ -196,7 +196,7 @@ namespace MyAdmin.Admin
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.LoadDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.LoadDataError, true, ex);
             }
 
         }
@@ -295,7 +295,7 @@ namespace MyAdmin.Admin
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.UploadFileError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.UploadFileError, true, ex);
             }
         }
         private void AddNewRow(ref DataSet mSet)
@@ -400,7 +400,7 @@ namespace MyAdmin.Admin
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.SaveDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.SaveDataError, true, ex);
             }
         }
 
@@ -412,7 +412,7 @@ namespace MyAdmin.Admin
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.SaveDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.SaveDataError, true, ex);
             }
         }
 
@@ -424,7 +424,8 @@ namespace MyAdmin.Admin
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.LoadDataError, "Chilinh");
+                
+                mLog.Error(MyNotice.AdminError.LoadDataError, true, ex);
             }
         }
 
@@ -436,7 +437,7 @@ namespace MyAdmin.Admin
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.LoadDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.LoadDataError, true, ex);
             }
         }
     }

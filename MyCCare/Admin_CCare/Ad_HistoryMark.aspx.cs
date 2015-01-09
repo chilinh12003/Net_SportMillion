@@ -5,18 +5,51 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
-using MyUtility;
+using MyUtility; using MyBase.MyWeb;
 using MySportMillion;
 using MySportMillion.Service;
 using MySportMillion.Sub;
 
 namespace MyCCare.Admin_CCare
 {
-    public partial class Ad_HistoryMark : System.Web.UI.Page
+    public partial class Ad_HistoryMark : MyASPXBase
     {
         public int PageIndex = 1;
         AnswerLog mAnswerLog = new AnswerLog();
 
+        public int WeekMark
+        {
+            get
+            {
+                if(ViewState["WeekMark"]  == null)
+                {
+                    ViewState["WeekMark"] = 0;
+                }
+
+                return (int)ViewState["WeekMark"];
+            }
+            set
+            {
+                ViewState["WeekMark"] = value;
+            }
+        }
+        public int ChargeMark
+        {
+            get
+            {
+                if (ViewState["ChargeMark"] == null)
+                {
+                    ViewState["ChargeMark"] = 0;
+                }
+
+                return (int)ViewState["ChargeMark"];
+            }
+            set
+            {
+                ViewState["ChargeMark"] = value;
+            }
+        }
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -32,6 +65,8 @@ namespace MyCCare.Admin_CCare
 
                     tbx_FromDate.Value = MySetting.AdminSetting.BeginDate;
                     tbx_ToDate.Value = MySetting.AdminSetting.EndDate;
+
+                    GetSubInfo();
                 }
                 else
                 {
@@ -45,7 +80,7 @@ namespace MyCCare.Admin_CCare
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.LoadDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.LoadDataError, true, ex);
             }
         }
 
@@ -115,6 +150,42 @@ namespace MyCCare.Admin_CCare
             }
         }
 
+        void GetSubInfo()
+        {
+            try
+            {
+                string MSISDN = tbx_MSISDN.Value;
+                MyConfig.Telco mTelco = MyConfig.Telco.Nothing;
+                MyCheck.CheckPhoneNumber(ref MSISDN, ref mTelco, "84");
+
+                if (mTelco != MyConfig.Telco.Vinaphone)
+                {
+                    return;
+                }
+                tbx_MSISDN.Value = MSISDN;
+                MySetting.AdminSetting.MSISDN = MSISDN;
+
+                Subscriber mSub = new Subscriber();
+                DataTable mTable_Sub = mSub.Select(2, MyPID.GetPIDByPhoneNumber(MSISDN, MySetting.AdminSetting.MaxPID).ToString(), MSISDN);
+
+                if (mTable_Sub != null && mTable_Sub.Rows.Count > 0)
+                {
+                    ChargeMark = (int)mTable_Sub.Rows[0]["ChargeMark"];
+                    WeekMark = (int)mTable_Sub.Rows[0]["WeekMark"];
+                }
+                else
+                {
+                    ChargeMark = 0;
+                    WeekMark = 0;
+                }
+
+            }
+            catch(Exception ex)
+            {
+                mLog.Error(MyNotice.AdminError.SeachError, true, ex);
+            }
+            
+        }
         protected void btn_Search_Click(object sender, EventArgs e)
         {
             try
@@ -131,11 +202,13 @@ namespace MyCCare.Admin_CCare
                 tbx_MSISDN.Value = MSISDN;
                 MySetting.AdminSetting.MSISDN = MSISDN;
 
+                GetSubInfo();
+
                 Admin_Paging1.ResetLoadData();
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.SeachError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.SeachError, true, ex);
             }
         }
 

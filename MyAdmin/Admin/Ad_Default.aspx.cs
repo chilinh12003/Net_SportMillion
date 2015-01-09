@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using MyUtility;
+using MyUtility; using MyBase.MyWeb;
 using MySportMillion;
 namespace MyAdmin.Admin
 {
-    public partial class Ad_Default : System.Web.UI.Page
+    public partial class Ad_Default : MyASPXBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {

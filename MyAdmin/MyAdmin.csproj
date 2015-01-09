@@ -68,6 +68,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\DLL\CuteEditor.ImageEditor.dll</HintPath>
     </Reference>
+    <Reference Include="MyBase, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MyLibrary\MyBase\bin\Debug\MyBase.dll</HintPath>
+    </Reference>
     <Reference Include="MyUtility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\MyLibrary\MyUtility\bin\Debug\MyUtility.dll</HintPath>
@@ -100,7 +104,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\Ad_Alert.aspx" />
-    <Content Include="Admin\Ad_AllowIP.aspx" />
     <Content Include="Admin\Ad_Category.aspx" />
     <Content Include="Admin\Ad_Category_Edit.aspx" />
     <Content Include="Admin\Ad_ChangePassword.aspx" />
@@ -133,7 +136,6 @@
     <Content Include="Admin_Report\Ad_CountSub.aspx" />
     <Content Include="Admin_Report\Ad_CountUnSub.aspx" />
     <Content Include="Admin_Report\Ad_KPI.aspx" />
-    <Content Include="Admin_Report\Ad_KPI_2.aspx" />
     <Content Include="Admin_Report\Ad_MOLog.aspx" />
     <Content Include="Admin_Report\Ad_Partner_Charge.aspx" />
     <Content Include="Admin_Report\Ad_Partner_Charge_ByPrice.aspx" />
@@ -159,7 +161,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Error.aspx" />
     <Content Include="Images\Buttons\images.jpg" />
     <Content Include="Images\Images\Table_TL_Repeat.png" />
     <Content Include="Images\Images\Table_TR_Repeat.png" />
@@ -180,13 +181,6 @@
     </Compile>
     <Compile Include="Admin\Ad_Alert.aspx.designer.cs">
       <DependentUpon>Ad_Alert.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Ad_AllowIP.aspx.cs">
-      <DependentUpon>Ad_AllowIP.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Ad_AllowIP.aspx.designer.cs">
-      <DependentUpon>Ad_AllowIP.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Ad_Catagory_Detail.ashx.cs">
       <DependentUpon>Ad_Catagory_Detail.ashx</DependentUpon>
@@ -442,13 +436,6 @@
     <Compile Include="Admin_Report\Ad_KPI.aspx.designer.cs">
       <DependentUpon>Ad_KPI.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin_Report\Ad_KPI_2.aspx.cs">
-      <DependentUpon>Ad_KPI_2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin_Report\Ad_KPI_2.aspx.designer.cs">
-      <DependentUpon>Ad_KPI_2.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admin_Report\Ad_MOLog.aspx.cs">
       <DependentUpon>Ad_MOLog.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -507,13 +494,6 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Error.aspx.cs">
-      <DependentUpon>Error.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Error.aspx.designer.cs">
-      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

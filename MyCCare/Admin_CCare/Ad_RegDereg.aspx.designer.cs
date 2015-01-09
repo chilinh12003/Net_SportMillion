@@ -65,5 +65,23 @@ namespace MyCCare.Admin_CCare {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::MyAdmin.Admin_Control.Admin_Paging Admin_Paging1;
+        
+        /// <summary>
+        /// file_UploadText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile file_UploadText;
+        
+        /// <summary>
+        /// lbtn_DeregFile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtn_DeregFile;
     }
 }

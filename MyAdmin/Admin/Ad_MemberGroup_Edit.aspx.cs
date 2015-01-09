@@ -8,13 +8,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
-using MyUtility;
+using MyUtility; using MyBase.MyWeb;
 using MySportMillion;
 using MyUtility.UploadFile;
 
 namespace MyAdmin.Admin
 {
-    public partial class Ad_MemberGroup_Edit : System.Web.UI.Page
+    public partial class Ad_MemberGroup_Edit : MyASPXBase
     {
         public GetRole mGetRole;
         MemberGroup mMemberGroup = new MemberGroup();
@@ -61,7 +61,7 @@ namespace MyAdmin.Admin
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.CheckPermissionError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.CheckPermissionError, true, ex);
                 return false;
             }
             return true;
@@ -117,7 +117,7 @@ namespace MyAdmin.Admin
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.LoadDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.LoadDataError, true, ex);
             }
 
         }
@@ -208,7 +208,8 @@ namespace MyAdmin.Admin
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.SaveDataError, "AnhTuan");
+                mLog.Error(MyNotice.AdminError.SaveDataError, true, ex);
+                
             }
         }
 
@@ -220,7 +221,7 @@ namespace MyAdmin.Admin
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.SaveDataError, "AnhTuan");
+                mLog.Error(MyNotice.AdminError.SaveDataError, true, ex);
             }
         }
     }

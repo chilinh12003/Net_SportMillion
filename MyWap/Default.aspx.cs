@@ -9,9 +9,6 @@ using System.IO;
 using System.Net;
 using System.Web.Security;
 using System.Xml;
-using DotNetCasClient;
-using DotNetCasClient.Utils;
-using DotNetCasClient.Validation;
 
 namespace MyWap
 {

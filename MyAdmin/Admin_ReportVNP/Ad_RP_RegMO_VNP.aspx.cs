@@ -7,7 +7,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using System.Collections.Generic;
 using System.Web.UI.DataVisualization.Charting;
-using MyUtility;
+using MyUtility; using MyBase.MyWeb;
 using MySportMillion;
 using MySportMillion.Service;
 using MySportMillion.Sub;
@@ -15,7 +15,7 @@ using MySportMillion.Report;
 
 namespace MyAdmin.Admin_ReportVNP
 {
-    public partial class Ad_RP_RegMO_VNP : System.Web.UI.Page
+    public partial class Ad_RP_RegMO_VNP : MyASPXBase
     {
         public GetRole mGetRole;
         public int PageIndex = 1;
@@ -38,7 +38,7 @@ namespace MyAdmin.Admin_ReportVNP
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex);
+                mLog.Error(ex);
                 return "#";
             }
         }
@@ -93,7 +93,7 @@ namespace MyAdmin.Admin_ReportVNP
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.CheckPermissionError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.CheckPermissionError, true, ex);
                 return false;
             }
             return true;
@@ -121,7 +121,7 @@ namespace MyAdmin.Admin_ReportVNP
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.LoadDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.LoadDataError, true, ex);
             }
             if (IsRedirect)
             {
@@ -151,7 +151,7 @@ namespace MyAdmin.Admin_ReportVNP
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.LoadDataError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.LoadDataError, true, ex);
             }
         }
 
@@ -225,7 +225,7 @@ namespace MyAdmin.Admin_ReportVNP
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.SortError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.SortError, true, ex);
             }
         }
 
@@ -238,7 +238,7 @@ namespace MyAdmin.Admin_ReportVNP
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex, true, MyNotice.AdminError.SeachError, "Chilinh");
+                mLog.Error(MyNotice.AdminError.SeachError, true, ex);
             }
         }
 
@@ -305,7 +305,7 @@ namespace MyAdmin.Admin_ReportVNP
             }
             catch (Exception ex)
             {
-                MyLogfile.WriteLogError(ex);
+                mLog.Error(ex);
             }
         }
     }
